@@ -1,15 +1,14 @@
 package com.avatarduel.model;
 
-class Character extends Card{
+class Aura extends Card{
+	private int power;
 	private int attack;
 	private int defense;
-	private int power;
-	private CardType type;
 
-	public Character(CardBuilder builder){
+	public Aura(CardBuilder builder){
 		super(builder);
+		this.power = builder.power;
 		this.attack = builder.attack;
 		this.defense = builder.defense;
-		this.power = builder.power;
 	}
 }
