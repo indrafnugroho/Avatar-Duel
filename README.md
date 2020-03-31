@@ -3,6 +3,10 @@ Avatar Duel game assignment made in Java
 
 ## Using Gradle to build program
 Here is an example of project using gradle as the build tools.
+
+### Prerequisites
+* You have already installed JDK 8 in your local computer
+
 Try running these commands:
 
 `./gradlew run`
