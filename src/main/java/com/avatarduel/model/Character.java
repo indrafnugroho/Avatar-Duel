@@ -1,4 +1,3 @@
-package com.avatarduel.model;
 
 class Character extends Card{
 	private int attack;

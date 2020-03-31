@@ -1,4 +1,3 @@
-package com.avatarduel.model;
 
 class PowerUp extends Card{
 	private String effect;

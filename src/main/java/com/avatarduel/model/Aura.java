@@ -1,4 +1,3 @@
-package com.avatarduel.model;
 
 class Aura extends Card{
 	private int power;

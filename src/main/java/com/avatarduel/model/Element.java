@@ -1,4 +1,3 @@
-package com.avatarduel.model;
 
 public enum Element {
   WATER,
