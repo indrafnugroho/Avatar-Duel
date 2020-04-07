@@ -61,6 +61,22 @@ class CardBuilder{
 		return this;
 	}
 
+	public Aura buildAura(){
+		return new Aura(this);
+	}
+
+	public Character buildCharacter(){
+		return new Character(this);
+	}
+
+	public Land buildLand(){
+		return new Land(this);
+	}
+
+	public Destroy buildDestroy(){
+		return new Destroy(this);
+	}
+
 	public Card build(){
 		if(this.type == CardType.AURA){
 			return new Aura(this);

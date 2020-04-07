@@ -1,13 +1,13 @@
 
 class Card{
-	private int id;
-	private String name;
-	private Element element;
-	private String description;
-	private String imagepath;
-	private boolean isSummoned;
-	private boolean isSummonable;
-
+	protected int id;
+	protected String name;
+	protected Element element;
+	protected String description;
+	protected String imagepath;
+	protected boolean isSummoned;
+	protected boolean isSummonable;
+	protected State state;
 
 	public Card(CardBuilder builder){
 		this.id = builder.id;
@@ -45,5 +45,15 @@ class Card{
 
 	public boolean getSummonable(){
 		return this.isSummonable;
+	}
+
+	public String toString(){
+		String result = "";
+		result += "Id: " + this.id + 
+		"\nName: " + this.name +
+		"\nElement: " + this.element +
+		"\nDescription: " + this.description;
+
+		return result;
 	}
 }
