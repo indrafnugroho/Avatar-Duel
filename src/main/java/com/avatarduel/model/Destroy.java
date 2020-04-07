@@ -5,7 +5,7 @@ import com.avatarduel.model.Character;
 import com.avatarduel.model.CardBuilder;
 import com.avatarduel.model.State;
 
-class Destroy extends Card{
+public class Destroy extends Card{
 	private Character linkedCard;
 
 

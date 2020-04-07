@@ -1,5 +1,3 @@
-
-
 import com.avatarduel.model.Player;
 
 public class Controller {

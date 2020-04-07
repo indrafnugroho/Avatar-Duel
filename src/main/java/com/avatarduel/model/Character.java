@@ -5,7 +5,7 @@ import com.avatarduel.model.CardBuilder;
 import com.avatarduel.model.Position;
 import com.avatarduel.model.State;
 
-class Character extends Card{
+public class Character extends Card{
 	private int attack;
 	private int defense;
 	private int power;

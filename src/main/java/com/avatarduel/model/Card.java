@@ -3,7 +3,7 @@ package com.avatarduel.model;
 import com.avatarduel.model.Element;
 import com.avatarduel.model.CardBuilder;
 
-class Card{
+public class Card{
 	protected int id;
 	protected String name;
 	protected Element element;

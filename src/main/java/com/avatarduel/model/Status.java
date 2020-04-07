@@ -2,7 +2,7 @@ package com.avatarduel.model;
 
 import com.avatarduel.model.Element;
 
-class Status{
+public class Status{
 	private int earth;
 	private int air;
 	private int fire;

@@ -5,7 +5,7 @@ import com.avatarduel.model.Character;
 import com.avatarduel.model.CardBuilder;
 import com.avatarduel.model.State;
 
-class Aura extends Card{
+public class Aura extends Card{
 	private Character linkedCard;
 	private int power;
 	private int attack;

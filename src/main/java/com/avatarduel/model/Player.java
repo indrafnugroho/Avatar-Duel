@@ -5,7 +5,7 @@ import com.avatarduel.model.Status;
 
 import java.util.List;
 
-class Player{
+public class Player{
 	private String name;
 	private List<Card> deck;
 	private List<Card> cardOnHand;

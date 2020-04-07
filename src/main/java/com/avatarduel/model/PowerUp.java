@@ -5,7 +5,7 @@ import com.avatarduel.model.Character;
 import com.avatarduel.model.CardBuilder;
 import com.avatarduel.model.State;
 
-class PowerUp extends Card {
+public class PowerUp extends Card {
 	private Character linkedCard;
 
 	public PowerUp(CardBuilder builder){
