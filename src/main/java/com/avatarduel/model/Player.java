@@ -10,6 +10,5 @@ class Player{
 
 	public Player(){
 		this.name = "Player";
-
 	}
 }

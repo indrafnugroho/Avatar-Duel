@@ -1,12 +1,18 @@
 
 class Destroy extends Card{
-	private String effect;
+	private Character linkedCard;
+
 
 	public Destroy(CardBuilder builder){
 		super(builder);
 	}
 
-	public void activate(Card card){
-		// Do Something
+	public void summon(Character linkedCard){
+		this.isSummoned = true;
+		this.linkedCard = linkedCard;
+	}
+
+	public State activate(){
+		return this.linkedCard.destroy();
 	}
 }

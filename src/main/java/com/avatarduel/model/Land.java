@@ -1,10 +1,17 @@
 
 public class Land extends Card{
+	private Status linkedStatus;
+
 	public Land(CardBuilder builder){
 		super(builder);
 	}
 
-	public void activate(Status s){
-		s.addStatus(super.getElement());
+	public void summon(Status linkedStatus){
+		this.isSummoned = true;
+		this.linkedStatus = linkedStatus;
+	}
+
+	public void activate(){
+		this.linkedStatus.addStatus(super.getElement());
 	}
 }
