@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 import com.avatarduel.model.Element;
 import com.avatarduel.model.Land;
+import com.avatarduel.model.CardBuilder;
+import com.avatarduel.model.CardType;
 import com.avatarduel.util.CSVReader;
 
 public class AvatarDuel extends Application {
@@ -24,7 +26,13 @@ public class AvatarDuel extends Application {
     landReader.setSkipHeader(true);
     List<String[]> landRows = landReader.read();
     for (String[] row : landRows) {
-      Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
+      // Land l = new Land(row[1], row[3], Element.valueOf(row[2]));
+      Land l = new CardBuilder(CardType.LAND)
+      .setId(3)
+      .setName(row[1])
+      .setDescription(row[3])
+      .setElement(Element.valueOf(row[2]))
+      .buildLand();
     }
   }
 
