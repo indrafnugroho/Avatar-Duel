@@ -5,11 +5,13 @@ class State{
 	private int x;
 	private int y;
 	private Position pos; //Position
+	private boolean getPowerUp;
 
 	public State(int x, int y, Position pos){
 		this.x = x;
 		this.y = y;
 		this.pos = pos;
+		this.getPowerUp = false;
 	}
 
 	public int getX(){
@@ -30,6 +32,14 @@ class State{
 		} else {
 			this.pos = Position.ATTACK;
 		}
+	}
+
+	public void setPowerUp(boolean powerUp){
+		this.getPowerUp = powerUp;
+	}
+
+	public boolean isPowerUp(){
+		return this.getPowerUp;
 	}
 
 	public String toString(){
