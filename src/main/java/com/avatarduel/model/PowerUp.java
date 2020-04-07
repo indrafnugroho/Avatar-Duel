@@ -5,7 +5,7 @@ import com.avatarduel.model.Character;
 import com.avatarduel.model.CardBuilder;
 import com.avatarduel.model.State;
 
-class PowerUp extends Card{
+class PowerUp extends Card {
 	private Character linkedCard;
 
 	public PowerUp(CardBuilder builder){
@@ -18,11 +18,12 @@ class PowerUp extends Card{
 	}
 
 	public void activate(){
-		return this.linkedCard.state.setPowerUp(true);
+		// return 
+		this.linkedCard.state.setPowerUp(true);
 	}
 
 	public void destroy(){
-		return this.linkedCard.state.setPowerUp(false);
+		// return 
+		this.linkedCard.state.setPowerUp(false);
 	}
-
 }
