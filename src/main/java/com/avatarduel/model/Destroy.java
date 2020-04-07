@@ -5,4 +5,8 @@ class Destroy extends Card{
 	public Destroy(CardBuilder builder){
 		super(builder);
 	}
+
+	public void activate(Card card){
+		// Do Something
+	}
 }

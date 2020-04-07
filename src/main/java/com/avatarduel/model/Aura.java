@@ -10,4 +10,8 @@ class Aura extends Card{
 		this.attack = builder.attack;
 		this.defense = builder.defense;
 	}
+
+	public void activate(Character card){
+		// Next
+	}
 }

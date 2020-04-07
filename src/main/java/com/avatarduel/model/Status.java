@@ -20,7 +20,7 @@ class Status{
 		this.maxFire = 0;
 	}
 
-	public addStatus(Element element){
+	public void addStatus(Element element){
 		if(element == Element.FIRE){
 			this.maxFire++;
 			this.fire++;

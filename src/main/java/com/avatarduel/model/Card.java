@@ -5,6 +5,9 @@ class Card{
 	private Element element;
 	private String description;
 	private String imagepath;
+	private boolean isSummoned;
+	private boolean isSummonable;
+
 
 	public Card(CardBuilder builder){
 		this.id = builder.id;
@@ -12,67 +15,35 @@ class Card{
 		this.element = builder.element;
 		this.description = builder.description;
 		this.imagepath = builder.imagepath;
+		this.isSummoned = false;
+		this.isSummonable = false;
 	}
 
-	public static class CardBuilder{
-		private int id;
-		private CardType type;
-		private String name;
-		private Element element;
-		private String description;
-		private String imagepath;
-		protected int power;
-		protected int attack;
-		protected int defense;
-	
-		public CardBuilder(CardType type){
-			this.type = type;
-		}
+	public int getId(){
+		return this.id;
+	}
 
-		public CardBuilder setId(int id){
-			this.id = id;
-			return this;
-		}
+	public Element getElement(){
+		return this.element;
+	}
 
-		public CardBuilder setName(String name){
-			this.name = name;
-			return this;
-		}
+	public String getName(){
+		return this.name;
+	}
 
-		public CardBuilder setElement(Element element){
-			this.element = element;
-			return this;
-		}
+	public String getDescription(){
+		return this.description;
+	}
 
-		public CardBuilder setDescription(String description){
-			this.description = description;
-			return this;
-		}
+	public String getPath(){
+		return this.imagepath;
+	}
 
-		public CardBuilder setImagePath(String imagepath){
-			this.imagepath = imagepath;
-			return this;
-		}
+	public boolean getStatus(){
+		return this.isSummoned;
+	}
 
-		public CardBuilder setPower(int power){
-			this.power = power;
-			return this;
-		}
-
-		public Card build(){
-			if(this.type == CardType.AURA){
-				return new Aura(this);
-			} else if (this.type == CardType.DESTROY){
-				return new Destroy(this);
-			} else if (this.type == CardType.POWERUP) {
-				return new PowerUp(this);
-			} else if (this.type == CardType.CHARACTER){
-				return new Character(this);
-			} else if (this.type == CardType.LAND){
-				return new Land(this);
-			} else {
-				return new Card(this);
-			}
-		}
+	public boolean getSummonable(){
+		return this.isSummonable;
 	}
 }
