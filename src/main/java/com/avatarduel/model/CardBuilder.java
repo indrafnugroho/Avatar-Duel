@@ -4,7 +4,7 @@ import com.avatarduel.model.Element;
 import com.avatarduel.model.Land;
 import com.avatarduel.model.CardType;
 
-class CardBuilder{
+public class CardBuilder{
 	public int id;
 	public CardType type;
 	public String name;
