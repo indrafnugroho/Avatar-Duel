@@ -1,3 +1,6 @@
+package com.avatarduel.model;
+import com.avatarduel.model.Position;
+
 class State{
 	private int x;
 	private int y;
