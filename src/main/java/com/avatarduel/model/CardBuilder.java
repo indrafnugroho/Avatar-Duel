@@ -1,3 +1,9 @@
+package com.avatarduel.model;
+
+import com.avatarduel.model.Element;
+import com.avatarduel.model.Land;
+import com.avatarduel.model.CardType;
+
 class CardBuilder{
 	public int id;
 	public CardType type;

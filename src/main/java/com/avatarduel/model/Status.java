@@ -1,3 +1,7 @@
+package com.avatarduel.model;
+
+import com.avatarduel.model.Element;
+
 class Status{
 	private int earth;
 	private int air;
