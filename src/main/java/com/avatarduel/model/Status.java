@@ -20,7 +20,7 @@ class Status{
 		this.maxFire = 0;
 	}
 
-	public addStatus(Element element){
+	public void addStatus(Element element){
 		if(element == Element.FIRE){
 			this.maxFire++;
 			this.fire++;
@@ -67,5 +67,14 @@ class Status{
 		this.fire = this.maxFire;
 		this.earth = this.maxEarth;
 		this.air = this.maxAir;
+	}
+
+	public String toString(){
+		String result = "";
+		result += "Water : " + this.water + "/" + this.maxWater + 
+		"\nEarth : " + this.earth + "/" + this.maxEarth + 
+		"\nFire : " + this.fire + "/" + this.maxFire + 
+		"\nAir : " + this.air + "/" + this.maxAir;
+		return result;
 	}
 }
