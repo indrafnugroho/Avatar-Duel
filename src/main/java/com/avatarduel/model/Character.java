@@ -34,6 +34,14 @@ public class Character extends Card{
 		return this.power;
 	}
 
+	public State getState(){
+		return this.state;
+	}
+
+	public void setState(State current){
+		this.state = current;
+	}
+
 	public void setEffect(int attack, int defense){
 		this.attack += attack;
 		this.defense += defense;

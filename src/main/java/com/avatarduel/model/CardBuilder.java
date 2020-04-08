@@ -83,6 +83,8 @@ public class CardBuilder{
 		return new Destroy(this);
 	}
 
+	public PowerUp buildPowerUp() {return new PowerUp(this); }
+
 	public Card build(){
 		if(this.type == CardType.AURA){
 			return new Aura(this);
