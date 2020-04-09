@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1ffff3" height="100.0" stroke="BLACK" strokeType="INSIDE" width="67.5" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

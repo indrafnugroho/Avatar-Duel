@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="40.0" prefWidth="150.0" text="Draw" textAlignment="CENTER" />
+      <Label prefHeight="40.0" prefWidth="150.0" text="Main 1" textAlignment="CENTER" />
+      <Label prefHeight="40.0" prefWidth="150.0" text="Battle" textAlignment="CENTER" />
+      <Label prefHeight="40.0" prefWidth="150.0" text="Main 2" textAlignment="CENTER" />
+      <Label prefHeight="40.0" prefWidth="150.0" text="End" />
+   </children>
+</VBox>
