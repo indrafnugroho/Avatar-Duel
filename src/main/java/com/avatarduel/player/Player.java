@@ -1,6 +1,7 @@
 package com.avatarduel.player;
 
 import com.avatarduel.card.*;
+import com.avatarduel.card.Character;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class Player{
 	private Status status;
 	private int lifePoint;
 
-	public Player(List<Land> landList, List<com.avatarduel.card.Character> characterList, List<Aura> auraList){
-		this.name = "Player";
+	public Player(String name, List<Land> landList, List<Character> characterList, List<Aura> auraList){
+		this.name = name;
 		this.deck = new ArrayList<Card>(50);
 		this.cardOnHand = new ArrayList<Card>(10);
 		this.cardOnTable = new ArrayList<Card>(16);
@@ -32,7 +33,28 @@ public class Player{
 
 	}
 
-	public void initializeDeck(List<Land> landList, List<com.avatarduel.card.Character> characterList, List<Aura> auraList){
+	public int getLifePoint() {
+		return lifePoint;
+	}
+	public void setLifePoint(int hp){ this.lifePoint = hp; }
+
+	public List<Card> getListOfCardOnTable(){
+		return this.cardOnTable;
+	}
+
+	public List<Card> getListofCardOnHand(){
+		return this.cardOnTable;
+	}
+
+	public void setListOfCardOnTable(List<Card> updated){
+		this.cardOnTable = updated;
+	}
+
+	public void setListOfCardOnHand(List<Card> updated){
+		this.cardOnHand = updated;
+	}
+
+	public void initializeDeck(List<Land> landList, List<Character> characterList, List<Aura> auraList){
 		// INISIALISASI KARTU UNTUK DECK
 		// KOMPOSISI KARTU 2 : 2 : 1 = LAND : CHARACTER : SKILL
 		List<Element> elements = new ArrayList<Element>(4);
@@ -92,22 +114,26 @@ public class Player{
 		}
 	}
 
-	public void getCardFromDeck(){
+	public void drawCardFromDeck(){
 		Random rand = new Random();
 		int int_random = rand.nextInt(deck.size());
 		Card fromdeck = deck.remove(int_random);
-//		System.out.println(fromdeck.toString());
 		cardOnHand.add(fromdeck);
 	}
 
-	public void intializeStatus(){
+	public void initializeStatus(){
 		status.reset();
 	}
 
-	public void putCharacterOnTable(com.avatarduel.card.Character c, int x, int y, Position pos){
+	public void changeCharacterPosition(Character c){
+		State updated = c.getState();
+		updated.rotate();
+		c.setState(updated);
+	}
+
+	public void useCharacter(Character c, int x, Position pos){
 		this.cardOnHand.remove(c);
-		State current = new State(x, y, pos);
-		c.setState(current);
+		c.summon(x, pos);
 		if (c.getElement() == Element.AIR){
 			this.status.useAir(c.power());
 		}
@@ -123,33 +149,100 @@ public class Player{
 		this.cardOnTable.add(c);
 	}
 
-	public void changeCharacterPosition(com.avatarduel.card.Character c){
-		c.setState("rotate");
-	}
-
-	public void changeCharacterPosition(com.avatarduel.card.Character c, int x, int y){
-		c.setState(new State(x, y, c.getState().getPosition()));
-	}
-
-	public void putLandOnTable(Land l){
+	public void useLand(Land l){
 		this.cardOnHand.remove(l);
-		status.addStatus(l.getElement());
+		this.status.addStatus(l.getElement());
 	}
 
 
-//	public void putAuraOnTable(Aura a, Character c, int x){
-//		this.cardOnHand.remove(a);
-//		a.summon(x, c);
-//		this.cardOnTable.add(a);
-//	}
-//
-//	public void putDestroyOnTable(Aura a, Character c, int x){
-//		this.cardOnHand.remove(a);
-//		a.summon(x, c);
-//		this.cardOnTable.add(a);
+	public void useAura(Aura a, Character c, int x){
+		this.cardOnHand.remove(a);
+		a.summon(x, c);
+		this.cardOnTable.add(a);
+	}
+
+	public void useDestroy(Player b, Destroy d, Character c){
+		int i = 0;
+		boolean found = false;
+		this.cardOnHand.remove(d);
+		List<Card> other = b.getListOfCardOnTable();
+		d.summon(c);
+		State summoned = d.activate();
+		while (i < other.size() && !found){
+			if ((other.get(i).getState().getX() == summoned.getX()) && (other.get(i).getState().getY() == summoned.getY()){
+				other.remove(i);
+				found = true;
+			}
+		}
+		b.setListOfCardOnTable(other);
+	}
+
+	public void usePowerUp(PowerUp p, Character c){
+		this.cardOnHand.remove(p);
+		p.summon(c);
+		p.activate();
+		this.cardOnTable.add(p);
+	}
+
+	public void removeAuraFromTable(Aura a){
+		int i = 0;
+		boolean found = false;
+		State auraState = a.destroy();
+		while (i < this.cardOnTable.size() && !found){
+			if ((this.cardOnTable.get(i).getState().getX() == auraState.getX()) && (this.cardOnTable.get(i).getState().getY() == auraState.getY()){
+				this.cardOnTable.remove(i);
+				found = true;
+			}
+		}
+	}
+
+	// TODO
+//	public void removePowerUpFromTable(PowerUp p){
+//		int i = 0;
+//		boolean found = false;
+//		State powerUpState = p.destroy();
+//		while (i < this.cardOnTable.size() && !found){
+//			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY()){
+//				this.cardOnTable.remove(i);
+//				found = true;
+//			}
+//		}
 //	}
 
-//	public void removeSkillFromTable(Aura a){
-//		//
-//	}
+
+	public void attack(Player playerTwo, Character characterA, Character characterB){
+		int i = 0;
+		boolean found = false;
+
+		List<Card> playerTwoListOfCardOnTable = playerTwo.getListOfCardOnTable();
+
+		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.attack() <= characterA.attack())){
+			State destroyed = characterB.destroy();
+			while (i < playerTwoListOfCardOnTable.size() && !found){
+				if ((playerTwoListOfCardOnTable.get(i).getState().getX() == destroyed.getX()) && (playerTwoListOfCardOnTable.get(i).getState().getY() == destroyed.getY())){
+					found = true;
+					playerTwoListOfCardOnTable.remove(i);
+					playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.attack() - characterB.attack()));
+				}
+			}
+		}
+
+		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.defense() <= characterA.defense()){
+			State destroyed = characterB.destroy();
+			while (i < playerTwoListOfCardOnTable.size() && !found){
+				if ((playerTwoListOfCardOnTable.get(i).getState().getX() == destroyed.getX()) && (playerTwoListOfCardOnTable.get(i).getState().getY() == destroyed.getY())){
+					found = true;
+					playerTwoListOfCardOnTable.remove(i);
+				}
+			}
+		}
+	}
+
+
+	public void attack(Player playerTwo, Character characterA){
+		// dipake apabila playerTwp character nya abis
+		playerTwo.setLifePoint(playerTwo.getLifePoint() - characterA.attack());
+	}
+
+
 }

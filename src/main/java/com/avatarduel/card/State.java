@@ -1,5 +1,4 @@
 package com.avatarduel.card;
-import com.avatarduel.card.Position;
 
 public class State{
 	private int x;
