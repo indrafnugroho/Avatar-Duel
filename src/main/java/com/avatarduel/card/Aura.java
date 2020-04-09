@@ -1,9 +1,9 @@
-package com.avatarduel.model;
+package com.avatarduel.card;
 
-import com.avatarduel.model.Card;
-import com.avatarduel.model.Character;
-import com.avatarduel.model.CardBuilder;
-import com.avatarduel.model.State;
+import com.avatarduel.card.Card;
+import com.avatarduel.card.Character;
+import com.avatarduel.card.CardBuilder;
+import com.avatarduel.card.State;
 
 public class Aura extends Card{
 	private Character linkedCard;

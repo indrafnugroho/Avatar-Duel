@@ -1,6 +1,6 @@
-package com.avatarduel.model;
+package com.avatarduel.player;
 
-import com.avatarduel.model.Element;
+import com.avatarduel.card.Element;
 
 public class Status{
 	private int earth;

@@ -1,14 +1,8 @@
-package com.avatarduel.model;
+package com.avatarduel.driver;
 
-import com.avatarduel.model.Status;
-import com.avatarduel.model.Character;
-import com.avatarduel.model.CardBuilder;
-import com.avatarduel.model.CardType;
-import com.avatarduel.model.Element;
-import com.avatarduel.model.Aura;
-import com.avatarduel.model.Destroy;
-import com.avatarduel.model.Land;
+import com.avatarduel.player.Status;
 
+import com.avatarduel.card.*;
 
 class DriverCard{
 	public static void main(String[] args) {

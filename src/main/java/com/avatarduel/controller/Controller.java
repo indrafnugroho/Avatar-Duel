@@ -1,4 +1,6 @@
-import com.avatarduel.model.Player;
+package com.avatarduel.controller;
+
+import com.avatarduel.player.Player;
 
 public class Controller {
 

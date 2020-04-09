@@ -1,8 +1,8 @@
-package com.avatarduel.model;
+package com.avatarduel.card;
 
-import com.avatarduel.model.Element;
-import com.avatarduel.model.Land;
-import com.avatarduel.model.CardType;
+import com.avatarduel.card.Element;
+import com.avatarduel.card.Land;
+import com.avatarduel.card.CardType;
 
 public class CardBuilder{
 	public int id;

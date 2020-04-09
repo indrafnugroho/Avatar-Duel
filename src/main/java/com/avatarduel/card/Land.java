@@ -1,8 +1,9 @@
-package com.avatarduel.model;
+package com.avatarduel.card;
 
-import com.avatarduel.model.Card;
-import com.avatarduel.model.Status;
-import com.avatarduel.model.CardBuilder;
+import com.avatarduel.card.Card;
+import com.avatarduel.card.CardBuilder;
+
+import com.avatarduel.player.Status;
 
 public class Land extends Card{
 	private Status linkedStatus;

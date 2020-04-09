@@ -1,5 +1,5 @@
-package com.avatarduel.model;
-import com.avatarduel.model.Position;
+package com.avatarduel.card;
+import com.avatarduel.card.Position;
 
 public class State{
 	private int x;

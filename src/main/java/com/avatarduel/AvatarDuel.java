@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 
-import com.avatarduel.model.*;
-import com.avatarduel.model.Character;
+import com.avatarduel.card.*;
+import com.avatarduel.player.*;
+import com.avatarduel.controller.*;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;

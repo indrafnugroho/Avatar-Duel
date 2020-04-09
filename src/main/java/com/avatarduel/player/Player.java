@@ -1,6 +1,6 @@
-package com.avatarduel.model;
+package com.avatarduel.player;
 
-import com.avatarduel.model.*;
+import com.avatarduel.card.*;
 
 import java.util.Random;
 import java.util.ArrayList;

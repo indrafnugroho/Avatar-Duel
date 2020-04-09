@@ -1,9 +1,9 @@
-package com.avatarduel.model;
+package com.avatarduel.card;
 
-import com.avatarduel.model.Card;
-import com.avatarduel.model.CardBuilder;
-import com.avatarduel.model.Position;
-import com.avatarduel.model.State;
+import com.avatarduel.card.Card;
+import com.avatarduel.card.CardBuilder;
+import com.avatarduel.card.Position;
+import com.avatarduel.card.State;
 
 public class Character extends Card{
 	private int attack;

@@ -1,7 +1,7 @@
-package com.avatarduel.model;
+package com.avatarduel.card;
 
-import com.avatarduel.model.Element;
-import com.avatarduel.model.CardBuilder;
+import com.avatarduel.card.Element;
+import com.avatarduel.card.CardBuilder;
 
 public class Card{
 	protected int id;
