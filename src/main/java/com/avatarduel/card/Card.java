@@ -5,6 +5,7 @@ import com.avatarduel.card.CardBuilder;
 
 public class Card{
 	protected int id;
+	protected CardType type;
 	protected String name;
 	protected Element element;
 	protected String description;
@@ -15,6 +16,7 @@ public class Card{
 
 	public Card(CardBuilder builder){
 		this.id = builder.id;
+		this.type = builder.type;
 		this.name = builder.name;
 		this.element = builder.element;
 		this.description = builder.description;
@@ -30,6 +32,10 @@ public class Card{
 	public Element getElement(){
 		return this.element;
 	}
+
+    public CardType getType() {
+        return this.type;
+    }
 
 	public String getName(){
 		return this.name;
