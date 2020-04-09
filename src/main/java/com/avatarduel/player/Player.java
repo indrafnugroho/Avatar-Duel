@@ -14,7 +14,7 @@ public class Player{
 	private Status status;
 	private int lifePoint;
 
-	public Player(List<Land> landList, List<Character> characterList, List<Aura> auraList){
+	public Player(List<Land> landList, List<com.avatarduel.card.Character> characterList, List<Aura> auraList){
 		this.name = "Player";
 		this.deck = new ArrayList<Card>(50);
 		this.cardOnHand = new ArrayList<Card>(10);
@@ -32,7 +32,7 @@ public class Player{
 
 	}
 
-	public void initializeDeck(List<Land> landList, List<Character> characterList, List<Aura> auraList){
+	public void initializeDeck(List<Land> landList, List<com.avatarduel.card.Character> characterList, List<Aura> auraList){
 		// INISIALISASI KARTU UNTUK DECK
 		// KOMPOSISI KARTU 2 : 2 : 1 = LAND : CHARACTER : SKILL
 		List<Element> elements = new ArrayList<Element>(4);
@@ -46,7 +46,7 @@ public class Player{
 			int a = rand.nextInt(landList.size());
 			int b = rand.nextInt(characterList.size());
 			Land land_deck = landList.get(a);
-			Character char_deck = characterList.get(b);
+			com.avatarduel.card.Character char_deck = characterList.get(b);
 			this.deck.add(land_deck);
 			this.deck.add(char_deck);
 		}
@@ -104,7 +104,7 @@ public class Player{
 		status.reset();
 	}
 
-	public void putCharacterOnTable(Character c, int x, int y, Position pos){
+	public void putCharacterOnTable(com.avatarduel.card.Character c, int x, int y, Position pos){
 		this.cardOnHand.remove(c);
 		State current = new State(x, y, pos);
 		c.setState(current);
@@ -123,11 +123,11 @@ public class Player{
 		this.cardOnTable.add(c);
 	}
 
-	public void changeCharacterPosition(Character c){
-		c.state.rotate();
+	public void changeCharacterPosition(com.avatarduel.card.Character c){
+		c.setState("rotate");
 	}
 
-	public void changeCharacterPosition(Character c, int x, int y){
+	public void changeCharacterPosition(com.avatarduel.card.Character c, int x, int y){
 		c.setState(new State(x, y, c.getState().getPosition()));
 	}
 

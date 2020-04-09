@@ -6,8 +6,8 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 import com.avatarduel.card.*;
-import com.avatarduel.player.*;
-import com.avatarduel.controller.*;
+//import com.avatarduel.player.*;
+//import com.avatarduel.controller.*;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -22,7 +22,7 @@ public class AvatarDuel extends Application {
   private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
   private static final String SKILL_AURA_CSV_FILE_PATH = "card/data/skill_aura.csv";
   private List<Land> landList;
-  private List<com.avatarduel.model.Character> characterList;
+  private List<com.avatarduel.card.Character> characterList;
   private List<Aura> auraList;
 
   public void loadCards() throws IOException, URISyntaxException {
@@ -43,7 +43,7 @@ public class AvatarDuel extends Application {
     List<String[]> skillRows = skillReader.read();
 
     this.landList = new ArrayList<Land>();
-    this.characterList = new ArrayList<com.avatarduel.model.Character>();
+    this.characterList = new ArrayList<com.avatarduel.card.Character>();
     this.auraList = new ArrayList<Aura>();
 
     for (String[] row : landRows) {
@@ -59,7 +59,7 @@ public class AvatarDuel extends Application {
     }
 
     for (String[] row : characterRows) {
-      Character c = new CardBuilder(CardType.CHARACTER)
+      com.avatarduel.card.Character c = new CardBuilder(CardType.CHARACTER)
               .setId(Integer.parseInt(row[0]))
               .setName(row[1])
               .setElement(Element.valueOf(row[2]))

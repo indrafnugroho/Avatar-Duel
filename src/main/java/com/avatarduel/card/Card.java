@@ -24,7 +24,15 @@ public class Card{
 		this.isSummoned = false;
 		this.isSummonable = false;
 	}
-
+        
+        public void setState(String s) {
+            if (s.equals("rotate")) {
+                this.state.rotate();
+            } else {
+                
+            }
+        }
+        
 	public int getId(){
 		return this.id;
 	}

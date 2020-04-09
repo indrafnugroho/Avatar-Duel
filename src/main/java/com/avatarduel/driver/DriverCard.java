@@ -8,7 +8,7 @@ class DriverCard{
 	public static void main(String[] args) {
 		Status s = new Status();
 
-		Character c = new CardBuilder(CardType.CHARACTER)
+		com.avatarduel.card.Character c = new CardBuilder(CardType.CHARACTER)
 			.setId(1)
 			.setName("Kartu Langka")
 			.setDescription("Ini Kartu Langka")
