@@ -177,9 +177,9 @@ public class Player{
 		b.setListOfCardOnTable(other);
 	}
 
-	public void usePowerUp(PowerUp p, Character c){
+	public void usePowerUp(PowerUp p, Character c, int x){
 		this.cardOnHand.remove(p);
-		p.summon(c);
+		p.summon(c, x);
 		p.activate();
 		this.cardOnTable.add(p);
 	}
@@ -196,18 +196,17 @@ public class Player{
 		}
 	}
 
-	// TODO
-//	public void removePowerUpFromTable(PowerUp p){
-//		int i = 0;
-//		boolean found = false;
-//		State powerUpState = p.destroy();
-//		while (i < this.cardOnTable.size() && !found){
-//			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY()){
-//				this.cardOnTable.remove(i);
-//				found = true;
-//			}
-//		}
-//	}
+	public void removePowerUpFromTable(PowerUp p){
+		int i = 0;
+		boolean found = false;
+		State powerUpState = p.destroy();
+		while (i < this.cardOnTable.size() && !found){
+			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY()){
+				this.cardOnTable.remove(i);
+				found = true;
+			}
+		}
+	}
 
 
 	public void attack(Player playerTwo, Character characterA, Character characterB){
