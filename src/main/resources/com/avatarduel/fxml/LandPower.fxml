@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="125.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.fxml.LandPowerController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="135.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.fxml.LandPowerController">
    <children>
-      <Label prefHeight="50.0" prefWidth="100.0" text="Earth: x / y" textAlignment="RIGHT" />
-      <Label prefHeight="50.0" prefWidth="100.0" text="Fire: x / y" textAlignment="RIGHT" />
-      <Label prefHeight="50.0" prefWidth="100.0" text="Water: x / y" textAlignment="RIGHT" />
-      <Label prefHeight="50.0" prefWidth="100.0" text="Air: x / y" textAlignment="RIGHT" />
+      <Label prefHeight="20.0" prefWidth="135.0" text="Air: x / y" textAlignment="RIGHT" />
+      <Label prefHeight="20.0" prefWidth="135.0" text="Fire: x / y" textAlignment="RIGHT" />
+      <Label prefHeight="20.0" prefWidth="135.0" text="Earth: x / y" textAlignment="RIGHT" />
+      <Label prefHeight="20.0" prefWidth="135.0" text="Water: x / y" textAlignment="RIGHT" />
+      <Label prefHeight="20.0" prefWidth="135.0" text="Energy: x / y" textAlignment="RIGHT" />
    </children>
 </VBox>

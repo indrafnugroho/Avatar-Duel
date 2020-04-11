@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.fxml.SingleCardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="36.0" prefWidth="250.0">
-         <children>
-            <Label prefHeight="30.0" prefWidth="125.0" text="Name" />
-            <Label prefHeight="30.0" prefWidth="125.0" text="Element" textAlignment="RIGHT" />
-         </children>
-      </HBox>
-      <HBox prefHeight="30.0" prefWidth="250.0">
-         <children>
-            <Label prefHeight="32.0" prefWidth="125.0" text="Effect" />
-            <Label prefHeight="32.0" prefWidth="125.0" text="[Type]" textAlignment="RIGHT" />
-         </children>
-      </HBox>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="50.0" pickOnBounds="true" preserveRatio="true" x="50.0" />
-      <Label prefHeight="100.0" prefWidth="250.0" text="Description" />
-      <HBox prefHeight="50.0" prefWidth="200.0">
-         <children>
-            <Label prefHeight="47.0" prefWidth="81.0" text="ATK / -" textAlignment="RIGHT" />
-            <Label prefHeight="48.0" prefWidth="73.0" text="DEF / -" textAlignment="RIGHT" />
-            <Label prefHeight="48.0" prefWidth="96.0" text="POW / -" textAlignment="RIGHT" />
-         </children>
-      </HBox>
+      <ImageView fitHeight="165.0" fitWidth="165.0" layoutX="52.5" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField layoutX="10.0" layoutY="15.0" prefHeight="25.0" prefWidth="225.0" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="235.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField layoutX="160.0" layoutY="40.0" prefHeight="25.0" prefWidth="100.0" />
+      <TextArea layoutX="10.0" layoutY="230.0" prefHeight="79.0" prefWidth="250.0" />
+      <TextField layoutX="10.0" layoutY="310.0" prefHeight="25.0" prefWidth="250.0" />
    </children>
-</VBox>
+</AnchorPane>
