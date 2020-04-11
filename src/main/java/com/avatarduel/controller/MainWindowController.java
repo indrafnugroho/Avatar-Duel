@@ -6,15 +6,15 @@
 package com.avatarduel.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
  * @author indraf
  */
-public class PhaseController {
+public class MainWindowController {
 
     @FXML
-    private VBox phase;
+    private AnchorPane mainWindow;
     
 }

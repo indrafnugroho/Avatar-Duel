@@ -74,4 +74,8 @@ public class Card{
 
 		return result;
 	}
+
+    public State getState() {
+        return this.state;
+    }
 }

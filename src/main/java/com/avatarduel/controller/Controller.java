@@ -16,7 +16,7 @@ public class Controller {
         // Controller for DrawPhase
 
         // Draw 1 card from deck
-        player.getCardFromDeck();
+        player.drawCardFromDeck();
 
         // Reset power to equal as land card value
         player.initializeStatus();
@@ -28,18 +28,18 @@ public class Controller {
         int x, y;
         Position pos;
         // Put character card on the field. (Can be 0 or > 0)
-        for (int i = 0; i < player.cardOnHand.size(); i++) {
-            if ((player.cardOnHand.get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
-                Character water = player.cardOnHand.get(i);
+        for (int i = 0; i < player.getListofCardOnHand().size(); i++) {
+            if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.getListofCardOnHand().get(i).getElement() == Element.WATER) && (player.getListofCardOnHand().get(i).power() <= player.status.water)) {
+                Character water = player.getListofCardOnHand().get(i);
                 putCharacterOnTable(water, x, y, pos);
-            } else if ((player.cardOnHand.get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
-                Character fire = player.cardOnHand.get(i);
+            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
+                Character fire = player.getListofCardOnHand().get(i);
                 putCharacterOnTable(fire, x, y, pos);
-            } else if ((player.cardOnHand.get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
-                Character air = player.cardOnHand.get(i);
+            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
+                Character air = player.getListofCardOnHand().get(i);
                 putCharacterOnTable(air, x, y, pos);
-            } else if ((player.cardOnHand.get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
-                Character earth = player.cardOnHand.get(i);
+            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
+                Character earth = player.getListofCardOnHand().get(i);
                 putCharacterOnTable(earth, x, y, pos);
             }
         }

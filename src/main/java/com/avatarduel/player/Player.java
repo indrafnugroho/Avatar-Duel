@@ -169,7 +169,7 @@ public class Player{
 		d.summon(c);
 		State summoned = d.activate();
 		while (i < other.size() && !found){
-			if ((other.get(i).getState().getX() == summoned.getX()) && (other.get(i).getState().getY() == summoned.getY()){
+			if ((other.get(i).getState().getX() == summoned.getX()) && (other.get(i).getState().getY() == summoned.getY())){
 				other.remove(i);
 				found = true;
 			}
@@ -179,7 +179,7 @@ public class Player{
 
 	public void usePowerUp(PowerUp p, Character c, int x){
 		this.cardOnHand.remove(p);
-		p.summon(c, x);
+		p.summon(x,c);
 		p.activate();
 		this.cardOnTable.add(p);
 	}
@@ -189,7 +189,7 @@ public class Player{
 		boolean found = false;
 		State auraState = a.destroy();
 		while (i < this.cardOnTable.size() && !found){
-			if ((this.cardOnTable.get(i).getState().getX() == auraState.getX()) && (this.cardOnTable.get(i).getState().getY() == auraState.getY()){
+			if ((this.cardOnTable.get(i).getState().getX() == auraState.getX()) && (this.cardOnTable.get(i).getState().getY() == auraState.getY())){
 				this.cardOnTable.remove(i);
 				found = true;
 			}
@@ -201,7 +201,7 @@ public class Player{
 		boolean found = false;
 		State powerUpState = p.destroy();
 		while (i < this.cardOnTable.size() && !found){
-			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY()){
+			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY())){
 				this.cardOnTable.remove(i);
 				found = true;
 			}
@@ -226,7 +226,7 @@ public class Player{
 			}
 		}
 
-		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.defense() <= characterA.defense()){
+		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.defense() <= characterA.defense())){
 			State destroyed = characterB.destroy();
 			while (i < playerTwoListOfCardOnTable.size() && !found){
 				if ((playerTwoListOfCardOnTable.get(i).getState().getX() == destroyed.getX()) && (playerTwoListOfCardOnTable.get(i).getState().getY() == destroyed.getY())){

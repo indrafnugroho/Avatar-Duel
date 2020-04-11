@@ -5,23 +5,16 @@
  */
 package com.avatarduel.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
 
 /**
- * FXML Controller class
  *
  * @author indraf
  */
-public class LandPowerController implements Initializable {
+public class LandPowerController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private VBox landPower;
     
 }

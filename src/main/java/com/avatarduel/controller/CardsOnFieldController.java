@@ -5,23 +5,16 @@
  */
 package com.avatarduel.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 
 /**
- * FXML Controller class
  *
  * @author indraf
  */
-public class CardsOnFieldController implements Initializable {
+public class CardsOnFieldController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private AnchorPane cardsOnField;
     
 }
