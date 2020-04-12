@@ -28,76 +28,76 @@ public class Controller {
         int x, y;
         Position pos;
         // Put character card on the field. (Can be 0 or > 0)
-        for (int i = 0; i < player.getListofCardOnHand().size(); i++) {
-            if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.getListofCardOnHand().get(i).getElement() == Element.WATER) && (player.getListofCardOnHand().get(i).power() <= player.status.water)) {
-                Character water = player.getListofCardOnHand().get(i);
-                putCharacterOnTable(water, x, y, pos);
-            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
-                Character fire = player.getListofCardOnHand().get(i);
-                putCharacterOnTable(fire, x, y, pos);
-            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
-                Character air = player.getListofCardOnHand().get(i);
-                putCharacterOnTable(air, x, y, pos);
-            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
-                Character earth = player.getListofCardOnHand().get(i);
-                putCharacterOnTable(earth, x, y, pos);
-            }
-        }
+//        for (int i = 0; i < player.getListofCardOnHand().size(); i++) {
+//            if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.getListofCardOnHand().get(i).getElement() == Element.WATER) && (player.getListofCardOnHand().get(i).power() <= player.status.water)) {
+//                Character water = player.getListofCardOnHand().get(i);
+//                putCharacterOnTable(water, x, y, pos);
+//            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
+//                Character fire = player.getListofCardOnHand().get(i);
+//                putCharacterOnTable(fire, x, y, pos);
+//            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
+//                Character air = player.getListofCardOnHand().get(i);
+//                putCharacterOnTable(air, x, y, pos);
+//            } else if ((player.getListofCardOnHand().get(i).getType() == CardType.CHARACTER) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
+//                Character earth = player.getListofCardOnHand().get(i);
+//                putCharacterOnTable(earth, x, y, pos);
+//            }
+//        }
         // Character card which mentioned before can not attack in the battle phase in the same round when it summoned.
 
         // Change position of card (Attack or Defense)
-        player.changeCharacterPosition(water);
-        player.changeCharacterPosition(fire);
-        player.changeCharacterPosition(earth);
-        player.changeCharacterPosition(air);
+//        player.changeCharacterPosition(water);
+//        player.changeCharacterPosition(fire);
+//        player.changeCharacterPosition(earth);
+//        player.changeCharacterPosition(air);
 
         // Put maximum number of 1 Land Card
-        for (int i = 0; i < player.cardOnHand.size(); i++) {
-            if (player.cardOnHand.get(i).getType() == CardType.LAND) {
-                Land land = player.cardOnHand.get(i);
-                player.putLandOnTable(land);
-
-                // Put skill card on the field. (Can be 0 or > 0)
-                for (int i = 0; i < player.cardOnHand.size(); i++) {
-                    if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
-                        Aura aura = player.cardOnHand.get(i);
-                        player.putAuraOnTable(aura);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
-                        Aura aura = player.cardOnHand.get(i);
-                        player.putAuraOnTable(aura);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
-                        Aura aura = player.cardOnHand.get(i);
-                        player.putAuraOnTable(aura);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
-                        Aura aura = player.cardOnHand.get(i);
-                        player.putAuraOnTable(aura);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
-                        Destroy destroy = player.cardOnHand.get(i);
-                        player.putDestroyOnTable(destroy);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
-                        Destroy destroy = player.cardOnHand.get(i);
-                        player.putDestroyOnTable(destroy);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
-                        Destroy destroy = player.cardOnHand.get(i);
-                        player.putDestroyOnTable(destroy);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
-                        Destroy destroy = player.cardOnHand.get(i);
-                        player.putDestroyOnTable(destroy);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
-                        PowerUp powerup = player.cardOnHand.get(i);
-                        player.putPowerUpOnTable(powerup);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
-                        PowerUp powerup = player.cardOnHand.get(i);
-                        player.putPowerUpOnTable(powerup);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
-                        PowerUp powerup = player.cardOnHand.get(i);
-                        player.putPowerUpOnTable(powerup);
-                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
-                        PowerUp powerup = player.cardOnHand.get(i);
-                        player.putPowerUpOnTable(powerup);
-                    }
-                }
-            }
+//        for (int i = 0; i < player.cardOnHand.size(); i++) {
+//            if (player.cardOnHand.get(i).getType() == CardType.LAND) {
+//                Land land = player.cardOnHand.get(i);
+//                player.putLandOnTable(land);
+//
+//                // Put skill card on the field. (Can be 0 or > 0)
+//                for (int i = 0; i < player.cardOnHand.size(); i++) {
+//                    if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
+//                        Aura aura = player.cardOnHand.get(i);
+//                        player.putAuraOnTable(aura);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
+//                        Aura aura = player.cardOnHand.get(i);
+//                        player.putAuraOnTable(aura);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
+//                        Aura aura = player.cardOnHand.get(i);
+//                        player.putAuraOnTable(aura);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.AURA) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
+//                        Aura aura = player.cardOnHand.get(i);
+//                        player.putAuraOnTable(aura);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
+//                        Destroy destroy = player.cardOnHand.get(i);
+//                        player.putDestroyOnTable(destroy);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
+//                        Destroy destroy = player.cardOnHand.get(i);
+//                        player.putDestroyOnTable(destroy);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
+//                        Destroy destroy = player.cardOnHand.get(i);
+//                        player.putDestroyOnTable(destroy);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.DESTROY) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
+//                        Destroy destroy = player.cardOnHand.get(i);
+//                        player.putDestroyOnTable(destroy);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.EARTH) && (player.cardOnHand.get(i).power() <= player.status.earth)) {
+//                        PowerUp powerup = player.cardOnHand.get(i);
+//                        player.putPowerUpOnTable(powerup);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.AIR) && (player.cardOnHand.get(i).power() <= player.status.air)) {
+//                        PowerUp powerup = player.cardOnHand.get(i);
+//                        player.putPowerUpOnTable(powerup);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.FIRE) && (player.cardOnHand.get(i).power() <= player.status.fire)) {
+//                        PowerUp powerup = player.cardOnHand.get(i);
+//                        player.putPowerUpOnTable(powerup);
+//                    } else if ((player.cardOnHand.get(i).getType() == CardType.POWERUP) && (player.cardOnHand.get(i).getElement() == Element.WATER) && (player.cardOnHand.get(i).power() <= player.status.water)) {
+//                        PowerUp powerup = player.cardOnHand.get(i);
+//                        player.putPowerUpOnTable(powerup);
+//                    }
+//                }
+//            }
             // Throw 0 or more skill card
 
             //public void BattlePhase(Player player2) {
@@ -123,6 +123,6 @@ public class Controller {
 
             // Player ending their turn
             // }
-        }
+//        }
     }
 }

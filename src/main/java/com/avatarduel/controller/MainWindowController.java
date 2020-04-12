@@ -14,7 +14,15 @@ import javafx.scene.layout.AnchorPane;
  */
 public class MainWindowController {
 
-    @FXML
-    private AnchorPane mainWindow;
+    @FXML private CardsOnFieldController cardsOnFieldController;
+    @FXML private CardsOnFieldController foeCardsOnFieldController;
+    @FXML private CardsOnHandController cardsOnHandController;
+    @FXML private CardsOnHandController foeCardsOnHandController;
+    @FXML private LandPowerController landPowerController;
+    @FXML private LandPowerController foeLandPowerController;
+    @FXML private PhaseController phaseController;
+    @FXML private SingleCardController singleCardController;
+    
+    @FXML private AnchorPane mainWindow;
     
 }

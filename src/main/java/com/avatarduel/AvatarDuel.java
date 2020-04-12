@@ -10,9 +10,9 @@ import com.avatarduel.card.*;
 //import com.avatarduel.controller.*;
 
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import com.avatarduel.util.CSVReader;
@@ -89,26 +89,16 @@ public class AvatarDuel extends Application {
   }
 
   @Override
-  public void start(Stage stage) {
-    Text text = new Text();
-    text.setText("Loading...");
-    text.setX(50);
-    text.setY(50);
-
-    Group root = new Group();
-    root.getChildren().add(text);
-
-    Scene scene = new Scene(root, 1280, 720);
-
-    stage.setTitle("Avatar Duel");
-    stage.setScene(scene);
-    stage.show();
-
+  public void start(Stage stage) throws IOException {   
     try {
-      this.loadCards();
-      text.setText("Avatar Duel!");
-    } catch (Exception e) {
-      text.setText("Failed to load cards: " + e);
+        this.loadCards();
+        Parent windows = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("com/avatarduel/fxml/MainWindow.fxml")));
+        Scene scene = new Scene(windows);
+        stage.setTitle("Avatar Duel");
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException | URISyntaxException e) {
+        throw new IllegalStateException(e);
     }
   }
 

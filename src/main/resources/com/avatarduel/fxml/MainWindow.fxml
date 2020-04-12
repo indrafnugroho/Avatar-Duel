@@ -35,12 +35,12 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="10.0" layoutY="610.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
       <Line endX="700.0" layoutX="410.0" layoutY="360.0" startX="-100.0" />
       <fx:include layoutX="310.0" layoutY="10.0" fx:id="cardsOnHand" source="CardsOnHand.fxml" />
-      <fx:include layoutX="310.0" layoutY="610.0" source="CardsOnHand.fxml" />
+      <fx:include layoutX="310.0" layoutY="610.0" fx:id="cardsOnHand" source="CardsOnHand.fxml" />
       <fx:include layoutX="310.0" layoutY="120.0" fx:id="cardsOnField" source="CardsOnField.fxml" />
-      <fx:include layoutX="310.0" layoutY="380.0" source="CardsOnField.fxml" />
+      <fx:include layoutX="310.0" layoutY="380.0" fx:id="cardsOnField" source="CardsOnField.fxml" />
       <fx:include layoutX="10.0" layoutY="185.0" fx:id="singleCard" source="SingleCard.fxml" />
       <fx:include layoutX="1135.0" layoutY="300.0" fx:id="phase" source="Phase.fxml" />
       <fx:include layoutX="1135.0" layoutY="180.0" fx:id="landPower" source="LandPower.fxml" />
-      <fx:include layoutX="1135.0" layoutY="440.0" source="LandPower.fxml" />
+      <fx:include layoutX="1135.0" layoutY="440.0" fx:id="landPower" source="LandPower.fxml" />
    </children>
 </AnchorPane>
