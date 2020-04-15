@@ -6,23 +6,20 @@
 package com.avatarduel.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author indraf
  */
 public class MainWindowController {
-
-    @FXML private CardsOnFieldController cardsOnFieldController;
-    @FXML private CardsOnFieldController foeCardsOnFieldController;
-    @FXML private CardsOnHandController cardsOnHandController;
-    @FXML private CardsOnHandController foeCardsOnHandController;
-    @FXML private LandPowerController landPowerController;
-    @FXML private LandPowerController foeLandPowerController;
-    @FXML private PhaseController phaseController;
-    @FXML private SingleCardController singleCardController;
-    
     @FXML private AnchorPane mainWindow;
+    @FXML private VBox phase;
+    @FXML private Label drawPhase;
+    @FXML private Label mainPhase;
+    @FXML private Label battlePhase;
+    @FXML private Label endPhase;
     
 }

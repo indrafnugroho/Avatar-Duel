@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="p2field" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.controller.Player2FieldController">
+   <children>
+      <VBox fx:id="P2Details" layoutX="100.0" layoutY="15.0" prefHeight="100.0" prefWidth="120.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="120.0" text="Player 2" />
+            <Label prefHeight="25.0" prefWidth="120.0" text="Hojun" />
+            <Label fx:id="P2HP" prefHeight="50.0" prefWidth="120.0" text="80 HP">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="P2CardDeck" layoutX="10.0" layoutY="15.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+         <children>
+            <Label layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="DECK" textAlignment="CENTER" />
+            <Label fx:id="P2DeckCapacity" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="X / 50" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="p2CardsOnHand" layoutX="310.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+         <children>
+            <VBox fx:id="p2COH1" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType1" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower1" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack1" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense1" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH2" layoutX="80.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType2" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower2" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack2" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense2" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH3" layoutX="160.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType3" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower3" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack3" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense3" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH4" layoutX="240.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType4" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower4" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack4" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense4" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH5" layoutX="320.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType5" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower5" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack5" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense5" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH6" layoutX="400.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType6" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower6" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack6" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense6" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH7" layoutX="480.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType7" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower7" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack7" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense7" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH8" layoutX="560.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType8" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower8" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack8" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense8" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH9" layoutX="640.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType9" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower9" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack9" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense9" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox fx:id="p2COH10" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+               <children>
+                  <Label fx:id="p2COHType10" prefHeight="25.0" prefWidth="80.0" text="Type" textAlignment="CENTER" />
+                  <Label fx:id="p2COHPower10" prefHeight="25.0" prefWidth="80.0" text="PWR X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHAttack10" prefHeight="25.0" prefWidth="80.0" text="ATK X" textAlignment="CENTER" />
+                  <Label fx:id="p2COHDefense10" prefHeight="25.0" prefWidth="80.0" text="DEF X" textAlignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <VBox fx:id="p2LandPower" layoutX="1135.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+         <children>
+            <Label fx:id="p2Air" prefHeight="20.0" prefWidth="135.0" text="Air: x / y" textAlignment="RIGHT" />
+            <Label fx:id="p2Fire" prefHeight="20.0" prefWidth="135.0" text="Fire: x / y" textAlignment="RIGHT" />
+            <Label fx:id="p2Earth" prefHeight="20.0" prefWidth="135.0" text="Earth: x / y" textAlignment="RIGHT" />
+            <Label fx:id="p2Water" prefHeight="20.0" prefWidth="135.0" text="Water: x / y" textAlignment="RIGHT" />
+            <Label fx:id="p2Energy" prefHeight="20.0" prefWidth="135.0" text="Energy: x / y" textAlignment="RIGHT" />
+         </children>
+      </VBox>
+      <AnchorPane fx:id="p2CardsOnField" layoutX="310.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="800.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="144.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="288.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="432.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="576.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="720.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="144.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="288.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="432.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="576.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="720.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
