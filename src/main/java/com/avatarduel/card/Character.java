@@ -58,4 +58,10 @@ public class Character extends Card{
 					"\nPower : " + this.power;
 		return result;
 	}
+    
+    public String getStatsAsString() {
+        return "ATK / " + this.attack + 
+            " | DEF / " + this.defense + 
+            " | POW / " + this.power;
+    }
 }

@@ -20,4 +20,8 @@ public class Land extends Card{
 	public void activate(){
 		this.linkedStatus.addStatus(super.getElement());
 	}
+
+    public String getStatsAsString() {
+        return "";
+    }
 }

@@ -97,7 +97,7 @@ public class CardBuilder{
 		} else if (this.type == CardType.LAND){
 			return new Land(this);
 		} else {
-			return new Card(this);
+			return null;
 		}
 	}
 }

@@ -3,7 +3,7 @@ package com.avatarduel.card;
 import com.avatarduel.card.Element;
 import com.avatarduel.card.CardBuilder;
 
-public class Card{
+public abstract class Card{
 	protected int id;
 	protected CardType type;
 	protected String name;
@@ -78,4 +78,7 @@ public class Card{
     public State getState() {
         return this.state;
     }
+
+    public abstract String getStatsAsString(); 
+
 }

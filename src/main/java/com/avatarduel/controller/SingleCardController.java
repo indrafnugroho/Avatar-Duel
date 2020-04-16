@@ -100,11 +100,7 @@ public class SingleCardController {
     }
     
     public void setStatus() {
-//        String stat = "";
-//        switch(this.card.getType()) {
-//            case CHARACTER:
-//                stat += "ATK / " + this.card.attack();
-//        }
-//        this.status.setText(stat);
+        String stat = this.card.getStatsAsString();
+        this.status.setText(stat);
     }
 }

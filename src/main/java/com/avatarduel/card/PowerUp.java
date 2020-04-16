@@ -26,4 +26,8 @@ public class PowerUp extends Card {
 		this.linkedCard.state.setPowerUp(false);
 		return this.state;
 	}
+    
+    public String getStatsAsString() {
+        return "";
+    }
 }

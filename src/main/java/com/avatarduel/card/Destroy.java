@@ -21,4 +21,8 @@ public class Destroy extends Card{
 	public State activate(){
 		return this.linkedCard.destroy();
 	}
+    
+    public String getStatsAsString() {
+        return "";
+    }
 }

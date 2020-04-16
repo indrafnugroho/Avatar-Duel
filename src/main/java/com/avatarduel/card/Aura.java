@@ -44,4 +44,19 @@ public class Aura extends Card{
 					"\nPower : " + this.power;
 		return result;
 	}
+    
+    public String getStatsAsString() {
+        String res = "";
+        if (this.attack > 0) {
+            res += "+";
+        }
+        res += this.attack + " ATK ";
+        if (this.defense > 0) {
+            res += "+";
+        }
+        res += this.defense + " DEF ";
+        res += "| POW / " + this.power;
+
+        return res;
+    }
 }
