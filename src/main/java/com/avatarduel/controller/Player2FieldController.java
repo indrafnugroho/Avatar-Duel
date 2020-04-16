@@ -15,19 +15,8 @@ import javafx.scene.layout.VBox;
  * @author indraf
  */
 public class Player2FieldController {
-
-    @FXML
-    private AnchorPane p2field;
-    @FXML
-    private VBox P2Details;
-    @FXML
-    private Label P2HP;
-    @FXML
-    private AnchorPane P2CardDeck;
-    @FXML
-    private Label P2DeckCapacity;
-    @FXML
-    private AnchorPane p2CardsOnHand;
+    private MainWindowController mainWindowController;
+    
     @FXML
     private VBox p2COH1;
     @FXML
@@ -129,18 +118,32 @@ public class Player2FieldController {
     @FXML
     private Label p2COHDefense10;
     @FXML
-    private VBox p2LandPower;
+    private VBox details;
     @FXML
-    private Label p2Air;
+    private Label hp;
     @FXML
-    private Label p2Fire;
+    private AnchorPane deck;
     @FXML
-    private Label p2Earth;
+    private Label deckCapacity;
     @FXML
-    private Label p2Water;
+    private AnchorPane cardsOnHand;
     @FXML
-    private Label p2Energy;
+    private VBox landPower;
     @FXML
-    private AnchorPane p2CardsOnField;
+    private Label air;
+    @FXML
+    private Label fire;
+    @FXML
+    private Label earth;
+    @FXML
+    private Label water;
+    @FXML
+    private Label energy;
+    @FXML
+    private AnchorPane cardsOnField;
     
+    public void init(MainWindowController mwc) {
+        System.out.println("Player 2 has been initialized");
+        mainWindowController = mwc;
+    }
 }

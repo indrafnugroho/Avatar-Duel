@@ -10,27 +10,43 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import com.avatarduel.card.*;
+
 /**
  *
  * @author indraf
  */
 public class SingleCardController {
-
-    @FXML
-    private AnchorPane singleCard;
-    @FXML
-    private Label singleCardName;
-    @FXML
-    private ImageView singleCardElementPict;
-    @FXML
-    private Label singleCardEffect;
-    @FXML
-    private Label singleCardType;
-    @FXML
-    private ImageView singleCardPict;
-    @FXML
-    private Label singleCardDesc;
-    @FXML
-    private Label singleCardStatus;
+    private MainWindowController mainWindowController;
     
+    @FXML
+    private Label name;
+    @FXML
+    private ImageView element;
+    @FXML
+    private Label effect;
+    @FXML
+    private Label type;
+    @FXML
+    private ImageView picture;
+    @FXML
+    private Label description;
+    @FXML
+    private Label status;
+    
+    private Card card;
+    
+    public void init(MainWindowController mwc, Card card) {
+        System.out.println("Single Card has been initialized");
+        mainWindowController = mwc;
+        this.card = card;
+    }
+    
+    public void setCard(Card c) {
+        this.card = c;
+    }
+    
+    public void showCardDetails() {
+        
+    }
 }

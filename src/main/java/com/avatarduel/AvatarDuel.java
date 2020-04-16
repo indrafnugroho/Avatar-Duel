@@ -92,7 +92,7 @@ public class AvatarDuel extends Application {
   public void start(Stage stage) throws IOException {   
     try {
         this.loadCards();
-        Parent windows = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("com/avatarduel/fxml/MainWindow.fxml")));
+        Parent windows = FXMLLoader.load(getClass().getClassLoader().getResource("com/avatarduel/fxml/MainWindow.fxml"));
         Scene scene = new Scene(windows);
         stage.setTitle("Avatar Duel");
         stage.setScene(scene);

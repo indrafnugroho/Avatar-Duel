@@ -15,19 +15,8 @@ import javafx.scene.layout.VBox;
  * @author indraf
  */
 public class Player1FieldController {
-
-    @FXML
-    private AnchorPane player1Field;
-    @FXML
-    private VBox P1Details;
-    @FXML
-    private Label P1HP;
-    @FXML
-    private AnchorPane P1CardDeck;
-    @FXML
-    private Label P1DeckCapacity;
-    @FXML
-    private AnchorPane p1CardsOnHand;
+    private MainWindowController mainWindowController;
+    
     @FXML
     private VBox p1COH1;
     @FXML
@@ -129,18 +118,34 @@ public class Player1FieldController {
     @FXML
     private Label p1COHDefense10;
     @FXML
-    private VBox p1LandPower;
+    private VBox details;
     @FXML
-    private Label p1Air;
+    private Label hp;
     @FXML
-    private Label p1Fire;
+    private AnchorPane deck;
     @FXML
-    private Label p1Earth;
+    private Label deckCapacity;
     @FXML
-    private Label p1Water;
+    private AnchorPane cardsOnHand;
     @FXML
-    private Label p1Energy;
+    private VBox landPower;
     @FXML
-    private AnchorPane p1CardsOnField;
+    private Label air;
+    @FXML
+    private Label fire;
+    @FXML
+    private Label earth;
+    @FXML
+    private Label water;
+    @FXML
+    private Label energy;
+    @FXML
+    private AnchorPane cardsOnField;
+    @FXML
+    private AnchorPane player1Field;
     
+    public void init(MainWindowController mwc) {
+        System.out.println("Player 1 has been initialized");
+        mainWindowController = mwc;
+    }
 }
