@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.controller.SingleCardController" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+<AnchorPane fx:id="singleCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.controller.SingleCardController" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
    <children>
       <Label fx:id="name" layoutX="10.0" layoutY="15.0" prefHeight="25.0" prefWidth="225.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" text="Name" />
       <ImageView fx:id="element" fitHeight="25.0" fitWidth="25.0" layoutX="235.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />

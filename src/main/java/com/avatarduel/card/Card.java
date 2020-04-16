@@ -41,9 +41,9 @@ public class Card{
 		return this.element;
 	}
 
-    public CardType getType() {
-        return this.type;
-    }
+        public CardType getType() {
+            return this.type;
+        }
 
 	public String getName(){
 		return this.name;
