@@ -9,7 +9,7 @@ public class Destroy extends Card{
 	private Character linkedCard;
 	private int power;
 
-
+        
 	public Destroy(CardBuilder builder){
 
 		super(builder);
@@ -21,7 +21,7 @@ public class Destroy extends Card{
 		this.state = new State(x,2, Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
-
+        
 	public int getPower(){ return this.power;}
 
 	public State activate(){

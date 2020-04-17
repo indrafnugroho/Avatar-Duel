@@ -29,7 +29,7 @@ public class PowerUp extends Card {
 		this.linkedCard.state.setPowerUp(false);
 		return this.state;
 	}
-
+                
 	public int getPower() {
 		return power;
 	}

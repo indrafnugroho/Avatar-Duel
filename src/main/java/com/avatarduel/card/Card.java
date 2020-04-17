@@ -25,14 +25,6 @@ public abstract class Card{
 		this.isSummonable = false;
 	}
         
-        public void setState(String s) {
-            if (s.equals("rotate")) {
-                this.state.rotate();
-            } else {
-                
-            }
-        }
-        
 	public int getId(){
 		return this.id;
 	}
@@ -64,6 +56,18 @@ public abstract class Card{
 	public boolean getSummonable(){
 		return this.isSummonable;
 	}
+        
+        public void setIsSummonable(boolean b) {
+            isSummonable = b;
+        }
+        
+        public boolean getIsSummoned() {
+            return isSummoned;
+        }
+        
+        public void setIsSummoned(boolean b) {
+            isSummoned = b;
+        }
 
 	public String toString(){
 		String result = "";

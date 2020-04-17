@@ -47,34 +47,39 @@ public class Status{
                 }
 	}
 
-	public void useAir(int power){
+	public boolean useAir(int power){
 		if(this.air - power >= 0){
 			this.air -= power;
-		}
+                        return true;
+		} else return false;
 	}
 
-	public void useFire(int power){
+	public boolean useFire(int power){
 		if(this.fire - power >= 0){
 			this.fire -= power;
-		}
+                        return true;
+		} else return false;
 	}
 
-	public void useEarth(int power){
+	public boolean useEarth(int power){
 		if(this.earth - power >= 0){
-			this.earth =- power;
-		}
+			this.earth -= power;
+                        return true;
+		} else return false;
 	}
 
-	public void useWater(int power){
+	public boolean useWater(int power){
             if(this.water - power >= 0){
 		this.water -= power;
-            }
+                return true;
+            } else return false;
 	}
         
-        public void useEnergy(int power){
+        public boolean useEnergy(int power){
             if (this.energy - power >= 0){
 		this.energy -= power;
-            }
+                return true;
+            } else return false;
 	}
 
 	public void reset(){

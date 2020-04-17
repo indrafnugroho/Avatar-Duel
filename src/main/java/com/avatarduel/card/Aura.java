@@ -18,7 +18,15 @@ public class Aura extends Card{
 		this.attack = builder.attack;
 		this.defense = builder.defense;
 	}
+        
+        public int getAttack(){
+		return this.attack;
+	}
 
+	public int getDefense(){
+		return this.defense;
+	}
+        
 	public int getPower(){ return this.power;}
 
 	public void summon(int x, Character linkedCard){

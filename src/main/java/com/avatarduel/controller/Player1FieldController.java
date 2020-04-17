@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.avatarduel.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,12 +12,8 @@ import javafx.event.Event;
 
 import com.avatarduel.player.*;
 import com.avatarduel.card.*;
-import javafx.scene.control.Button;
+import com.avatarduel.card.Character;
 
-/**
- *
- * @author indraf
- */
 public class Player1FieldController {
     private MainWindowController mainWindowController;
     private Player p;
@@ -49,46 +41,71 @@ public class Player1FieldController {
         mainWindowController = mwc;
         this.p = p;
         refreshPlayer();
-        setName();
+        this.name.setText(this.p.getName());
     }
     
     public void refreshPlayer() {
-        setHP();
-        setDeckCapacity();
-        setLandPower();
-        setCardsOnHand();
-    }
-    
-    public void setHP () {
         this.hp.setText(this.p.getLifePoint() + " HP");
-    }
-    
-    public void setDeckCapacity() {
         this.deckCapacity.setText(this.p.getDeck().size() + " / 50");
-    }
-    
-    public void deckButtonClicked(ActionEvent e) {
-        System.out.println("Deck button clicked!");
-        this.p.drawCardFromDeck();
-        refreshPlayer();
-    }
-    
-    public void setLandPower() {
         this.air.setText(this.p.getStatus().airToString());
         this.fire.setText(this.p.getStatus().fireToString());
         this.earth.setText(this.p.getStatus().earthToString());
         this.water.setText(this.p.getStatus().waterToString());
         this.energy.setText(this.p.getStatus().energyToString());
-    }
-    
-    public void setName() {
-        this.name.setText(this.p.getName());
-    }
-    
-    public void setCardsOnHand() {
         for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
             AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
             setCard(card, this.p.getListOfCardOnHand().get(i));
+        }
+        for (int i=0; i < this.p.getListOfCharacterOnTable().size(); i++) {
+            AnchorPane card = (AnchorPane) this.character.getChildren().get(i);
+            setCard(card, this.p.getListOfCharacterOnTable().get(i));
+        }
+//        for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
+//            AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
+//            setCard(card, this.p.getListOfCardOnHand().get(i));
+//        }
+    }
+    
+    public void deckButtonClicked(ActionEvent e) {
+        if (this.p.getListOfCardOnHand().size() < 10) {
+            this.p.drawCardFromDeck();
+            refreshPlayer();
+        }
+    }
+    
+    public void cardOnHandClicked(ActionEvent e) {
+        Node button = (Node) e.getSource();
+        AnchorPane cardGUI = (AnchorPane) button.getParent();
+        int idxCard = cardsOnHand.getChildren().indexOf(cardGUI);
+        if (idxCard < p.getListOfCardOnHand().size()) {
+            Card card = p.getListOfCardOnHand().get(idxCard);
+            if (card.getType() == CardType.LAND) {
+                p.getStatus().addStatus(card.getElement());
+                p.getListOfCardOnHand().remove(card);
+                resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                refreshPlayer();
+            } else if (card.getType() == CardType.CHARACTER) {
+                System.out.println("Character Clicked!");
+                Character child = (Character) card;
+                boolean success = false;
+                if (child.getElement() == Element.AIR) {
+                    success = p.getStatus().useAir(child.getPower());
+                } else if (child.getElement() == Element.WATER) {
+                    success = p.getStatus().useWater(child.getPower());
+                } else if (child.getElement() == Element.FIRE) {
+                    success = p.getStatus().useFire(child.getPower());
+                } else if (child.getElement() == Element.EARTH) {
+                    success = p.getStatus().useEarth(child.getPower());
+                } else if (child.getElement() == Element.ENERGY) {
+                    success = p.getStatus().useEnergy(child.getPower());
+                }
+                if (success) {
+                    p.getListOfCharacterOnTable().add(child);
+                    p.getListOfCardOnHand().remove(card);
+                    resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                    refreshPlayer();
+                }
+            } else {}
         }
     }
     
@@ -104,14 +121,24 @@ public class Player1FieldController {
         def.setText(c.getDefAsString());
     }
     
-    public void hoverToCardOnHand(Event e) {
+    public void hoverToCard(Event e) {
         Node button = (Node) e.getSource();
         AnchorPane cardGUI = (AnchorPane) button.getParent();
-        int idxCard = this.cardsOnHand.getChildren().indexOf(cardGUI);
-        if (idxCard < this.p.getListOfCardOnHand().size()) {
-            this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCardOnHand().get(idxCard));
-            this.mainWindowController.getSingleCardController().showCardDetails();
-        }   
+        if (cardGUI.getParent().equals(this.cardsOnHand)) {
+            int idxCard = this.cardsOnHand.getChildren().indexOf(cardGUI);
+            if (idxCard < this.p.getListOfCardOnHand().size()) {
+                this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCardOnHand().get(idxCard));
+                this.mainWindowController.getSingleCardController().showCardDetails();
+            }
+        } else if (cardGUI.getParent().equals(this.character)) {
+            int idxCard = this.character.getChildren().indexOf(cardGUI);
+            if (idxCard < this.p.getListOfCharacterOnTable().size()) {
+                this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCharacterOnTable().get(idxCard));
+                this.mainWindowController.getSingleCardController().showCardDetails();
+            }
+        } else if (cardGUI.getParent().equals(this.skill)) {
+            
+        }
     }
     
     public void hoverFromCard(Event e) {
