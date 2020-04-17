@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import com.avatarduel.player.*;
+import com.avatarduel.card.*;
 
 /**
  *
@@ -46,6 +47,8 @@ public class Player1FieldController {
         setDeckCapacity();
         setLandPower();
         setName();
+        setCardsOnHand();
+//        Coba();
     }
     
     public void setHP () {
@@ -66,5 +69,25 @@ public class Player1FieldController {
     
     public void setName() {
         this.name.setText(this.p.getName());
+    }
+    
+    public void setCardsOnHand() {
+        for (int i=0; i < this.p.getListofCardOnHand().size(); i++) {
+            System.out.println("Check");
+            VBox card = (VBox) this.cardsOnHand.getChildren().get(i);
+            setCard(card, this.p.getListofCardOnHand().get(i));
+        }
+    }
+    
+    public void setCard(VBox v, Card c) {
+        Label type = (Label) v.getChildren().get(0);
+        Label pow = (Label) v.getChildren().get(1);
+        Label atk = (Label) v.getChildren().get(2);
+        Label def = (Label) v.getChildren().get(3);
+        
+        type.setText(c.getType().toString());
+        pow.setText(c.getPowAsString());
+        atk.setText(c.getAtkAsString());
+        def.setText(c.getDefAsString());
     }
 }

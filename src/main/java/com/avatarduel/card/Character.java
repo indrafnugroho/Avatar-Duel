@@ -64,4 +64,16 @@ public class Character extends Card{
             " | DEF / " + this.defense + 
             " | POW / " + this.power;
     }
+    
+    public String getAtkAsString() {
+        return "ATK " + this.attack;
+    }
+    
+    public String getDefAsString() {
+        return "DEF " + this.defense;
+    }
+    
+    public String getPowAsString() {
+        return "POW " + this.power;
+    }
 }

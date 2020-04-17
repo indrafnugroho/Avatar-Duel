@@ -55,7 +55,7 @@ public class Player{
 	}
 
 	public List<Card> getListofCardOnHand(){
-		return this.cardOnTable;
+		return this.cardOnHand;
 	}
 
 	public void setListOfCardOnTable(List<Card> updated){
