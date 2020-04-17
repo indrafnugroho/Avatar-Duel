@@ -70,9 +70,9 @@ public class Player2FieldController {
     }
     
     public void setCardsOnHand() {
-        for (int i=0; i < this.p.getListofCardOnHand().size(); i++) {
+        for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
             VBox card = (VBox) this.cardsOnHand.getChildren().get(i);
-            setCard(card, this.p.getListofCardOnHand().get(i));
+            setCard(card, this.p.getListOfCardOnHand().get(i));
         }
     }
     

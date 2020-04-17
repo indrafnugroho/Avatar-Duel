@@ -69,7 +69,11 @@ public class Player{
 	public void setListOfCharacterOnTable(List<Character> updated){
 		this.characterOnTable = updated;
 	}
-
+        
+        public List<Card> getListOfCardOnHand() {
+            return this.cardOnHand;
+        }
+        
 	public void setListOfCardOnHand(List<Card> updated){
 		this.cardOnHand = updated;
 	}

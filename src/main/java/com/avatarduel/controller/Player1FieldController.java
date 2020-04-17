@@ -86,9 +86,9 @@ public class Player1FieldController {
     }
     
     public void setCardsOnHand() {
-        for (int i=0; i < this.p.getListofCardOnHand().size(); i++) {
+        for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
             AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
-            setCard(card, this.p.getListofCardOnHand().get(i));
+            setCard(card, this.p.getListOfCardOnHand().get(i));
         }
     }
     
@@ -108,8 +108,8 @@ public class Player1FieldController {
         Node button = (Node) e.getSource();
         AnchorPane cardGUI = (AnchorPane) button.getParent();
         int idxCard = this.cardsOnHand.getChildren().indexOf(cardGUI);
-        if (idxCard < this.p.getListofCardOnHand().size()) {
-            this.mainWindowController.getSingleCardController().setCard(this.p.getListofCardOnHand().get(idxCard));
+        if (idxCard < this.p.getListOfCardOnHand().size()) {
+            this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCardOnHand().get(idxCard));
             this.mainWindowController.getSingleCardController().showCardDetails();
         }   
     }
