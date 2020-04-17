@@ -131,7 +131,7 @@ public class Player{
 	public void initializeCardOnHand(){
 		// INSIALISASI KARTU DI TANGAN, AMBIL 7 DARI DECK
 		Random rand = new Random();
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 7; i++) {
 			int a = rand.nextInt(deck.size());
 			Card fromDeck = this.deck.remove(a);
 			this.cardOnHand.add(fromDeck);

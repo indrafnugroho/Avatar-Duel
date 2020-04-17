@@ -36,7 +36,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="80.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -45,7 +45,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="160.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -54,7 +54,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="240.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -63,7 +63,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="320.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -72,7 +72,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="400.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -81,7 +81,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="480.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -90,7 +90,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="560.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -99,7 +99,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="640.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -108,7 +108,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -117,7 +117,7 @@
                   <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
                   <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCard" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
          </children>

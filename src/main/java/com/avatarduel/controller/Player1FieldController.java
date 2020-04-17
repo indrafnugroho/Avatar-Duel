@@ -114,7 +114,7 @@ public class Player1FieldController {
         }   
     }
     
-    public void hoverFromCardOnHand(Event e) {
+    public void hoverFromCard(Event e) {
         this.mainWindowController.getSingleCardController().resetCard();
     }
     
