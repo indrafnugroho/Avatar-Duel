@@ -16,23 +16,35 @@ public class Player{
 	private int lifePoint;
 
 	public Player(String name, List<Land> landList, List<Character> characterList, List<Aura> auraList){
-		this.name = name;
-		this.deck = new ArrayList<Card>(50);
-		this.cardOnHand = new ArrayList<Card>(10);
-		this.cardOnTable = new ArrayList<Card>(16);
-		this.lifePoint = 80;
+            this.name = name;
+            this.deck = new ArrayList<Card>(50);
+            this.cardOnHand = new ArrayList<Card>(10);
+            this.cardOnTable = new ArrayList<Card>(12);
+            this.status = new Status();
+            this.lifePoint = 80;
 
-		initializeDeck(landList, characterList, auraList);
-		intializeCardOnHand();
+            initializeDeck(landList, characterList, auraList);
+            initializeCardOnHand();
 
 		// TESTING
 //		for (int i = 0; i < 7; i++) {
 //			System.out.println(cardOnHand.get(i).toString());
 //			System.out.println("");
 //		}
+        }
+        
+    public Status getStatus() {
+        return this.status;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
 
-	}
-
+        public List<Card> getDeck() {
+            return this.deck;
+        }
+        
 	public int getLifePoint() {
 		return lifePoint;
 	}
@@ -104,7 +116,7 @@ public class Player{
 		this.deck.add(p2);
 	}
 
-	public void intializeCardOnHand(){
+	public void initializeCardOnHand(){
 		// INSIALISASI KARTU DI TANGAN, AMBIL 7 DARI DECK
 		Random rand = new Random();
 		for (int i = 0; i < 7; i++) {

@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import com.avatarduel.card.*;
 import com.avatarduel.card.Character;
 import com.avatarduel.util.CSVReader;
+import com.avatarduel.player.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -30,20 +31,19 @@ public class MainWindowController {
     @FXML private SingleCardController singleCardController;
     @FXML private VBox phase;
     @FXML private AnchorPane mainWindow;
+    @FXML private Label draw;
+    @FXML private Label main;
+    @FXML private Label battle;
+    @FXML private Label end;
     
-//    private Player p1;
+    private Player p1;
 //    private Player p2;
-    
     private static final String LAND_CSV_FILE_PATH = "../card/data/land.csv";
     private static final String CHARACTER_CSV_FILE_PATH = "../card/data/character.csv";
     private static final String SKILL_AURA_CSV_FILE_PATH = "../card/data/skill_aura.csv";
     private List<Land> landList;
     private List<Character> characterList;
     private List<Aura> auraList;
-    @FXML private Label draw;
-    @FXML private Label main;
-    @FXML private Label battle;
-    @FXML private Label end;
 
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
@@ -109,9 +109,10 @@ public class MainWindowController {
     @FXML private void initialize() throws IOException, URISyntaxException {
         try {
             System.out.println("Game has started");
-            player1FieldController.init(this);
-            player2FieldController.init(this);
             loadCards();
+            this.p1 = new Player("Indra", this.landList, this.characterList, this.auraList);
+            player1FieldController.init(this, this.p1);
+            player2FieldController.init(this);
             singleCardController.init(this, this.characterList.get(0));
         }
         catch (IOException | URISyntaxException e) {

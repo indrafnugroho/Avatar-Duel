@@ -7,11 +7,13 @@ public class Status{
 	private int air;
 	private int fire;
 	private int water;
+        private int energy;
 
 	private int maxEarth;
 	private int maxWater;
 	private int maxFire;
 	private int maxAir;
+        private int maxEnergy;
 
 	public Status(){
 		this.earth = 0;
@@ -22,6 +24,8 @@ public class Status{
 		this.maxWater = 0;
 		this.fire = 0;
 		this.maxFire = 0;
+                this.energy = 0;
+                this.maxEnergy = 0;
 	}
 
 	public void addStatus(Element element){
@@ -37,7 +41,10 @@ public class Status{
 		} else if(element == Element.AIR){
 			this.maxAir++;
 			this.air++;
-		}
+		} else if(element == Element.ENERGY) {
+                    this.maxEnergy++;
+                    this.energy++;
+                }
 	}
 
 	public void useAir(int power){
@@ -59,26 +66,52 @@ public class Status{
 	}
 
 	public void useWater(int power){
-		if(this.water - power >= 0){
-			if(this.water - power >= 0){
-				this.water -= power;
-			}
-		}
+            if(this.water - power >= 0){
+		this.water -= power;
+            }
+	}
+        
+        public void useEnergy(int power){
+            if (this.energy - power >= 0){
+		this.energy -= power;
+            }
 	}
 
 	public void reset(){
-		this.water = this.maxWater;
-		this.fire = this.maxFire;
-		this.earth = this.maxEarth;
-		this.air = this.maxAir;
+            this.water = this.maxWater;
+            this.fire = this.maxFire;
+            this.earth = this.maxEarth;
+            this.air = this.maxAir;
+            this.energy = this.maxEnergy;
 	}
 
-	public String toString(){
-		String result = "";
-		result += "Water : " + this.water + "/" + this.maxWater + 
-		"\nEarth : " + this.earth + "/" + this.maxEarth + 
-		"\nFire : " + this.fire + "/" + this.maxFire + 
-		"\nAir : " + this.air + "/" + this.maxAir;
-		return result;
+	public String waterToString(){
+            String result = "";
+            result += this.water + " / " + this.maxWater;
+            return result;
 	}
+        
+        public String earthToString() {
+            String result = "";
+            result += this.earth + " / " + this.maxEarth;
+            return result;
+        }
+        
+        public String airToString() {
+            String result = "";
+            result += this.air + " / " + this.maxAir;
+            return result;
+        }
+        
+        public String fireToString() {
+            String result = "";
+            result += this.fire + " / " + this.maxFire;
+            return result;
+        }
+        
+        public String energyToString() {
+            String result = "";
+            result += this.energy + " / " + this.maxEnergy;
+            return result;
+        }
 }
