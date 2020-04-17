@@ -120,4 +120,16 @@ public class MainWindowController {
             throw new IllegalStateException(e);
         }
     }
+    
+    public Player1FieldController getP1FieldController() {
+        return this.player1FieldController;
+    }
+    
+    public Player2FieldController getP2FieldController() {
+        return this.player2FieldController;
+    }
+    
+    public SingleCardController getSingleCardController() {
+        return this.singleCardController;
+    }
 }

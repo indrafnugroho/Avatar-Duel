@@ -20,22 +20,14 @@ import com.avatarduel.card.*;
 public class SingleCardController {
     private MainWindowController mainWindowController;
     
-    @FXML
-    private Label name;
-    @FXML
-    private ImageView element;
-    @FXML
-    private Label effect;
-    @FXML
-    private Label type;
-    @FXML
-    private ImageView picture;
-    @FXML
-    private Label description;
-    @FXML
-    private Label status;
-    @FXML
-    private AnchorPane singleCard;
+    @FXML private Label name;
+    @FXML private ImageView element;
+    @FXML private Label effect;
+    @FXML private Label type;
+    @FXML private ImageView picture;
+    @FXML private Label description;
+    @FXML private Label status;
+    @FXML private AnchorPane singleCard;
      
     private Card card;
     
@@ -43,7 +35,6 @@ public class SingleCardController {
         System.out.println("Single Card has been initialized");
         mainWindowController = mwc;
         this.card = card;
-        showCardDetails();
     }
     
     public void setCard(Card c) {
@@ -91,7 +82,6 @@ public class SingleCardController {
     
     public void setEffect() {
 //        TO-DO
-        this.effect.setText("");
     }
     
     public void setType() {
@@ -110,5 +100,15 @@ public class SingleCardController {
     public void setStatus() {
         String stat = this.card.getStatsAsString();
         this.status.setText(stat);
+    }
+    
+    public void resetCard() {
+        this.name.setText("");
+        this.element.setImage(null);
+        this.effect.setText("");
+        this.type.setText("");
+        this.picture.setImage(null);
+        this.description.setText("");
+        this.status.setText("");
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,6 +14,7 @@
          <children>
             <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="DECK" textAlignment="CENTER" />
             <Label fx:id="deckCapacity" alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" textAlignment="CENTER" />
+            <Button fx:id="deckButton" alignment="CENTER" mnemonicParsing="false" onAction="#deckButtonClicked" opacity="0.0" prefHeight="100.0" prefWidth="80.0" textAlignment="CENTER" />
          </children>
       </AnchorPane>
       <VBox fx:id="details" layoutX="100.0" layoutY="246.0" prefHeight="100.0" prefWidth="120.0">
@@ -26,194 +28,216 @@
             <Label fx:id="name" prefHeight="25.0" prefWidth="120.0" text="" />
          </children>
       </VBox>
-      <AnchorPane fx:id="cardsOnHand" layoutX="310.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+      <AnchorPane fx:id="cardsOnHand" layoutX="310.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="802.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
          <children>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            <AnchorPane prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="80.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="80.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="160.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="160.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="240.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="240.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="320.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="320.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="400.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="400.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="480.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="480.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="560.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="560.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="640.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="640.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            </AnchorPane>
+            <AnchorPane layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
                   <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Button mnemonicParsing="false" onMouseEntered="#hoverToCardOnHand" onMouseExited="#hoverFromCardOnHand" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                </children>
-            </VBox>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cardsOnField" layoutX="310.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="800.0">
          <children>
             <AnchorPane fx:id="character" prefHeight="110.0" prefWidth="800.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <AnchorPane prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="144.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="144.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="288.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="288.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="432.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="432.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="576.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="576.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="skill" layoutY="110.0" prefHeight="110.0" prefWidth="800.0">
                <children>
-                  <VBox alignment="CENTER" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  <AnchorPane layoutX="0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="144.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="144.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="432.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="432.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="576.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="576.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="720.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                  </AnchorPane>
+                  <AnchorPane layoutX="720.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                      <children>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Button mnemonicParsing="false" opacity="0.0" prefHeight="100.0" prefWidth="80.0" />
                      </children>
-                  </VBox>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

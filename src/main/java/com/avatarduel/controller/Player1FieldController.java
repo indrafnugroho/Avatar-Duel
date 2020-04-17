@@ -10,9 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.Node;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 
 import com.avatarduel.player.*;
 import com.avatarduel.card.*;
+import javafx.scene.control.Button;
 
 /**
  *
@@ -38,15 +42,20 @@ public class Player1FieldController {
     @FXML private Label name;
     @FXML private AnchorPane character;
     @FXML private AnchorPane skill;
+    @FXML private Button deckButton;
     
     public void init(MainWindowController mwc, Player p) {
         System.out.println("Player 1 has been initialized");
         mainWindowController = mwc;
         this.p = p;
+        refreshPlayer();
+        setName();
+    }
+    
+    public void refreshPlayer() {
         setHP();
         setDeckCapacity();
         setLandPower();
-        setName();
         setCardsOnHand();
     }
     
@@ -56,6 +65,12 @@ public class Player1FieldController {
     
     public void setDeckCapacity() {
         this.deckCapacity.setText(this.p.getDeck().size() + " / 50");
+    }
+    
+    public void deckButtonClicked(ActionEvent e) {
+        System.out.println("Deck button clicked!");
+        this.p.drawCardFromDeck();
+        refreshPlayer();
     }
     
     public void setLandPower() {
@@ -72,16 +87,16 @@ public class Player1FieldController {
     
     public void setCardsOnHand() {
         for (int i=0; i < this.p.getListofCardOnHand().size(); i++) {
-            VBox card = (VBox) this.cardsOnHand.getChildren().get(i);
+            AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
             setCard(card, this.p.getListofCardOnHand().get(i));
         }
     }
     
-    public void setCard(VBox v, Card c) {
-        Label type = (Label) v.getChildren().get(0);
-        Label pow = (Label) v.getChildren().get(1);
-        Label atk = (Label) v.getChildren().get(2);
-        Label def = (Label) v.getChildren().get(3);
+    public void setCard(AnchorPane a, Card c) {
+        Label type = (Label) a.getChildren().get(0);
+        Label pow = (Label) a.getChildren().get(1);
+        Label atk = (Label) a.getChildren().get(2);
+        Label def = (Label) a.getChildren().get(3);
         
         type.setText(c.getType().toString());
         pow.setText(c.getPowAsString());
@@ -89,11 +104,25 @@ public class Player1FieldController {
         def.setText(c.getDefAsString());
     }
     
-    public void resetCard(VBox v) {
-        Label type = (Label) v.getChildren().get(0);
-        Label pow = (Label) v.getChildren().get(1);
-        Label atk = (Label) v.getChildren().get(2);
-        Label def = (Label) v.getChildren().get(3);
+    public void hoverToCardOnHand(Event e) {
+        Node button = (Node) e.getSource();
+        AnchorPane cardGUI = (AnchorPane) button.getParent();
+        int idxCard = this.cardsOnHand.getChildren().indexOf(cardGUI);
+        if (idxCard < this.p.getListofCardOnHand().size()) {
+            this.mainWindowController.getSingleCardController().setCard(this.p.getListofCardOnHand().get(idxCard));
+            this.mainWindowController.getSingleCardController().showCardDetails();
+        }   
+    }
+    
+    public void hoverFromCardOnHand(Event e) {
+        this.mainWindowController.getSingleCardController().resetCard();
+    }
+    
+    public void resetCard(AnchorPane a) {
+        Label type = (Label) a.getChildren().get(0);
+        Label pow = (Label) a.getChildren().get(1);
+        Label atk = (Label) a.getChildren().get(2);
+        Label def = (Label) a.getChildren().get(3);
         
         type.setText("");
         pow.setText("");
