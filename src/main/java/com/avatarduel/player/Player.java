@@ -11,55 +11,63 @@ public class Player{
 	private String name;
 	private List<Card> deck;
 	private List<Card> cardOnHand;
-	private List<Card> cardOnTable;
+	private List<Character> characterOnTable;
+	private List<Aura> auraOnTable;
+	private List<PowerUp> powerUpOnTable;
+	private List<Destroy> destroyOnTable;
 	private Status status;
 	private int lifePoint;
 
 	public Player(String name, List<Land> landList, List<Character> characterList, List<Aura> auraList){
-            this.name = name;
-            this.deck = new ArrayList<Card>(50);
-            this.cardOnHand = new ArrayList<Card>(10);
-            this.cardOnTable = new ArrayList<Card>(12);
-            this.status = new Status();
-            this.lifePoint = 80;
+		this.name = name;
+		this.deck = new ArrayList<Card>(50);
+		this.cardOnHand = new ArrayList<Card>(10);
+		this.characterOnTable = new ArrayList<Character>(6);
+		this.auraOnTable = new ArrayList<Aura>();
+		this.powerUpOnTable = new ArrayList<PowerUp>();
+		this.destroyOnTable = new ArrayList<Destroy>();
+		this.status = new Status();
+		this.lifePoint = 80;
 
-            initializeDeck(landList, characterList, auraList);
-            initializeCardOnHand();
+		initializeDeck(landList, characterList, auraList);
+		initializeCardOnHand();
 
 		// TESTING
 //		for (int i = 0; i < 7; i++) {
 //			System.out.println(cardOnHand.get(i).toString());
 //			System.out.println("");
 //		}
-        }
-        
-    public Status getStatus() {
-        return this.status;
-    }
-    
-    public String getName() {
-        return this.name;
-    }
+	}
 
-        public List<Card> getDeck() {
-            return this.deck;
-        }
-        
+	public Status getStatus() {
+		return this.status;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public List<Card> getDeck() {
+		return this.deck;
+	}
+
 	public int getLifePoint() {
 		return lifePoint;
 	}
 	public void setLifePoint(int hp){ this.lifePoint = hp; }
 
-	public List<Card> getListOfCardOnTable(){
-		return this.cardOnTable;
+	public List<Character> getListOfCharacterOnTable(){
+		return this.characterOnTable;
 	}
 
-	public List<Card> getListofCardOnHand(){
-		return this.cardOnHand;
-	}
+	public List<Aura> getListOfAuraOnTable(){ return this.auraOnTable; }
 
-	public void setListOfCardOnTable(List<Card> updated){
-		this.cardOnTable = updated;
+	public List<Destroy> getListOfDestroyOnTable(){ return this.destroyOnTable; }
+
+	public List<PowerUp> getListOfPowerUpOnTable(){ return this.powerUpOnTable; }
+
+	public void setListOfCharacterOnTable(List<Character> updated){
+		this.characterOnTable = updated;
 	}
 
 	public void setListOfCardOnHand(List<Card> updated){
@@ -119,22 +127,40 @@ public class Player{
 	public void initializeCardOnHand(){
 		// INSIALISASI KARTU DI TANGAN, AMBIL 7 DARI DECK
 		Random rand = new Random();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 12; i++) {
 			int a = rand.nextInt(deck.size());
-			Card fromdeck = this.deck.remove(a);
-			this.cardOnHand.add(fromdeck);
+			Card fromDeck = this.deck.remove(a);
+			this.cardOnHand.add(fromDeck);
 		}
 	}
 
 	public void drawCardFromDeck(){
 		Random rand = new Random();
 		int int_random = rand.nextInt(deck.size());
-		Card fromdeck = deck.remove(int_random);
-		cardOnHand.add(fromdeck);
+		Card fromDeck = deck.remove(int_random);
+		cardOnHand.add(fromDeck);
 	}
 
 	public void initializeStatus(){
 		status.reset();
+	}
+
+	public void putCharacterOnTable(Character c, int x, Position pos){
+		this.cardOnHand.remove(c);
+		c.summon(x, pos);
+		if (c.getElement() == Element.AIR){
+			this.status.useAir(c.getPower());
+		}
+		else if (c.getElement() == Element.WATER){
+			this.status.useWater(c.getPower());
+		}
+		else if (c.getElement() == Element.EARTH){
+			this.status.useEarth(c.getPower());
+		}
+		else if (c.getElement() == Element.FIRE){
+			this.status.useFire(c.getPower());
+		}
+		this.characterOnTable.add(c);
 	}
 
 	public void changeCharacterPosition(Character c){
@@ -143,78 +169,111 @@ public class Player{
 		c.setState(updated);
 	}
 
-	public void useCharacter(Character c, int x, Position pos){
-		this.cardOnHand.remove(c);
-		c.summon(x, pos);
-		if (c.getElement() == Element.AIR){
-			this.status.useAir(c.power());
-		}
-		else if (c.getElement() == Element.WATER){
-			this.status.useWater(c.power());
-		}
-		else if (c.getElement() == Element.EARTH){
-			this.status.useEarth(c.power());
-		}
-		else if (c.getElement() == Element.FIRE){
-			this.status.useFire(c.power());
-		}
-		this.cardOnTable.add(c);
-	}
-
 	public void useLand(Land l){
 		this.cardOnHand.remove(l);
 		this.status.addStatus(l.getElement());
 	}
 
-
-	public void useAura(Aura a, Character c, int x){
+	public void putAuraOnTable(Aura a, Character c, int x){
 		this.cardOnHand.remove(a);
-		a.summon(x, c);
-		this.cardOnTable.add(a);
-	}
-
-	public void useDestroy(Player b, Destroy d, Character c){
-		int i = 0;
-		boolean found = false;
-		this.cardOnHand.remove(d);
-		List<Card> other = b.getListOfCardOnTable();
-		d.summon(c);
-		State summoned = d.activate();
-		while (i < other.size() && !found){
-			if ((other.get(i).getState().getX() == summoned.getX()) && (other.get(i).getState().getY() == summoned.getY())){
-				other.remove(i);
-				found = true;
-			}
+		if (a.getElement() == Element.AIR){
+			this.status.useAir(a.getPower());
 		}
-		b.setListOfCardOnTable(other);
+		else if (c.getElement() == Element.WATER){
+			this.status.useWater(a.getPower());
+		}
+		else if (c.getElement() == Element.EARTH){
+			this.status.useEarth(a.getPower());
+		}
+		else if (c.getElement() == Element.FIRE){
+			this.status.useFire(a.getPower());
+		}
+		a.summon(x, c);
+		this.auraOnTable.add(a);
 	}
 
-	public void usePowerUp(PowerUp p, Character c, int x){
-		this.cardOnHand.remove(p);
-		p.summon(x,c);
-		p.activate();
-		this.cardOnTable.add(p);
+	public void useAura(Aura a){
+		a.activate();
 	}
 
 	public void removeAuraFromTable(Aura a){
 		int i = 0;
 		boolean found = false;
 		State auraState = a.destroy();
-		while (i < this.cardOnTable.size() && !found){
-			if ((this.cardOnTable.get(i).getState().getX() == auraState.getX()) && (this.cardOnTable.get(i).getState().getY() == auraState.getY())){
-				this.cardOnTable.remove(i);
+		while (i < this.auraOnTable.size() && !found){
+			State state = this.auraOnTable.get(i).getState();
+			if ((state.getX() == auraState.getX()) && (state.getY() == auraState.getY())){
+				this.auraOnTable.remove(i);
 				found = true;
 			}
 		}
+	}
+
+	public void putDestroyOnTable(Destroy d, Character c, int x){
+		this.cardOnHand.remove(d);
+		if (d.getElement() == Element.AIR){
+			this.status.useAir(d.getPower());
+		}
+		else if (c.getElement() == Element.WATER){
+			this.status.useWater(d.getPower());
+		}
+		else if (c.getElement() == Element.EARTH){
+			this.status.useEarth(d.getPower());
+		}
+		else if (c.getElement() == Element.FIRE){
+			this.status.useFire(d.getPower());
+		}
+		d.summon(x, c);
+		this.destroyOnTable.add(d);
+	}
+
+	public void useDestroy(Player b, Destroy d, Character c){
+		int i = 0;
+		boolean found = false;
+		this.cardOnHand.remove(d);
+		List<Character> characterList = b.getListOfCharacterOnTable();
+		State summoned = d.activate();
+		while (i < characterList.size() && !found){
+			State state = characterList.get(i).getState();
+			if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
+				characterList.remove(i);
+				found = true;
+			}
+		}
+		this.destroyOnTable.remove(d);
+		b.setListOfCharacterOnTable(characterList);
+	}
+
+	public void putPowerUpOnTable(PowerUp p, Character c, int x){
+		this.cardOnHand.remove(p);
+		if (p.getElement() == Element.AIR){
+			this.status.useAir(p.getPower());
+		}
+		else if (c.getElement() == Element.WATER){
+			this.status.useWater(p.getPower());
+		}
+		else if (c.getElement() == Element.EARTH){
+			this.status.useEarth(p.getPower());
+		}
+		else if (c.getElement() == Element.FIRE){
+			this.status.useFire(p.getPower());
+		}
+		p.summon(x, c);
+		this.powerUpOnTable.add(p);
+	}
+
+	public void usePowerUp(PowerUp p){
+		p.activate();
 	}
 
 	public void removePowerUpFromTable(PowerUp p){
 		int i = 0;
 		boolean found = false;
 		State powerUpState = p.destroy();
-		while (i < this.cardOnTable.size() && !found){
-			if ((this.cardOnTable.get(i).getState().getX() == powerUpState.getX()) && (this.cardOnTable.get(i).getState().getY() == powerUpState.getY())){
-				this.cardOnTable.remove(i);
+		while (i < this.powerUpOnTable.size() && !found){
+			State state =this.powerUpOnTable.get(i).getState();
+			if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
+				this.powerUpOnTable.remove(i);
 				found = true;
 			}
 		}
@@ -225,34 +284,38 @@ public class Player{
 		int i = 0;
 		boolean found = false;
 
-		List<Card> playerTwoListOfCardOnTable = playerTwo.getListOfCardOnTable();
+		List<Character> playerTwoListOfCardOnTable = playerTwo.getListOfCharacterOnTable();
 
-		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.attack() <= characterA.attack())){
+		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.getAttack() <= characterA.getAttack())){
 			State destroyed = characterB.destroy();
 			while (i < playerTwoListOfCardOnTable.size() && !found){
-				if ((playerTwoListOfCardOnTable.get(i).getState().getX() == destroyed.getX()) && (playerTwoListOfCardOnTable.get(i).getState().getY() == destroyed.getY())){
+				State state = playerTwoListOfCardOnTable.get(i).getState();
+				if ((state.getX() == destroyed.getX()) && (state.getY() == destroyed.getY())){
 					found = true;
 					playerTwoListOfCardOnTable.remove(i);
-					playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.attack() - characterB.attack()));
+					playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
 				}
 			}
 		}
 
-		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.defense() <= characterA.defense())){
+		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() <= characterA.getDefense())){
 			State destroyed = characterB.destroy();
 			while (i < playerTwoListOfCardOnTable.size() && !found){
-				if ((playerTwoListOfCardOnTable.get(i).getState().getX() == destroyed.getX()) && (playerTwoListOfCardOnTable.get(i).getState().getY() == destroyed.getY())){
+				State state = playerTwoListOfCardOnTable.get(i).getState();
+				if ((state.getX() == destroyed.getX()) && (state.getY() == destroyed.getY())){
 					found = true;
 					playerTwoListOfCardOnTable.remove(i);
 				}
 			}
 		}
+
+		playerTwo.setListOfCharacterOnTable(playerTwoListOfCardOnTable);
 	}
 
 
 	public void attack(Player playerTwo, Character characterA){
 		// dipake apabila playerTwp character nya abis
-		playerTwo.setLifePoint(playerTwo.getLifePoint() - characterA.attack());
+		playerTwo.setLifePoint(playerTwo.getLifePoint() - characterA.getAttack());
 	}
 
 

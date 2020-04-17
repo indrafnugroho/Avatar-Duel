@@ -44,7 +44,7 @@ class DriverCard{
 
 		c.summon(3, Position.DEFENSE);
 		a.summon(2, c);
-		d.summon(c);
+		d.summon(1, c);
 		water.summon(s);
 		
 		System.out.println("===== Test Kartu ====");
