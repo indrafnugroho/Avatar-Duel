@@ -37,7 +37,7 @@ public class MainWindowController {
     @FXML private Label end;
     
     private Player p1;
-//    private Player p2;
+    private Player p2;
     private static final String LAND_CSV_FILE_PATH = "../card/data/land.csv";
     private static final String CHARACTER_CSV_FILE_PATH = "../card/data/character.csv";
     private static final String SKILL_AURA_CSV_FILE_PATH = "../card/data/skill_aura.csv";
@@ -110,10 +110,11 @@ public class MainWindowController {
         try {
             System.out.println("Game has started");
             loadCards();
-            this.p1 = new Player("Indra", this.landList, this.characterList, this.auraList);
+            this.p1 = new Player("Qila", this.landList, this.characterList, this.auraList);
+            this.p2 = new Player("Hojun", this.landList, this.characterList, this.auraList);
             player1FieldController.init(this, this.p1);
-            player2FieldController.init(this);
-            singleCardController.init(this, this.characterList.get(0));
+            player2FieldController.init(this, this.p2);
+            singleCardController.init(this, this.auraList.get(0));
         }
         catch (IOException | URISyntaxException e) {
             throw new IllegalStateException(e);

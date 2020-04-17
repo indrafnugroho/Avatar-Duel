@@ -8,7 +8,11 @@ package com.avatarduel.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import com.avatarduel.player.*;
+import com.avatarduel.card.*;
 
 /**
  *
@@ -16,134 +20,83 @@ import javafx.scene.layout.VBox;
  */
 public class Player2FieldController {
     private MainWindowController mainWindowController;
+    private Player p;
     
-    @FXML
-    private VBox p2COH1;
-    @FXML
-    private Label p2COHType1;
-    @FXML
-    private Label p2COHPower1;
-    @FXML
-    private Label p2COHAttack1;
-    @FXML
-    private Label p2COHDefense1;
-    @FXML
-    private VBox p2COH2;
-    @FXML
-    private Label p2COHType2;
-    @FXML
-    private Label p2COHPower2;
-    @FXML
-    private Label p2COHAttack2;
-    @FXML
-    private Label p2COHDefense2;
-    @FXML
-    private VBox p2COH3;
-    @FXML
-    private Label p2COHType3;
-    @FXML
-    private Label p2COHPower3;
-    @FXML
-    private Label p2COHAttack3;
-    @FXML
-    private Label p2COHDefense3;
-    @FXML
-    private VBox p2COH4;
-    @FXML
-    private Label p2COHType4;
-    @FXML
-    private Label p2COHPower4;
-    @FXML
-    private Label p2COHAttack4;
-    @FXML
-    private Label p2COHDefense4;
-    @FXML
-    private VBox p2COH5;
-    @FXML
-    private Label p2COHType5;
-    @FXML
-    private Label p2COHPower5;
-    @FXML
-    private Label p2COHAttack5;
-    @FXML
-    private Label p2COHDefense5;
-    @FXML
-    private VBox p2COH6;
-    @FXML
-    private Label p2COHType6;
-    @FXML
-    private Label p2COHPower6;
-    @FXML
-    private Label p2COHAttack6;
-    @FXML
-    private Label p2COHDefense6;
-    @FXML
-    private VBox p2COH7;
-    @FXML
-    private Label p2COHType7;
-    @FXML
-    private Label p2COHPower7;
-    @FXML
-    private Label p2COHAttack7;
-    @FXML
-    private Label p2COHDefense7;
-    @FXML
-    private VBox p2COH8;
-    @FXML
-    private Label p2COHType8;
-    @FXML
-    private Label p2COHPower8;
-    @FXML
-    private Label p2COHAttack8;
-    @FXML
-    private Label p2COHDefense8;
-    @FXML
-    private VBox p2COH9;
-    @FXML
-    private Label p2COHType9;
-    @FXML
-    private Label p2COHPower9;
-    @FXML
-    private Label p2COHAttack9;
-    @FXML
-    private Label p2COHDefense9;
-    @FXML
-    private VBox p2COH10;
-    @FXML
-    private Label p2COHType10;
-    @FXML
-    private Label p2COHPower10;
-    @FXML
-    private Label p2COHAttack10;
-    @FXML
-    private Label p2COHDefense10;
-    @FXML
-    private VBox details;
-    @FXML
-    private Label hp;
-    @FXML
-    private AnchorPane deck;
-    @FXML
-    private Label deckCapacity;
-    @FXML
-    private AnchorPane cardsOnHand;
-    @FXML
-    private VBox landPower;
-    @FXML
-    private Label air;
-    @FXML
-    private Label fire;
-    @FXML
-    private Label earth;
-    @FXML
-    private Label water;
-    @FXML
-    private Label energy;
-    @FXML
-    private AnchorPane cardsOnField;
+    @FXML private VBox details;
+    @FXML private Label hp;
+    @FXML private AnchorPane deck;
+    @FXML private Label deckCapacity;
+    @FXML private AnchorPane cardsOnHand;
+    @FXML private HBox landPower;
+    @FXML private Label air;
+    @FXML private Label fire;
+    @FXML private Label earth;
+    @FXML private Label water;
+    @FXML private Label energy;
+    @FXML private AnchorPane cardsOnField;
+    @FXML private Label name;
+    @FXML private AnchorPane character;
+    @FXML private AnchorPane skill;
     
-    public void init(MainWindowController mwc) {
+    public void init(MainWindowController mwc, Player p) {
         System.out.println("Player 2 has been initialized");
         mainWindowController = mwc;
+        this.p = p;
+        setHP();
+        setDeckCapacity();
+        setLandPower();
+        setName();
+        setCardsOnHand();
+    }
+    
+    public void setHP () {
+        this.hp.setText(this.p.getLifePoint() + " HP");
+    }
+    
+    public void setDeckCapacity() {
+        this.deckCapacity.setText(this.p.getDeck().size() + " / 50");
+    }
+    
+    public void setLandPower() {
+        this.air.setText(this.p.getStatus().airToString());
+        this.fire.setText(this.p.getStatus().fireToString());
+        this.earth.setText(this.p.getStatus().earthToString());
+        this.water.setText(this.p.getStatus().waterToString());
+        this.energy.setText(this.p.getStatus().energyToString());
+    }
+    
+    public void setName() {
+        this.name.setText(this.p.getName());
+    }
+    
+    public void setCardsOnHand() {
+        for (int i=0; i < this.p.getListofCardOnHand().size(); i++) {
+            VBox card = (VBox) this.cardsOnHand.getChildren().get(i);
+            setCard(card, this.p.getListofCardOnHand().get(i));
+        }
+    }
+    
+    public void setCard(VBox v, Card c) {
+        Label type = (Label) v.getChildren().get(0);
+        Label pow = (Label) v.getChildren().get(1);
+        Label atk = (Label) v.getChildren().get(2);
+        Label def = (Label) v.getChildren().get(3);
+        
+        type.setText(c.getType().toString());
+        pow.setText(c.getPowAsString());
+        atk.setText(c.getAtkAsString());
+        def.setText(c.getDefAsString());
+    }
+    
+    public void resetCard(VBox v) {
+        Label type = (Label) v.getChildren().get(0);
+        Label pow = (Label) v.getChildren().get(1);
+        Label atk = (Label) v.getChildren().get(2);
+        Label def = (Label) v.getChildren().get(3);
+        
+        type.setText("");
+        pow.setText("");
+        atk.setText("");
+        def.setText("");
     }
 }
