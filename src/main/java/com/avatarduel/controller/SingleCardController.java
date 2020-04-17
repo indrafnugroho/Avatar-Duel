@@ -91,6 +91,7 @@ public class SingleCardController {
     
     public void setEffect() {
 //        TO-DO
+        this.effect.setText("");
     }
     
     public void setType() {
