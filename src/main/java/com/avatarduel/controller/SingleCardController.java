@@ -43,6 +43,7 @@ public class SingleCardController {
         System.out.println("Single Card has been initialized");
         mainWindowController = mwc;
         this.card = card;
+        showCardDetails();
     }
     
     public void setCard(Card c) {
@@ -50,7 +51,13 @@ public class SingleCardController {
     }
     
     public void showCardDetails() {
-        
+        setName();
+        setElement();
+        setEffect();
+        setType();
+        setPicture();
+        setDescription();
+        setStatus();
     }
     
     public void setName() {

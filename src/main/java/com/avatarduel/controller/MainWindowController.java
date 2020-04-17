@@ -39,22 +39,9 @@ public class MainWindowController {
 //    private Player p1;
 //    private Player p2;
     
-    private void initialize() throws IOException {
-        try {
-            System.out.println("Game has started");
-            player1FieldController.init(this);
-            player2FieldController.init(this);
-            this.loadCards();
-            singleCardController.init(this, this.characterList.get(0));
-        }
-        catch (URISyntaxException e) {
-            
-        }
-    }
-    
-    private static final String LAND_CSV_FILE_PATH = "card/data/land.csv";
-    private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
-    private static final String SKILL_AURA_CSV_FILE_PATH = "card/data/skill_aura.csv";
+    private static final String LAND_CSV_FILE_PATH = "../card/data/land.csv";
+    private static final String CHARACTER_CSV_FILE_PATH = "../card/data/character.csv";
+    private static final String SKILL_AURA_CSV_FILE_PATH = "../card/data/skill_aura.csv";
     private List<Land> landList;
     private List<Character> characterList;
     private List<Aura> auraList;
@@ -63,22 +50,27 @@ public class MainWindowController {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
         File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
         File skillCSVFile = new File(getClass().getResource(SKILL_AURA_CSV_FILE_PATH).toURI());
+        System.out.println("check1");
 
         CSVReader landReader = new CSVReader(landCSVFile, "\t");
         CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
         CSVReader skillReader = new CSVReader(skillCSVFile, "\t");
+        System.out.println("check2");
 
         landReader.setSkipHeader(true);
         characterReader.setSkipHeader(true);
         skillReader.setSkipHeader(true);
+        System.out.println("check3");
 
         List<String[]> landRows = landReader.read();
         List<String[]> characterRows = characterReader.read();
         List<String[]> skillRows = skillReader.read();
+        System.out.println("check4");
 
         this.landList = new ArrayList<Land>();
         this.characterList = new ArrayList<Character>();
         this.auraList = new ArrayList<Aura>();
+        System.out.println("check5");
 
         for (String[] row : landRows) {
             Land l = new CardBuilder(CardType.LAND)
@@ -90,6 +82,7 @@ public class MainWindowController {
                 .buildLand();
             this.landList.add(l);
         }
+        System.out.println("check6");
 
         for (String[] row : characterRows) {
             Character c = new CardBuilder(CardType.CHARACTER)
@@ -104,6 +97,7 @@ public class MainWindowController {
                 .buildCharacter();
             this.characterList.add(c);
         }
+        System.out.println("check7");
 
         for (String[] row : skillRows) {
             Aura a = new CardBuilder(CardType.AURA)
@@ -117,6 +111,20 @@ public class MainWindowController {
                 .setDefense(Integer.parseInt((row[7])))
                 .buildAura();
             this.auraList.add(a);
+        }
+        System.out.println("check8");
+    }
+    
+    @FXML private void initialize() throws IOException, URISyntaxException {
+        try {
+            System.out.println("Game has started");
+            player1FieldController.init(this);
+            player2FieldController.init(this);
+            loadCards();
+            singleCardController.init(this, this.characterList.get(0));
+        }
+        catch (IOException | URISyntaxException e) {
+            throw new IllegalStateException(e);
         }
     }
 }
