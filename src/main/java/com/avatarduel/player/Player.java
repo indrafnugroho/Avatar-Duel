@@ -2,6 +2,7 @@ package com.avatarduel.player;
 
 import com.avatarduel.card.*;
 import com.avatarduel.card.Character;
+import sun.security.krb5.internal.crypto.Des;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -12,9 +13,7 @@ public class Player{
 	private List<Card> deck;
 	private List<Card> cardOnHand;
 	private List<Character> characterOnTable;
-	private List<Aura> auraOnTable;
-	private List<PowerUp> powerUpOnTable;
-	private List<Destroy> destroyOnTable;
+	private List<Card> skillOnTable;
 	private Status status;
 	private int lifePoint;
 
@@ -23,9 +22,7 @@ public class Player{
 		this.deck = new ArrayList<Card>(50);
 		this.cardOnHand = new ArrayList<Card>(10);
 		this.characterOnTable = new ArrayList<Character>(6);
-		this.auraOnTable = new ArrayList<Aura>();
-		this.powerUpOnTable = new ArrayList<PowerUp>();
-		this.destroyOnTable = new ArrayList<Destroy>();
+		this.skillOnTable = new ArrayList<Card>(6);
 		this.status = new Status();
 		this.lifePoint = 80;
 
@@ -60,20 +57,16 @@ public class Player{
 		return this.characterOnTable;
 	}
 
-	public List<Aura> getListOfAuraOnTable(){ return this.auraOnTable; }
-
-	public List<Destroy> getListOfDestroyOnTable(){ return this.destroyOnTable; }
-
-	public List<PowerUp> getListOfPowerUpOnTable(){ return this.powerUpOnTable; }
+	public List<Card> getListOfSkillOnTable() { return this.skillOnTable}
 
 	public void setListOfCharacterOnTable(List<Character> updated){
 		this.characterOnTable = updated;
 	}
-        
-        public List<Card> getListOfCardOnHand() {
-            return this.cardOnHand;
-        }
-        
+
+	public List<Card> getListOfCardOnHand() {
+		return this.cardOnHand;
+	}
+
 	public void setListOfCardOnHand(List<Card> updated){
 		this.cardOnHand = updated;
 	}
@@ -178,110 +171,186 @@ public class Player{
 		this.status.addStatus(l.getElement());
 	}
 
-	public void putAuraOnTable(Aura a, Character c, int x){
+	public void putSkillOnTable(Card a, Character c, int x){
 		this.cardOnHand.remove(a);
-		if (a.getElement() == Element.AIR){
-			this.status.useAir(a.getPower());
+		if (a.getType() == CardType.AURA){
+			Aura aura = (Aura) a;
+			if (aura.getElement() == Element.AIR){
+				this.status.useWater(aura.getPower());
+			}
+			else if (aura.getElement() == Element.WATER){
+				this.status.useWater(aura.getPower());
+			}
+			else if (aura.getElement() == Element.EARTH){
+				this.status.useEarth(aura.getPower());
+			}
+			else if (aura.getElement() == Element.FIRE){
+				this.status.useFire(aura.getPower());
+			}
+			aura.summon(x, c);
 		}
-		else if (c.getElement() == Element.WATER){
-			this.status.useWater(a.getPower());
+		else if (a.getType() == CardType.POWERUP){
+			PowerUp powerUp = (PowerUp) a;
+			if (powerUp.getElement() == Element.AIR){
+				this.status.useWater(powerUp.getPower());
+			}
+			else if (powerUp.getElement() == Element.WATER){
+				this.status.useWater(powerUp.getPower());
+			}
+			else if (powerUp.getElement() == Element.EARTH){
+				this.status.useEarth(powerUp.getPower());
+			}
+			else if (powerUp.getElement() == Element.FIRE){
+				this.status.useFire(powerUp.getPower());
+			}
+			powerUp.summon(x, c);
 		}
-		else if (c.getElement() == Element.EARTH){
-			this.status.useEarth(a.getPower());
+		else if (a.getType() == CardType.DESTROY){
+			Destroy destroy = (Destroy) a;
+			if (destroy.getElement() == Element.AIR){
+				this.status.useWater(destroy.getPower());
+			}
+			else if (destroy.getElement() == Element.WATER){
+				this.status.useWater(destroy.getPower());
+			}
+			else if (destroy.getElement() == Element.EARTH){
+				this.status.useEarth(destroy.getPower());
+			}
+			else if (destroy.getElement() == Element.FIRE){
+				this.status.useFire(destroy.getPower());
+			}
+			destroy.summon(x, c);
 		}
-		else if (c.getElement() == Element.FIRE){
-			this.status.useFire(a.getPower());
-		}
-		a.summon(x, c);
-		this.auraOnTable.add(a);
+		this.skillOnTable.add(a);
 	}
 
-	public void useAura(Aura a){
-		a.activate();
+	public void useSkill(Card a){
+		if (a.getType() == CardType.POWERUP){
+			PowerUp powerUp = (PowerUp) a;
+			powerUp.activate();
+		}
+		else if (a.getType() == CardType.AURA){
+			Aura aura = (Aura) a;
+			aura.activate();
+		}
 	}
 
-	public void removeAuraFromTable(Aura a){
+	public void useSkill(Player playerTwo, Card a, Character c){
 		int i = 0;
 		boolean found = false;
-		State auraState = a.destroy();
-		while (i < this.auraOnTable.size() && !found){
-			State state = this.auraOnTable.get(i).getState();
-			if ((state.getX() == auraState.getX()) && (state.getY() == auraState.getY())){
-				this.auraOnTable.remove(i);
-				found = true;
+		List<Character> characterList = playerTwo.getListOfCharacterOnTable();
+		if (a.getType() == CardType.DESTROY){
+			Destroy destroy = (Destroy) a;
+			State summoned = destroy.activate();
+			while (i < characterList.size() && !found){
+				State state = characterList.get(i).getState();
+				if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
+					characterList.remove(i);
+					found = true;
+				}
 			}
+			this.skillOnTable.remove(destroy);
+			playerTwo.setListOfCharacterOnTable(characterList);
 		}
 	}
 
-	public void putDestroyOnTable(Destroy d, Character c, int x){
-		this.cardOnHand.remove(d);
-		if (d.getElement() == Element.AIR){
-			this.status.useAir(d.getPower());
-		}
-		else if (c.getElement() == Element.WATER){
-			this.status.useWater(d.getPower());
-		}
-		else if (c.getElement() == Element.EARTH){
-			this.status.useEarth(d.getPower());
-		}
-		else if (c.getElement() == Element.FIRE){
-			this.status.useFire(d.getPower());
-		}
-		d.summon(x, c);
-		this.destroyOnTable.add(d);
-	}
-
-	public void useDestroy(Player b, Destroy d, Character c){
+	public void removeSkillFromTable(Card a){
 		int i = 0;
 		boolean found = false;
-		this.cardOnHand.remove(d);
-		List<Character> characterList = b.getListOfCharacterOnTable();
-		State summoned = d.activate();
-		while (i < characterList.size() && !found){
-			State state = characterList.get(i).getState();
-			if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
-				characterList.remove(i);
-				found = true;
+		if (a.getType() == CardType.POWERUP){
+			PowerUp powerUp = (PowerUp) a;
+			State powerUpState = powerUp.destroy();
+			while (i < this.skillOnTable.size() && !found){
+				State state =this.skillOnTable.get(i).getState();
+				if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
+					this.skillOnTable.remove(i);
+					found = true;
+				}
 			}
 		}
-		this.destroyOnTable.remove(d);
-		b.setListOfCharacterOnTable(characterList);
-	}
-
-	public void putPowerUpOnTable(PowerUp p, Character c, int x){
-		this.cardOnHand.remove(p);
-		if (p.getElement() == Element.AIR){
-			this.status.useAir(p.getPower());
-		}
-		else if (c.getElement() == Element.WATER){
-			this.status.useWater(p.getPower());
-		}
-		else if (c.getElement() == Element.EARTH){
-			this.status.useEarth(p.getPower());
-		}
-		else if (c.getElement() == Element.FIRE){
-			this.status.useFire(p.getPower());
-		}
-		p.summon(x, c);
-		this.powerUpOnTable.add(p);
-	}
-
-	public void usePowerUp(PowerUp p){
-		p.activate();
-	}
-
-	public void removePowerUpFromTable(PowerUp p){
-		int i = 0;
-		boolean found = false;
-		State powerUpState = p.destroy();
-		while (i < this.powerUpOnTable.size() && !found){
-			State state =this.powerUpOnTable.get(i).getState();
-			if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
-				this.powerUpOnTable.remove(i);
-				found = true;
+		else if (a.getType() == CardType.AURA){
+			Aura aura = (Aura) a;
+			State auraState = aura.destroy();
+			while (i < this.skillOnTable.size() && !found){
+				State state = this.skillOnTable.get(i).getState();
+				if ((state.getX() == auraState.getX()) && (state.getY() == auraState.getY())){
+					this.skillOnTable.remove(i);
+					found = true;
+				}
 			}
 		}
+
 	}
+
+//	public void putDestroyOnTable(Destroy d, Character c, int x){
+//		this.cardOnHand.remove(d);
+//		if (d.getElement() == Element.AIR){
+//			this.status.useAir(d.getPower());
+//		}
+//		else if (c.getElement() == Element.WATER){
+//			this.status.useWater(d.getPower());
+//		}
+//		else if (c.getElement() == Element.EARTH){
+//			this.status.useEarth(d.getPower());
+//		}
+//		else if (c.getElement() == Element.FIRE){
+//			this.status.useFire(d.getPower());
+//		}
+//		d.summon(x, c);
+//		this.destroyOnTable.add(d);
+//	}
+
+//	public void useDestroy(Player b, Destroy d, Character c){
+//		int i = 0;
+//		boolean found = false;
+//		this.cardOnHand.remove(d);
+//		List<Character> characterList = b.getListOfCharacterOnTable();
+//		State summoned = d.activate();
+//		while (i < characterList.size() && !found){
+//			State state = characterList.get(i).getState();
+//			if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
+//				characterList.remove(i);
+//				found = true;
+//			}
+//		}
+//		this.destroyOnTable.remove(d);
+//		b.setListOfCharacterOnTable(characterList);
+//	}
+
+//	public void putPowerUpOnTable(PowerUp p, Character c, int x){
+//		this.cardOnHand.remove(p);
+//		if (p.getElement() == Element.AIR){
+//			this.status.useAir(p.getPower());
+//		}
+//		else if (c.getElement() == Element.WATER){
+//			this.status.useWater(p.getPower());
+//		}
+//		else if (c.getElement() == Element.EARTH){
+//			this.status.useEarth(p.getPower());
+//		}
+//		else if (c.getElement() == Element.FIRE){
+//			this.status.useFire(p.getPower());
+//		}
+//		p.summon(x, c);
+//		this.powerUpOnTable.add(p);
+//	}
+
+//	public void usePowerUp(PowerUp p){
+//		p.activate();
+//	}
+
+//	public void removePowerUpFromTable(PowerUp p){
+//		int i = 0;
+//		boolean found = false;
+//		State powerUpState = p.destroy();
+//		while (i < this.powerUpOnTable.size() && !found){
+//			State state =this.powerUpOnTable.get(i).getState();
+//			if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
+//				this.powerUpOnTable.remove(i);
+//				found = true;
+//			}
+//		}
+//	}
 
 
 	public void attack(Player playerTwo, Character characterA, Character characterB){
