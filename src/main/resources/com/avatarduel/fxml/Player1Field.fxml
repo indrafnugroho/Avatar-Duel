@@ -9,105 +9,213 @@
 
 <AnchorPane fx:id="player1Field" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avatarduel.controller.Player1FieldController">
    <children>
+      <AnchorPane fx:id="deck" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+         <children>
+            <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="DECK" textAlignment="CENTER" />
+            <Label fx:id="deckCapacity" alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
       <VBox fx:id="details" layoutX="100.0" layoutY="246.0" prefHeight="100.0" prefWidth="120.0">
          <children>
-            <Label fx:id="hp" prefHeight="50.0" prefWidth="120.0" text="80 HP">
+            <Label fx:id="hp" prefHeight="50.0" prefWidth="120.0" text="">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
             <Label prefHeight="25.0" prefWidth="120.0" text="Player 1" />
-            <Label fx:id="name" prefHeight="25.0" prefWidth="120.0" text="Qila" />
+            <Label fx:id="name" prefHeight="25.0" prefWidth="120.0" text="" />
          </children>
       </VBox>
-      <AnchorPane fx:id="deck" layoutX="10.0" layoutY="246.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-         <children>
-            <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="DECK" textAlignment="CENTER" />
-            <Label fx:id="deckCapacity" alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="X / 50" textAlignment="CENTER" />
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="cardsOnHand" layoutX="310.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
          <children>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="80.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="160.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="240.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="320.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="400.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="480.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="560.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="640.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
                </children>
             </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="cardsOnField" layoutX="310.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="800.0">
+         <children>
+            <AnchorPane fx:id="character" prefHeight="110.0" prefWidth="800.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="144.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="288.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="432.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="576.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="skill" layoutY="110.0" prefHeight="110.0" prefWidth="800.0">
+               <children>
+                  <VBox alignment="CENTER" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="144.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="432.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="576.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="720.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <HBox fx:id="landPower" layoutX="1135.0" layoutY="75.0" prefHeight="100.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
@@ -143,27 +251,27 @@
             </VBox>
             <VBox layoutX="55.0" prefHeight="100.0" prefWidth="65.0">
                <children>
-                  <Label fx:id="air" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="X / Y" textAlignment="CENTER">
+                  <Label fx:id="air" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="fire" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="X / Y" textAlignment="CENTER">
+                  <Label fx:id="fire" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="earth" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="X / Y" textAlignment="CENTER">
+                  <Label fx:id="earth" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="water" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="X / Y" textAlignment="CENTER">
+                  <Label fx:id="water" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="energy" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="X / Y" textAlignment="CENTER">
+                  <Label fx:id="energy" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
@@ -172,113 +280,5 @@
             </VBox>
          </children>
       </HBox>
-      <AnchorPane fx:id="cardsOnField" layoutX="310.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="800.0">
-         <children>
-            <AnchorPane fx:id="character" prefHeight="110.0" prefWidth="800.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="144.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="288.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="432.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="576.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="720.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="skill" layoutY="110.0" prefHeight="110.0" prefWidth="800.0">
-               <children>
-                  <VBox alignment="CENTER" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="144.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="432.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="576.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="720.0" layoutY="10.0" prefHeight="100.0" prefWidth="80.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="Type" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="PWR X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="ATK X" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="80.0" text="DEF X" />
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

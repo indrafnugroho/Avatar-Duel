@@ -80,5 +80,11 @@ public abstract class Card{
     }
 
     public abstract String getStatsAsString(); 
+    
+    public abstract String getAtkAsString();
+    
+    public abstract String getDefAsString();
+    
+    public abstract String getPowAsString();
 
 }

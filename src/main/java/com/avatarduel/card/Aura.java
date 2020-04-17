@@ -61,4 +61,26 @@ public class Aura extends Card{
 
         return res;
     }
+    
+    public String getAtkAsString() {
+        String res = "ATK ";
+        if (this.attack > 0) {
+            res += "+";
+        }
+        res += this.attack;
+        return res;
+    }
+    
+    public String getDefAsString() {
+        String res = "DEF ";
+        if (this.defense > 0) {
+            res += "+";
+        }
+        res += this.defense;
+        return res;
+    }
+    
+    public String getPowAsString() {
+        return "POW " + this.power;
+    }
 }

@@ -37,4 +37,16 @@ public class PowerUp extends Card {
 	public String getStatsAsString() {
         return "";
     }
+    
+    public String getAtkAsString() {
+        return "";
+    }
+    
+    public String getDefAsString() {
+        return "";
+    }
+    
+    public String getPowAsString() {
+        return "";
+    }
 }
