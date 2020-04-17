@@ -19,6 +19,8 @@ public class Aura extends Card{
 		this.defense = builder.defense;
 	}
 
+	public int getPower(){ return this.power;}
+
 	public void summon(int x, Character linkedCard){
 		this.isSummoned = true;
 		this.state = new State(x,2, Position.ATTACK);

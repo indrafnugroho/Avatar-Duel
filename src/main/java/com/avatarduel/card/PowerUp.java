@@ -7,9 +7,12 @@ import com.avatarduel.card.State;
 
 public class PowerUp extends Card {
 	private Character linkedCard;
+	private int power;
 
 	public PowerUp(CardBuilder builder){
+
 		super(builder);
+		this.power = builder.power;
 	}
 
 	public void summon(int x, Character linkedCard){
@@ -26,8 +29,12 @@ public class PowerUp extends Card {
 		this.linkedCard.state.setPowerUp(false);
 		return this.state;
 	}
-    
-    public String getStatsAsString() {
+
+	public int getPower() {
+		return power;
+	}
+
+	public String getStatsAsString() {
         return "";
     }
 }

@@ -22,15 +22,15 @@ public class Character extends Card{
 		this.state = new State(x, 1, pos);
 	}
 
-	public int attack(){
+	public int getAttack(){
 		return this.attack;
 	}
 
-	public int defense(){
+	public int getDefense(){
 		return this.defense;
 	}
 
-	public int power(){
+	public int getPower(){
 		return this.power;
 	}
 
