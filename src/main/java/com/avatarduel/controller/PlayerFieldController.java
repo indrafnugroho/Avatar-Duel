@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.scene.transform.Rotate;
 
 import com.avatarduel.player.*;
 import com.avatarduel.card.*;
@@ -70,29 +71,45 @@ public class PlayerFieldController {
         System.out.println("Player " + this.p.getName() + " has been initialized");
     }
     
+    /**
+     * Set attack button visibility.
+     * @param s, either "visible" or "invisible"
+     */
     public void setAttackPlayerButton(String s) {
         if (s.equals("visible")) attackPlayer.setVisible(true);
         else attackPlayer.setVisible(false);
     }
     
+    /**
+     * Set hand card visibility.
+     * @param s, either "visible" or "invisible"
+     */
     public void setCharATKBtn(String s) {
         if (s.equals("visible")) charAttackBtn.setVisible(true);
         else charAttackBtn.setVisible(false);
     }
     
+    /**
+     * Set hand card visibility.
+     * @param s, either "visible" or "invisible"
+     */
     public void setCharRotateBtn(String s) {
         if (s.equals("visible")) charRotateBtn.setVisible(true);
         else charRotateBtn.setVisible(false);
     }
     
+    /**
+     * Set hand card visibility.
+     * @param s, either "visible" or "invisible"
+     */
     public void setSkillAttachBtn(String s) {
         if (s.equals("visible")) skillAttachBtn.setVisible(true);
         else skillAttachBtn.setVisible(false);
     }
     
     /**
-     * Set hand visibility.
-     * @param v if true, make the hand cards visible, and do otherwise if false.
+     * Set hand card visibility.
+     * @param s, either "visible" or "invisible"
      */
     public void setCardsOnHand(String s) {
         if (s.equals("visible")) {
@@ -164,6 +181,14 @@ public class PlayerFieldController {
                 else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
                 break;
         }
+        if (c.getState() != null) {
+            if (c.getState().getPosition() == Position.DEFENSE) {
+                Rotate r = new Rotate();
+                r.setAngle(90);
+                a.setRotate(90);
+            }
+        }
+
     }
     
     public void resetCard(AnchorPane a) {
@@ -177,8 +202,13 @@ public class PlayerFieldController {
         atk.setText("");
         def.setText("");
         a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
+        a.setRotate(0);
     }
-    
+   
+    /**
+     * Handler for mouse click on hand card event.
+     * @param e ActionEvent the source event.
+     */
     @FXML protected void cardOnHandClicked(ActionEvent e) {
         if (mainWindowController.getTurn() == this.turn) {
             Node button = (Node) e.getSource();
@@ -238,7 +268,7 @@ public class PlayerFieldController {
     }
 
     @FXML protected void attackPlayerButtonClicked(ActionEvent event) {
-        if (mainWindowController.getTurn() == 2) {
+        if (mainWindowController.getTurn() == this.turn) {
             if (p.getListOfCharacterOnTable().isEmpty()) {
                 //ATTACK
             }
@@ -249,6 +279,12 @@ public class PlayerFieldController {
     }
 
     @FXML protected void charRotateClicked(ActionEvent event) {
+        if (mainWindowController.getCurrPhase().equals("main") && selectedChar != null) {
+            selectedChar.getState().rotate();
+            selectedChar = null;
+            cardButtons.setVisible(false);
+            refreshPlayer();
+        } 
     }
 
     @FXML protected void skillAttachClicked(ActionEvent e) {
@@ -325,7 +361,30 @@ public class PlayerFieldController {
         }
     }
 
+
+
     @FXML protected void charCardClicked(ActionEvent e) {
+        if (selectedChar == null && selectedSkill == null) {
+            String currPhase = mainWindowController.getCurrPhase();
+            Node button = (Node) e.getSource();
+            AnchorPane cardGUI = (AnchorPane) button.getParent();
+            int idxCard = character.getChildren().indexOf(cardGUI);
+            Card card = p.getListOfCharacterOnTable().get(idxCard);
+            if (currPhase.equals("main")) {
+                setCard(cardGUI, card, "highlight");
+                selectedChar = card;
+                cardButtons.setVisible(true);
+                throwCardButton.setVisible(true);
+                charRotateBtn.setVisible(true);
+            } else if (currPhase.equals("battle")) {
+                setCard(cardGUI, card, "highlight");
+                selectedChar = card;
+                charAttackBtn.setVisible(true);
+                throwCardButton.setVisible(false);
+                cardButtons.setVisible(true);
+            }
+        }
+        /*
         if (mainWindowController.getCurrPhase().equals("main") && selectedChar == null) {
             Node button = (Node) e.getSource();
             AnchorPane cardGUI = (AnchorPane) button.getParent();
@@ -335,12 +394,13 @@ public class PlayerFieldController {
             setCard(cardGUI, card, "highlight");
             if (selectedSkill == null) {
                 cardButtons.setVisible(true);
-                charAttackBtn.setVisible(true);
                 charRotateBtn.setVisible(true);
             }
         } else if (mainWindowController.getCurrPhase().equals("battle") && selectedChar == null){
                 
+                charAttackBtn.setVisible(true);
         }
+        */
     }
 
     @FXML protected void skillCardClicked(ActionEvent e) {

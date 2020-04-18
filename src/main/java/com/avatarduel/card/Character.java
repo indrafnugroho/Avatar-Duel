@@ -9,17 +9,20 @@ public class Character extends Card{
 	private int attack;
 	private int defense;
 	private int power;
+    private boolean hasAttackedForThisTurn;
 
 	public Character(CardBuilder builder){
 		super(builder);
 		this.attack = builder.attack;
 		this.defense = builder.defense;
 		this.power = builder.power;
+        this.hasAttackedForThisTurn = false;
 	}
 
 	public void summon(Position pos){
 		this.isSummoned = true;
 		this.state = new State(pos);
+        this.hasAttackedForThisTurn = true;
 	}
 
 	public int getAttack(){
@@ -33,6 +36,14 @@ public class Character extends Card{
 	public int getPower(){
 		return this.power;
 	}
+
+    public boolean getHasAttacked() {
+        return this.hasAttackedForThisTurn;
+    }
+
+    public void setHasAttacked(boolean b) {
+        this.hasAttackedForThisTurn = b;
+    }
 
 	public State getState(){
 		return this.state;

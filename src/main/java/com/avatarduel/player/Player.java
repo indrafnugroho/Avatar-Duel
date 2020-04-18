@@ -143,6 +143,14 @@ public class Player{
 		status.reset();
 	}
 
+    public void initializeTurn() {
+        for (Character c: this.characterOnTable) {
+            if (c != null) {
+                c.setHasAttacked(false);
+            }
+        }
+    }
+
 	public boolean putCharacterOnTable(Character c, Position pos){
                 boolean success = false;
 		switch (c.getElement()) {
@@ -308,6 +316,7 @@ public class Player{
         }
         
 	public void attack(Player playerTwo, Character characterA, Character characterB){
+        characterA.setHasAttacked(true);
 		List<Character> playerTwoListOfCharacterOnTableOnTable = playerTwo.getListOfCharacterOnTable();
 		List<Card> playerTwoListOfSkillOnTable = playerTwo.getListOfSkillOnTable();
 
@@ -322,6 +331,7 @@ public class Player{
 
 	public void attack(Player playerTwo, Character characterA){
 		// dipake apabila playerTwp character nya abis
+        characterA.setHasAttacked(true);
 		playerTwo.setLifePoint(playerTwo.getLifePoint() - characterA.getAttack());
 	}
 }
