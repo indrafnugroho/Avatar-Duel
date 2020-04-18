@@ -28,10 +28,14 @@ public class Aura extends Card{
 	}
         
 	public int getPower(){ return this.power;}
+        
+        public Character getLinkedCard() {
+            return linkedCard;
+        }
 
-	public void summon(int x, Character linkedCard){
+	public void summon(Character linkedCard){
 		this.isSummoned = true;
-		this.state = new State(x,2, Position.ATTACK);
+		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
 
@@ -40,11 +44,10 @@ public class Aura extends Card{
 		this.isActive = true;
 	}
 
-	public State destroy(){
+	public void destroy(){
 		if(this.isActive == true){
 			this.linkedCard.setEffect(-1 * this.attack, -1 * this.defense);
 		} 
-		return this.state;
 	}
 
 	public String toString(){

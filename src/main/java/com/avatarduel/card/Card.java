@@ -69,6 +69,8 @@ public abstract class Card{
             isSummoned = b;
         }
         
+        public State getState() { return state;}
+        
         public abstract int getPower();
 
 	public String toString(){
@@ -80,10 +82,6 @@ public abstract class Card{
 
 		return result;
 	}
-
-    public State getState() {
-        return this.state;
-    }
 
     public abstract String getStatsAsString(); 
     

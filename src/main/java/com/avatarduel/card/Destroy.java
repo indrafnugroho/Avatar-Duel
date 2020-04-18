@@ -16,16 +16,16 @@ public class Destroy extends Card{
 		this.power = builder.power;
 	}
 
-	public void summon(int x, Character linkedCard){
+	public void summon(Character linkedCard){
 		this.isSummoned = true;
-		this.state = new State(x,2, Position.ATTACK);
+		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
         
 	public int getPower(){ return this.power;}
 
-	public State activate(){
-		return this.linkedCard.destroy();
+	public Character activate(){
+		return this.linkedCard;
 	}
     
     public String getStatsAsString() {

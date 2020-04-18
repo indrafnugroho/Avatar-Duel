@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.avatarduel.controller;
 
 import javafx.fxml.FXML;
@@ -13,10 +8,6 @@ import javafx.scene.layout.AnchorPane;
 
 import com.avatarduel.card.*;
 
-/**
- *
- * @author indraf
- */
 public class SingleCardController {
     private MainWindowController mainWindowController;
     
@@ -35,6 +26,7 @@ public class SingleCardController {
         System.out.println("Single Card has been initialized");
         mainWindowController = mwc;
         this.card = card;
+        singleCard.setVisible(false);
     }
     
     public void setCard(Card c) {
@@ -50,6 +42,7 @@ public class SingleCardController {
         setDescription();
         setStatus();
         setColor();
+        singleCard.setVisible(true);
     }
     
     public void setName() {
@@ -132,5 +125,6 @@ public class SingleCardController {
         this.description.setText("");
         this.status.setText("");
         singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
+        singleCard.setVisible(false);
     }
 }

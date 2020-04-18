@@ -17,9 +17,9 @@ public class Character extends Card{
 		this.power = builder.power;
 	}
 
-	public void summon(int x, Position pos){
+	public void summon(Position pos){
 		this.isSummoned = true;
-		this.state = new State(x, 1, pos);
+		this.state = new State(pos);
 	}
 
 	public int getAttack(){
@@ -45,10 +45,6 @@ public class Character extends Card{
 	public void setEffect(int attack, int defense){
 		this.attack += attack;
 		this.defense += defense;
-	}
-
-	public State destroy(){
-		return this.state;
 	}
 
 	public String toString(){

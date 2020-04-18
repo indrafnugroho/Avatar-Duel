@@ -146,20 +146,21 @@ public class MainWindowController {
             this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "battle";
+            if (turn == 2) player1FieldController.setAttackPlayerButton("visible");
+//            else player2FieldController.setAttackPlayerButton("visible");
         } else if (currPhase.equals("battle")) {
             this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "end";
+            if (turn == 2) player1FieldController.setAttackPlayerButton("invisible");
+//            else player2FieldController.setAttackPlayerButton("invisible");
         } else if (currPhase.equals("end")) {
             this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "draw";
             if (turn == 1) {
                 turn = 2;
-                if (this.p2.getListOfCardOnHand().size() < 10) {
-//                    this.p2.drawCardFromDeck();
-//                    
-                }
+                this.p2.drawCardFromDeck();
                 p2.getStatus().reset();
 //                this.player2FieldController.refreshPlayer();
 //                this.player2FieldController.isLandSummoned = false;
@@ -169,9 +170,7 @@ public class MainWindowController {
             }
             else {
                 turn = 1;
-                if (this.p1.getListOfCardOnHand().size() < 10) {
-                    this.p1.drawCardFromDeck();
-                }
+                this.p1.drawCardFromDeck();
                 p1.getStatus().reset();
                 this.player1FieldController.refreshPlayer();
                 this.player1FieldController.isLandSummoned = false;
