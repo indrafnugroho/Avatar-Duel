@@ -158,23 +158,26 @@ public class MainWindowController {
                 turn = 2;
                 if (this.p2.getListOfCardOnHand().size() < 10) {
 //                    this.p2.drawCardFromDeck();
-//                    this.player2FieldController.refreshPlayer();
+//                    
                 }
+                p2.getStatus().reset();
+//                this.player2FieldController.refreshPlayer();
 //                this.player2FieldController.isLandSummoned = false;
 //                player2FieldController.setCardsOnHand("visible");
                 player1FieldController.setCardsOnHand("invisible");
-                p2.getStatus().reset();
+                this.nextButton.setLayoutY(125.0);
             }
             else {
                 turn = 1;
                 if (this.p1.getListOfCardOnHand().size() < 10) {
                     this.p1.drawCardFromDeck();
-                    this.player1FieldController.refreshPlayer();
                 }
+                p1.getStatus().reset();
+                this.player1FieldController.refreshPlayer();
                 this.player1FieldController.isLandSummoned = false;
                 player1FieldController.setCardsOnHand("visible");
 //                player2FieldController.setCardsOnHand("invisible");
-                p1.getStatus().reset();
+                this.nextButton.setLayoutY(550.0);
             }
         }
     }
