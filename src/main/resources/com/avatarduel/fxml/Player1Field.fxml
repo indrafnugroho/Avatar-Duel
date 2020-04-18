@@ -14,7 +14,6 @@
          <children>
             <Label alignment="CENTER" layoutY="25.0" prefHeight="25.0" prefWidth="80.0" text="DECK" textAlignment="CENTER" />
             <Label fx:id="deckCapacity" alignment="CENTER" layoutY="50.0" prefHeight="25.0" prefWidth="80.0" text="" textAlignment="CENTER" />
-            <Button fx:id="deckButton" alignment="CENTER" mnemonicParsing="false" onAction="#deckButtonClicked" opacity="0.0" prefHeight="100.0" prefWidth="80.0" textAlignment="CENTER" />
          </children>
       </AnchorPane>
       <VBox fx:id="details" layoutX="100.0" layoutY="246.0" prefHeight="100.0" prefWidth="120.0">
@@ -246,27 +245,27 @@
          <children>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="70.0">
                <children>
-                  <Label prefHeight="20.0" prefWidth="70.0" text="Air:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: orange;" text="Air:" textAlignment="RIGHT">
                      <padding>
                         <Insets left="25.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="70.0" text="Fire:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: red;" text="Fire:" textAlignment="RIGHT">
                      <padding>
                         <Insets left="25.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="70.0" text="Earth:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: lightgreen;" text="Earth:" textAlignment="RIGHT">
                      <padding>
                         <Insets left="25.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="70.0" text="Water:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: lightblue;" text="Water:" textAlignment="RIGHT">
                      <padding>
                         <Insets left="25.0" />
                      </padding>
                   </Label>
-                  <Label prefHeight="20.0" prefWidth="70.0" text="Energy:" textAlignment="RIGHT">
+                  <Label prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: white;" text="Energy:" textAlignment="RIGHT">
                      <padding>
                         <Insets left="25.0" />
                      </padding>
@@ -275,27 +274,27 @@
             </VBox>
             <VBox layoutX="55.0" prefHeight="100.0" prefWidth="65.0">
                <children>
-                  <Label fx:id="air" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
+                  <Label fx:id="air" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: orange;" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="fire" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
+                  <Label fx:id="fire" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: red;" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="earth" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
+                  <Label fx:id="earth" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: lightgreen;" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="water" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
+                  <Label fx:id="water" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: lightblue;" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="energy" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" text="" textAlignment="CENTER">
+                  <Label fx:id="energy" alignment="CENTER" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: white;" text="" textAlignment="CENTER">
                      <padding>
                         <Insets right="20.0" />
                      </padding>
@@ -304,5 +303,6 @@
             </VBox>
          </children>
       </HBox>
+      <Button fx:id="attack" layoutX="240.0" layoutY="282.5" mnemonicParsing="false" onAction="#attackButtonClicked" text="Attack" />
    </children>
 </AnchorPane>

@@ -29,7 +29,7 @@ public class Destroy extends Card{
 	}
     
     public String getStatsAsString() {
-        return "";
+        return "POW / " + power;
     }
     
     public String getAtkAsString() {
@@ -41,6 +41,6 @@ public class Destroy extends Card{
     }
     
     public String getPowAsString() {
-        return "";
+        return "POW " + power;
     }
 }

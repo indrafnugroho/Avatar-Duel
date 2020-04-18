@@ -17,6 +17,7 @@ import com.avatarduel.card.Character;
 public class Player1FieldController {
     private MainWindowController mainWindowController;
     private Player p;
+    public boolean isLandSummoned;
     
     @FXML private VBox details;
     @FXML private Label hp;
@@ -34,14 +35,21 @@ public class Player1FieldController {
     @FXML private Label name;
     @FXML private AnchorPane character;
     @FXML private AnchorPane skill;
-    @FXML private Button deckButton;
+    @FXML private Button attack;
     
     public void init(MainWindowController mwc, Player p) {
         System.out.println("Player 1 has been initialized");
         mainWindowController = mwc;
         this.p = p;
+        isLandSummoned = false;
         refreshPlayer();
         this.name.setText(this.p.getName());
+    }
+    
+    public void setCardsOnHand(String s) {
+        if (s.equals("visible")) {
+            cardsOnHand.setVisible(true);
+        } else cardsOnHand.setVisible(false);
     }
     
     public void refreshPlayer() {
@@ -60,52 +68,70 @@ public class Player1FieldController {
             AnchorPane card = (AnchorPane) this.character.getChildren().get(i);
             setCard(card, this.p.getListOfCharacterOnTable().get(i));
         }
-//        for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
-//            AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
-//            setCard(card, this.p.getListOfCardOnHand().get(i));
-//        }
-    }
-    
-    public void deckButtonClicked(ActionEvent e) {
-        if (this.p.getListOfCardOnHand().size() < 10) {
-            this.p.drawCardFromDeck();
-            refreshPlayer();
+        for (int i=0; i < this.p.getListOfSkillOnTable().size(); i++) {
+            AnchorPane card = (AnchorPane) this.skill.getChildren().get(i);
+            setCard(card, this.p.getListOfSkillOnTable().get(i));
         }
     }
     
-    public void cardOnHandClicked(ActionEvent e) {
-        Node button = (Node) e.getSource();
-        AnchorPane cardGUI = (AnchorPane) button.getParent();
-        int idxCard = cardsOnHand.getChildren().indexOf(cardGUI);
-        if (idxCard < p.getListOfCardOnHand().size()) {
-            Card card = p.getListOfCardOnHand().get(idxCard);
-            if (card.getType() == CardType.LAND) {
-                p.getStatus().addStatus(card.getElement());
-                p.getListOfCardOnHand().remove(card);
-                resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
-                refreshPlayer();
-            } else if (card.getType() == CardType.CHARACTER) {
-                System.out.println("Character Clicked!");
-                Character child = (Character) card;
-                boolean success = false;
-                if (child.getElement() == Element.AIR) {
-                    success = p.getStatus().useAir(child.getPower());
-                } else if (child.getElement() == Element.WATER) {
-                    success = p.getStatus().useWater(child.getPower());
-                } else if (child.getElement() == Element.FIRE) {
-                    success = p.getStatus().useFire(child.getPower());
-                } else if (child.getElement() == Element.EARTH) {
-                    success = p.getStatus().useEarth(child.getPower());
-                } else if (child.getElement() == Element.ENERGY) {
-                    success = p.getStatus().useEnergy(child.getPower());
+    @FXML private void cardOnHandClicked(ActionEvent e) {
+        if (mainWindowController.getTurn() == 1) {
+            Node button = (Node) e.getSource();
+            AnchorPane cardGUI = (AnchorPane) button.getParent();
+            int idxCard = cardsOnHand.getChildren().indexOf(cardGUI);
+            if (idxCard < p.getListOfCardOnHand().size()) {
+                Card card = p.getListOfCardOnHand().get(idxCard);
+                if (card.getType() == CardType.LAND) {
+                    if (!isLandSummoned && mainWindowController.getCurrPhase().equals("main")) {
+                        p.getStatus().addStatus(card.getElement());
+                        p.getListOfCardOnHand().remove(card);
+                        isLandSummoned = true;
+                        resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                        refreshPlayer();
+                    }
+                } else if (card.getType() == CardType.CHARACTER) {
+                    if (mainWindowController.getCurrPhase().equals("main")) {
+                        Character child = (Character) card;
+                        boolean success = false;
+                        if (child.getElement() == Element.AIR) {
+                            success = p.getStatus().useAir(child.getPower());
+                        } else if (child.getElement() == Element.WATER) {
+                            success = p.getStatus().useWater(child.getPower());
+                        } else if (child.getElement() == Element.FIRE) {
+                            success = p.getStatus().useFire(child.getPower());
+                        } else if (child.getElement() == Element.EARTH) {
+                            success = p.getStatus().useEarth(child.getPower());
+                        } else if (child.getElement() == Element.ENERGY) {
+                            success = p.getStatus().useEnergy(child.getPower());
+                        }
+                        if (success) {
+                            p.getListOfCharacterOnTable().add(child);
+                            p.getListOfCardOnHand().remove(card);
+                            resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                            refreshPlayer();
+                        }
+                    }
+                } else {
+                    boolean success = false;
+                    if (card.getElement() == Element.AIR) {
+                        success = p.getStatus().useAir(card.getPower());
+                    } else if (card.getElement() == Element.WATER) {
+                        success = p.getStatus().useWater(card.getPower());
+                    } else if (card.getElement() == Element.FIRE) {
+                        success = p.getStatus().useFire(card.getPower());
+                    } else if (card.getElement() == Element.EARTH) {
+                        success = p.getStatus().useEarth(card.getPower());
+                    } else if (card.getElement() == Element.ENERGY) {
+                        success = p.getStatus().useEnergy(card.getPower());
+                    }
+                    if (success) {
+                        p.getListOfSkillOnTable().add(card);
+                        p.getListOfCardOnHand().remove(card);
+                        resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                        refreshPlayer();
+                    }
                 }
-                if (success) {
-                    p.getListOfCharacterOnTable().add(child);
-                    p.getListOfCardOnHand().remove(card);
-                    resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
-                    refreshPlayer();
-                }
-            } else {}
+            }
         }
     }
     
@@ -121,28 +147,29 @@ public class Player1FieldController {
         def.setText(c.getDefAsString());
     }
     
-    public void hoverToCard(Event e) {
+    @FXML private void hoverToCard(Event e) {
         Node button = (Node) e.getSource();
         AnchorPane cardGUI = (AnchorPane) button.getParent();
         if (cardGUI.getParent().equals(this.cardsOnHand)) {
             int idxCard = this.cardsOnHand.getChildren().indexOf(cardGUI);
             if (idxCard < this.p.getListOfCardOnHand().size()) {
-                this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCardOnHand().get(idxCard));
-                this.mainWindowController.getSingleCardController().showCardDetails();
+                this.mainWindowController.showCardDetails(this.p.getListOfCardOnHand().get(idxCard));
             }
         } else if (cardGUI.getParent().equals(this.character)) {
             int idxCard = this.character.getChildren().indexOf(cardGUI);
             if (idxCard < this.p.getListOfCharacterOnTable().size()) {
-                this.mainWindowController.getSingleCardController().setCard(this.p.getListOfCharacterOnTable().get(idxCard));
-                this.mainWindowController.getSingleCardController().showCardDetails();
+                this.mainWindowController.showCardDetails(this.p.getListOfCharacterOnTable().get(idxCard));
             }
         } else if (cardGUI.getParent().equals(this.skill)) {
-            
+            int idxCard = this.skill.getChildren().indexOf(cardGUI);
+            if (idxCard < this.p.getListOfSkillOnTable().size()) {
+                this.mainWindowController.showCardDetails(this.p.getListOfSkillOnTable().get(idxCard));
+            }
         }
     }
     
-    public void hoverFromCard(Event e) {
-        this.mainWindowController.getSingleCardController().resetCard();
+    @FXML private void hoverFromCard(Event e) {
+        this.mainWindowController.resetCardDetails();
     }
     
     public void resetCard(AnchorPane a) {
@@ -155,5 +182,13 @@ public class Player1FieldController {
         pow.setText("");
         atk.setText("");
         def.setText("");
+    }
+
+    @FXML private void attackButtonClicked(ActionEvent event) {
+        if (mainWindowController.getTurn() == 2) {
+            if (p.getListOfCharacterOnTable().size() == 0) {
+                //ATTACK
+            }
+        }
     }
 }

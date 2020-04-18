@@ -2,7 +2,6 @@ package com.avatarduel.player;
 
 import com.avatarduel.card.*;
 import com.avatarduel.card.Character;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -57,7 +56,7 @@ public class Player{
 		return this.characterOnTable;
 	}
 
-	public List<Card> getListOfSkillOnTable() { return this.skillOnTable}
+	public List<Card> getListOfSkillOnTable() { return this.skillOnTable;}
 
 	public void setListOfCharacterOnTable(List<Character> updated){
 		this.characterOnTable = updated;

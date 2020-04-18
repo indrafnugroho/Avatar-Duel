@@ -68,6 +68,8 @@ public abstract class Card{
         public void setIsSummoned(boolean b) {
             isSummoned = b;
         }
+        
+        public abstract int getPower();
 
 	public String toString(){
 		String result = "";

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,11 +14,12 @@
       <fx:include fx:id="player1Field" layoutY="360.0" source="Player1Field.fxml" />
       <VBox fx:id="phase" layoutX="1135.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
          <children>
-            <Label fx:id="draw" alignment="CENTER" prefHeight="30.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" text="DRAW" textAlignment="CENTER" />
+            <Label fx:id="draw" alignment="CENTER" prefHeight="30.0" prefWidth="135.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;" text="DRAW" textAlignment="CENTER" />
             <Label fx:id="main" alignment="CENTER" prefHeight="30.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" text="MAIN" textAlignment="CENTER" />
             <Label fx:id="battle" alignment="CENTER" prefHeight="30.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" text="BATTLE" textAlignment="CENTER" />
             <Label fx:id="end" alignment="CENTER" prefHeight="30.0" prefWidth="135.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" text="END" textAlignment="CENTER" />
          </children>
       </VBox>
+      <Button fx:id="nextButton" layoutX="1153.5" layoutY="550.0" mnemonicParsing="false" onAction="#nextButtonClicked" prefHeight="50.0" prefWidth="100.0" text="Next Phase" />
    </children>
 </AnchorPane>

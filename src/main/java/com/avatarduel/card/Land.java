@@ -11,6 +11,10 @@ public class Land extends Card{
 	public Land(CardBuilder builder){
 		super(builder);
 	}
+        
+        public int getPower() {
+            return 0;
+        }
 
 	public void summon(Status linkedStatus){
 		this.isSummoned = true;

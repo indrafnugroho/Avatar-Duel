@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.avatarduel.controller;
 
 import javafx.fxml.FXML;
@@ -10,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-//import com.avatarduel.player.*;
 import com.avatarduel.card.*;
 import com.avatarduel.card.Character;
 import com.avatarduel.util.CSVReader;
@@ -20,11 +14,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
-/**
- *
- * @author indraf
- */
 public class MainWindowController {
     @FXML private Player1FieldController player1FieldController;
     @FXML private Player2FieldController player2FieldController;
@@ -35,6 +27,7 @@ public class MainWindowController {
     @FXML private Label main;
     @FXML private Label battle;
     @FXML private Label end;
+    @FXML private Button nextButton;
     
     private Player p1;
     private Player p2;
@@ -44,6 +37,8 @@ public class MainWindowController {
     private List<Land> landList;
     private List<Character> characterList;
     private List<Aura> auraList;
+    private String currPhase;
+    private int turn;
 
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
@@ -109,9 +104,13 @@ public class MainWindowController {
     @FXML private void initialize() throws IOException, URISyntaxException {
         try {
             System.out.println("Game has started");
+            currPhase = "draw";
+            turn = 1;
             loadCards();
             this.p1 = new Player("Qila", this.landList, this.characterList, this.auraList);
             this.p2 = new Player("Hojun", this.landList, this.characterList, this.auraList);
+            this.p1.drawCardFromDeck();
+//            player2FieldController.setCardsOnHand("invisible");
             player1FieldController.init(this, this.p1);
             player2FieldController.init(this, this.p2);
             singleCardController.init(this, this.auraList.get(0));
@@ -121,15 +120,60 @@ public class MainWindowController {
         }
     }
     
-    public Player1FieldController getP1FieldController() {
-        return this.player1FieldController;
+    public String getCurrPhase() {
+        return currPhase;
     }
     
-    public Player2FieldController getP2FieldController() {
-        return this.player2FieldController;
+    public int getTurn() {
+        return turn;
     }
     
-    public SingleCardController getSingleCardController() {
-        return this.singleCardController;
+    public void showCardDetails(Card c) {
+        this.singleCardController.setCard(c);
+        this.singleCardController.showCardDetails();
+    }
+    
+    public void resetCardDetails() {
+        this.singleCardController.resetCard();
+    }
+
+    @FXML private void nextButtonClicked(ActionEvent event) {
+        if (this.currPhase.equals("draw")) {
+            this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
+            this.currPhase = "main";
+        } else if (currPhase.equals("main")) {
+            this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
+            this.currPhase = "battle";
+        } else if (currPhase.equals("battle")) {
+            this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
+            this.currPhase = "end";
+        } else if (currPhase.equals("end")) {
+            this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
+            this.currPhase = "draw";
+            if (turn == 1) {
+                turn = 2;
+                if (this.p2.getListOfCardOnHand().size() < 10) {
+//                    this.p2.drawCardFromDeck();
+//                    this.player2FieldController.refreshPlayer();
+                }
+//                this.player2FieldController.isLandSummoned = false;
+//                player2FieldController.setCardsOnHand("visible");
+                player1FieldController.setCardsOnHand("invisible");
+            }
+            else {
+                turn = 1;
+                if (this.p1.getListOfCardOnHand().size() < 10) {
+                    this.p1.drawCardFromDeck();
+                    this.player1FieldController.refreshPlayer();
+                }
+                this.player1FieldController.isLandSummoned = false;
+                player1FieldController.setCardsOnHand("visible");
+//                player2FieldController.setCardsOnHand("invisible");
+            }
+        }
     }
 }
