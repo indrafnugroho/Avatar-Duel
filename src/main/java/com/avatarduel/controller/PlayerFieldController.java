@@ -368,36 +368,54 @@ public class PlayerFieldController {
         }
     }
 
+    public void onAttackCard(com.avatarduel.card.Character card) {
+        this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar, card);
+        selectedChar = null;
+        this.mainWindowController.refreshPlayers();
+    }
+
 
     @FXML protected void charCardClicked(ActionEvent e) {
-        if (selectedChar == null && selectedSkill == null) {
+        if (selectedChar == null) {
             String currPhase = mainWindowController.getCurrPhase();
             Node button = (Node) e.getSource();
             AnchorPane cardGUI = (AnchorPane) button.getParent();
             int idxCard = character.getChildren().indexOf(cardGUI);
-            Character card = p.getListOfCharacterOnTable().get(idxCard);
+            com.avatarduel.card.Character card = p.getListOfCharacterOnTable().get(idxCard);
             if (mainWindowController.getTurn() == this.turn) {
                 // Select main 
                 if (currPhase.equals("main")) {
-                    setCard(cardGUI, card, "highlight");
-                    selectedChar = card;
-                    cardButtons.setVisible(true);
-                    throwCardButton.setVisible(true);
-                    charRotateBtn.setVisible(true);
+                    if (this.selectedSkill == null) {
+                        setCard(cardGUI, card, "highlight");
+                        selectedChar = card;
+                        cardButtons.setVisible(true);
+                        throwCardButton.setVisible(true);
+                        charRotateBtn.setVisible(true);
+                    } else {
+                    
+                    }
                 } else if (currPhase.equals("battle") && card.getState().getPosition() == Position.ATTACK && !card.getHasAttacked()) {
                 // Select card used to attack
                     setCard(cardGUI, card, "highlight");
                     selectedChar = card;
                     if (this.enemy.getListOfCharacterOnTable().size() == 0) {
                         // If enemy do not have any character on field, can attack directly.
-                        charAttackBtn.setVisible(true);
+                        //charAttackBtn.setVisible(true);
+                        this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar);
+                        mainWindowController.refreshPlayers();
+                        selectedChar = null;
+                    } else {
+                        this.mainWindowController.setCurrCardEvent("card-attack");
+                        throwCardButton.setVisible(false);
+                        charRotateBtn.setVisible(false);
+                        cardButtons.setVisible(true); 
                     }
-                    throwCardButton.setVisible(false);
-                    cardButtons.setVisible(true);
                 }
             } else {
-                if (currPhase.equals("battle")) {
-                      
+                if (currPhase.equals("battle") && this.mainWindowController.getCurrCardEvent().equals("card-attack")) {
+                    System.out.println("attack");
+                    this.mainWindowController.onAttackTargetSelected(this, card);
+                    this.mainWindowController.setCurrCardEvent("");
                 }
             }
         }
@@ -421,6 +439,7 @@ public class PlayerFieldController {
     }
 
     @FXML protected void skillCardClicked(ActionEvent e) {
+        /*
         if (mainWindowController.getCurrPhase().equals("main") && selectedSkill == null) {
             Node button = (Node) e.getSource();
             AnchorPane cardGUI = (AnchorPane) button.getParent();
@@ -430,5 +449,6 @@ public class PlayerFieldController {
             setCard(cardGUI, card, "highlight");
             cardButtons.setVisible(true);
         }
+        */
     }
 }

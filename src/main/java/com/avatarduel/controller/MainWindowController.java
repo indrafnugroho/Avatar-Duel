@@ -39,6 +39,7 @@ public class MainWindowController {
     private List<Aura> auraList;
     private String currPhase;
     private int turn;
+    private String currCardEvent;
 
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
@@ -105,6 +106,7 @@ public class MainWindowController {
         try {
             System.out.println("Game has started");
             currPhase = "draw";
+            currCardEvent = "";
             turn = 1;
             loadCards();
             this.p1 = new Player("Qila", this.landList, this.characterList, this.auraList);
@@ -123,6 +125,14 @@ public class MainWindowController {
     public String getCurrPhase() {
         return currPhase;
     }
+
+    public String getCurrCardEvent() {
+        return this.currCardEvent;
+    }
+
+    public void setCurrCardEvent(String event) {
+        this.currCardEvent = event;
+    } 
     
     public int getTurn() {
         return turn;
@@ -140,6 +150,14 @@ public class MainWindowController {
     public void refreshPlayers() {
         this.player1FieldController.refreshPlayer();
         this.player2FieldController.refreshPlayer();
+    }
+
+    public void onAttackTargetSelected(PlayerFieldController pfc, com.avatarduel.card.Character card) {
+        if (pfc == player1FieldController) {
+            player2FieldController.onAttackCard(card);
+        } else if (pfc == player2FieldController) {
+            player1FieldController.onAttackCard(card);
+        } 
     }
 
     @FXML private void nextButtonClicked(ActionEvent event) {
