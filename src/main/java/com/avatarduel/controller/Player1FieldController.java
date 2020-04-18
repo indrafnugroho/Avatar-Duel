@@ -112,23 +112,25 @@ public class Player1FieldController {
                         }
                     }
                 } else {
-                    boolean success = false;
-                    if (card.getElement() == Element.AIR) {
-                        success = p.getStatus().useAir(card.getPower());
-                    } else if (card.getElement() == Element.WATER) {
-                        success = p.getStatus().useWater(card.getPower());
-                    } else if (card.getElement() == Element.FIRE) {
-                        success = p.getStatus().useFire(card.getPower());
-                    } else if (card.getElement() == Element.EARTH) {
-                        success = p.getStatus().useEarth(card.getPower());
-                    } else if (card.getElement() == Element.ENERGY) {
-                        success = p.getStatus().useEnergy(card.getPower());
-                    }
-                    if (success) {
-                        p.getListOfSkillOnTable().add(card);
-                        p.getListOfCardOnHand().remove(card);
-                        resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
-                        refreshPlayer();
+                    if (mainWindowController.getCurrPhase().equals("main")) {
+                        boolean success = false;
+                        if (card.getElement() == Element.AIR) {
+                            success = p.getStatus().useAir(card.getPower());
+                        } else if (card.getElement() == Element.WATER) {
+                            success = p.getStatus().useWater(card.getPower());
+                        } else if (card.getElement() == Element.FIRE) {
+                            success = p.getStatus().useFire(card.getPower());
+                        } else if (card.getElement() == Element.EARTH) {
+                            success = p.getStatus().useEarth(card.getPower());
+                        } else if (card.getElement() == Element.ENERGY) {
+                            success = p.getStatus().useEnergy(card.getPower());
+                        }
+                        if (success) {
+                            p.getListOfSkillOnTable().add(card);
+                            p.getListOfCardOnHand().remove(card);
+                            resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                            refreshPlayer();
+                        }
                     }
                 }
             }
@@ -145,6 +147,23 @@ public class Player1FieldController {
         pow.setText(c.getPowAsString());
         atk.setText(c.getAtkAsString());
         def.setText(c.getDefAsString());
+        switch (c.getElement()) {
+            case AIR:
+                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: orange;");
+                break;
+            case WATER:
+                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightblue;");
+                break;
+            case FIRE:
+                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: red;");
+                break;
+            case EARTH:
+                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightgreen;");
+                break;
+            case ENERGY:
+                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
+                break;
+        }
     }
     
     @FXML private void hoverToCard(Event e) {
@@ -182,6 +201,7 @@ public class Player1FieldController {
         pow.setText("");
         atk.setText("");
         def.setText("");
+        a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
     }
 
     @FXML private void attackButtonClicked(ActionEvent event) {

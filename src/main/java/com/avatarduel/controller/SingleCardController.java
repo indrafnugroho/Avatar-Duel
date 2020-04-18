@@ -49,6 +49,7 @@ public class SingleCardController {
         setPicture();
         setDescription();
         setStatus();
+        setColor();
     }
     
     public void setName() {
@@ -102,6 +103,26 @@ public class SingleCardController {
         this.status.setText(stat);
     }
     
+    public void setColor() {
+        switch (card.getElement()) {
+            case AIR:
+                singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: orange;");
+                break;
+            case WATER:
+                singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightblue;");
+                break;
+            case FIRE:
+                singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: red;");
+                break;
+            case EARTH:
+                singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightgreen;");
+                break;
+            case ENERGY:
+                singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
+                break;
+        }
+    }
+    
     public void resetCard() {
         this.name.setText("");
         this.element.setImage(null);
@@ -110,5 +131,6 @@ public class SingleCardController {
         this.picture.setImage(null);
         this.description.setText("");
         this.status.setText("");
+        singleCard.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
     }
 }

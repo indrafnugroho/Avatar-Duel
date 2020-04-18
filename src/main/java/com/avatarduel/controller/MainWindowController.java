@@ -139,19 +139,19 @@ public class MainWindowController {
 
     @FXML private void nextButtonClicked(ActionEvent event) {
         if (this.currPhase.equals("draw")) {
-            this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "main";
         } else if (currPhase.equals("main")) {
-            this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.main.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "battle";
         } else if (currPhase.equals("battle")) {
-            this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.battle.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "end";
         } else if (currPhase.equals("end")) {
-            this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: null;");
+            this.end.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
             this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: yellow;");
             this.currPhase = "draw";
             if (turn == 1) {
@@ -163,6 +163,7 @@ public class MainWindowController {
 //                this.player2FieldController.isLandSummoned = false;
 //                player2FieldController.setCardsOnHand("visible");
                 player1FieldController.setCardsOnHand("invisible");
+                p2.getStatus().reset();
             }
             else {
                 turn = 1;
@@ -173,6 +174,7 @@ public class MainWindowController {
                 this.player1FieldController.isLandSummoned = false;
                 player1FieldController.setCardsOnHand("visible");
 //                player2FieldController.setCardsOnHand("invisible");
+                p1.getStatus().reset();
             }
         }
     }
