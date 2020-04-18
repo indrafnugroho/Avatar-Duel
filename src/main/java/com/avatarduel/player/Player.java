@@ -125,7 +125,7 @@ public class Player{
 	}
 
 	public void drawCardFromDeck(){
-            Random rand = new Random();    
+            Random rand = new Random();
             if (cardOnHand.size() < 10) {
                 int int_random = rand.nextInt(deck.size());
 		Card fromDeck = deck.remove(int_random);
@@ -136,7 +136,7 @@ public class Player{
                 nRandom = rand.nextInt(deck.size());
                 Card fromDeck = deck.remove(nRandom);
 		cardOnHand.add(fromDeck);
-            }	
+            }
 	}
 
 	public void initializeStatus(){
@@ -191,7 +191,7 @@ public class Player{
                     Aura aura = (Aura) a;
                     switch (aura.getElement()) {
                         case AIR:
-                            success = this.status.useWater(aura.getPower());
+                            success = this.status.useAir(aura.getPower());
                             break;
                         case WATER:
                             success = this.status.useWater(aura.getPower());
@@ -203,8 +203,7 @@ public class Player{
                             success = this.status.useFire(aura.getPower());
                             break;
                         case ENERGY:
-                            success = this.status.useFire(aura.getPower());
-                            break;
+                            success = this.status.useEnergy(aura.getPower());
                     }
                     if (success) aura.summon(c);
                     break;
@@ -212,7 +211,7 @@ public class Player{
                     PowerUp powerUp = (PowerUp) a;
                     switch (powerUp.getElement()) {
                         case AIR:
-                            success = this.status.useWater(powerUp.getPower());
+                            success = this.status.useAir(powerUp.getPower());
                             break;
                         case WATER:
                             success = this.status.useWater(powerUp.getPower());
@@ -233,7 +232,7 @@ public class Player{
                     Destroy destroy = (Destroy) a;
                     switch (destroy.getElement()) {
                         case AIR:
-                            success = this.status.useWater(destroy.getPower());
+                            success = this.status.useAir(destroy.getPower());
                             break;
                         case WATER:
                             success = this.status.useWater(destroy.getPower());
@@ -298,18 +297,36 @@ public class Player{
 	}
 
 	public void attack(Player playerTwo, Character characterA, Character characterB){
-		int i = 0;
-		boolean found = false;
 
-		List<Character> playerTwoListOfCardOnTable = playerTwo.getListOfCharacterOnTable();
+		List<Character> playerTwoListOfCharacterOnTableOnTable = playerTwo.getListOfCharacterOnTable();
+		List<Card> playerTwoListOfSkillOnTable = playerTwo.getListOfSkillOnTable();
+
 
 		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.getAttack() < characterA.getAttack())){
-                        playerTwoListOfCardOnTable.remove(characterB);
+			playerTwoListOfCharacterOnTableOnTable.remove(characterB);
 			playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
 		}
-
 		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getDefense())){
-			playerTwoListOfCardOnTable.remove(i);
+			playerTwoListOfCharacterOnTableOnTable.remove(characterB);
+		}
+
+		for (int j = 0; j < playerTwoListOfSkillOnTable.size(); j ++){
+			Card a = playerTwoListOfSkillOnTable.get(j);
+			Boolean found_linked = false;
+			switch (a.getType()) {
+				case AURA:
+					Aura aura = (Aura) a;
+					Character linkedCharacter = ((Aura) a).getLinkedCard();
+					if (linkedCharacter == characterB) {
+						((Aura) a).destroy();
+					}
+				case POWERUP:
+					PowerUp powerUp = (PowerUp) a;
+					Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
+					if (linkedCharacter2 == characterB) {
+						((PowerUp) a).destroy();
+					}
+			}
 		}
 	}
 
