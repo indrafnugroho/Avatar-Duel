@@ -251,7 +251,12 @@ public class Player{
                     if (success) destroy.summon(c);
                     break;
                 }
-		this.skillOnTable.add(a);
+		if (success) {
+                    if (skillOnTable.size() < 6) {
+                        this.skillOnTable.add(a);
+                        cardOnHand.remove(a);
+                    }
+                }
                 return success;
 	}
 

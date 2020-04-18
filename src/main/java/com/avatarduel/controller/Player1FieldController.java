@@ -95,19 +95,19 @@ public class Player1FieldController {
         this.energy.setText(this.p.getStatus().energyToString());
         for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
             AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
-            setCard(card, this.p.getListOfCardOnHand().get(i));
+            setCard(card, this.p.getListOfCardOnHand().get(i), "default");
         }
         for (int i=0; i < this.p.getListOfCharacterOnTable().size(); i++) {
             AnchorPane card = (AnchorPane) this.character.getChildren().get(i);
-            setCard(card, this.p.getListOfCharacterOnTable().get(i));
+            setCard(card, this.p.getListOfCharacterOnTable().get(i), "default");
         }
         for (int i=0; i < this.p.getListOfSkillOnTable().size(); i++) {
             AnchorPane card = (AnchorPane) this.skill.getChildren().get(i);
-            setCard(card, this.p.getListOfSkillOnTable().get(i));
+            setCard(card, this.p.getListOfSkillOnTable().get(i), "default");
         }
     }
     
-    public void setCard(AnchorPane a, Card c) {
+    public void setCard(AnchorPane a, Card c, String s) {
         Label type = (Label) a.getChildren().get(0);
         Label pow = (Label) a.getChildren().get(1);
         Label atk = (Label) a.getChildren().get(2);
@@ -119,19 +119,24 @@ public class Player1FieldController {
         def.setText(c.getDefAsString());
         switch (c.getElement()) {
             case AIR:
-                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: orange;");
+                if (s.equals("highlight")) a.setStyle("-fx-border-color: yellow; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: orange;");
+                else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: orange;");
                 break;
             case WATER:
-                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightblue;");
+                if (s.equals("highlight")) a.setStyle("-fx-border-color: yellow; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightblue;");
+                else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightblue;");
                 break;
             case FIRE:
-                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: red;");
+                if (s.equals("highlight")) a.setStyle("-fx-border-color: yellow; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: red;");
+                else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: red;");
                 break;
             case EARTH:
-                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightgreen;");
+                if (s.equals("highlight")) a.setStyle("-fx-border-color: yellow; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightgreen;");
+                else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: lightgreen;");
                 break;
             case ENERGY:
-                a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
+                if (s.equals("highlight")) a.setStyle("-fx-border-color: yellow; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
+                else a.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: white;");
                 break;
         }
     }
@@ -174,26 +179,10 @@ public class Player1FieldController {
                     }
                 } else {
                     if (mainWindowController.getCurrPhase().equals("main")) {
-                        boolean success = false;
-                        if (card.getElement() == Element.AIR) {
-                            success = p.getStatus().useAir(card.getPower());
-                        } else if (card.getElement() == Element.WATER) {
-                            success = p.getStatus().useWater(card.getPower());
-                        } else if (card.getElement() == Element.FIRE) {
-                            success = p.getStatus().useFire(card.getPower());
-                        } else if (card.getElement() == Element.EARTH) {
-                            success = p.getStatus().useEarth(card.getPower());
-                        } else if (card.getElement() == Element.ENERGY) {
-                            success = p.getStatus().useEnergy(card.getPower());
-                        }
-                        if (success) {
-                            if (p.getListOfSkillOnTable().size() < 6) {
-                                p.getListOfSkillOnTable().add(card);
-                                p.getListOfCardOnHand().remove(card);
-                                resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
-                                refreshPlayer();
-                            }
-                        }
+                        setCard(cardGUI, card, "highlight");
+                        selectedSkill = card;
+                        cardButtons.setVisible(true);
+                        skillAttachBtn.setVisible(true);
                     }
                 }
             }
@@ -239,7 +228,25 @@ public class Player1FieldController {
     @FXML private void charRotateClicked(ActionEvent event) {
     }
 
-    @FXML private void skillAttachClicked(ActionEvent event) {
+    @FXML private void skillAttachClicked(ActionEvent e) {
+        if (selectedSkill != null && selectedChar != null) {
+            Character ch = (Character) selectedChar;
+            if (p.putSkillOnTable(selectedSkill, ch)) {
+                if (selectedSkill.getType() == CardType.DESTROY) p.useSkill(p, selectedSkill);
+                else p.useSkill(selectedSkill);
+                
+                AnchorPane card1 = (AnchorPane) character.getChildren().get(p.getListOfCharacterOnTable().indexOf(ch));
+                AnchorPane card2 = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
+                setCard(card1, selectedChar, "default");
+                setCard(card2, selectedSkill, "default");
+                resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                refreshPlayer();
+                skillAttachBtn.setVisible(false);
+                cardButtons.setVisible(false);
+            }
+        } else if (enemyCard != null && enemyCard.getType() != CardType.CHARACTER && selectedSkill != null) {
+            
+        }
     }
 
     @FXML private void throwCardButtonClicked(ActionEvent event) {
@@ -248,9 +255,22 @@ public class Player1FieldController {
     @FXML private void cancelCardButtonClicked(ActionEvent event) {
     }
 
-    @FXML private void charCardClicked(ActionEvent event) {
-        if (mainWindowController.getCurrPhase().equals("")) {
-            
+    @FXML private void charCardClicked(ActionEvent e) {
+        if (mainWindowController.getCurrPhase().equals("main")) {
+            if (selectedSkill != null) {
+                Node button = (Node) e.getSource();
+                AnchorPane cardGUI = (AnchorPane) button.getParent();
+                int idxCard = character.getChildren().indexOf(cardGUI);
+                if (idxCard < p.getListOfCharacterOnTable().size()) {
+                    Card card = p.getListOfCardOnHand().get(idxCard);
+                    selectedChar = card;
+                    setCard(cardGUI, card, "highlight");
+                } else {
+                    
+                }
+            }
+        } else {
+                
         }
     }
 
