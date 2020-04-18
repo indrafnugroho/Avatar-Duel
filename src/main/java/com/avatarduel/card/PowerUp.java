@@ -15,9 +15,9 @@ public class PowerUp extends Card {
 		this.power = builder.power;
 	}
 
-	public void summon(int x, Character linkedCard){
+	public void summon(Character linkedCard){
 		this.isSummoned = true;
-		this.state = new State(x,2, Position.ATTACK);
+		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
 
@@ -25,9 +25,8 @@ public class PowerUp extends Card {
 		this.linkedCard.state.setPowerUp(true);
 	}
 
-	public State destroy(){
+	public void destroy(){
 		this.linkedCard.state.setPowerUp(false);
-		return this.state;
 	}
                 
 	public int getPower() {

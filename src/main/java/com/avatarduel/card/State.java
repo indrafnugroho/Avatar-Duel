@@ -1,24 +1,12 @@
 package com.avatarduel.card;
 
 public class State{
-	private int x;
-	private int y;
 	private Position pos; //Position
 	private boolean getPowerUp;
 
-	public State(int x, int y, Position pos){
-		this.x = x;
-		this.y = y;
+	public State(Position pos){
 		this.pos = pos;
 		this.getPowerUp = false;
-	}
-
-	public int getX(){
-		return this.x;
-	}
-
-	public int getY(){
-		return this.y;
 	}
 
 	public Position getPosition(){
@@ -43,9 +31,7 @@ public class State{
 
 	public String toString(){
 		String result = "";
-		result += "X : " + this.x + 
-					"\nY : " + this.y +
-					"\nPosition : " + (this.pos == Position.ATTACK? "attack" : "defense")  + "\n";
+		result += "\nPosition : " + (this.pos == Position.ATTACK? "attack" : "defense")  + "\n";
 		return result;
 	}
 }

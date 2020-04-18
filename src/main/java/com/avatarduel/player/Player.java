@@ -27,12 +27,6 @@ public class Player{
 
 		initializeDeck(landList, characterList, auraList);
 		initializeCardOnHand();
-
-		// TESTING
-//		for (int i = 0; i < 7; i++) {
-//			System.out.println(cardOnHand.get(i).toString());
-//			System.out.println("");
-//		}
 	}
 
 	public Status getStatus() {
@@ -131,32 +125,51 @@ public class Player{
 	}
 
 	public void drawCardFromDeck(){
-		Random rand = new Random();
-		int int_random = rand.nextInt(deck.size());
+            Random rand = new Random();    
+            if (cardOnHand.size() < 10) {
+                int int_random = rand.nextInt(deck.size());
 		Card fromDeck = deck.remove(int_random);
 		cardOnHand.add(fromDeck);
+            } else {
+                int nRandom = rand.nextInt(cardOnHand.size());
+                cardOnHand.remove(nRandom);
+                nRandom = rand.nextInt(deck.size());
+                Card fromDeck = deck.remove(nRandom);
+		cardOnHand.add(fromDeck);
+            }	
 	}
 
 	public void initializeStatus(){
 		status.reset();
 	}
 
-	public void putCharacterOnTable(Character c, int x, Position pos){
-		this.cardOnHand.remove(c);
-		c.summon(x, pos);
-		if (c.getElement() == Element.AIR){
-			this.status.useAir(c.getPower());
-		}
-		else if (c.getElement() == Element.WATER){
-			this.status.useWater(c.getPower());
-		}
-		else if (c.getElement() == Element.EARTH){
-			this.status.useEarth(c.getPower());
-		}
-		else if (c.getElement() == Element.FIRE){
-			this.status.useFire(c.getPower());
-		}
-		this.characterOnTable.add(c);
+	public boolean putCharacterOnTable(Character c, Position pos){
+                boolean success = false;
+		switch (c.getElement()) {
+                case AIR:
+                    success = this.status.useAir(c.getPower());
+                    break;
+                case WATER:
+                    success = this.status.useWater(c.getPower());
+                    break;
+                case EARTH:
+                    success = this.status.useEarth(c.getPower());
+                    break;
+                case FIRE:
+                    success = this.status.useFire(c.getPower());
+                    break;
+                case ENERGY:
+                    success = this.status.useEnergy(c.getPower());
+                    break;
+                }
+		if (success) {
+                    if (characterOnTable.size() < 6) {
+                        this.characterOnTable.add(c);
+                        this.cardOnHand.remove(c);
+                        c.summon(pos);
+                    }
+                }
+                return success;
 	}
 
 	public void changeCharacterPosition(Character c){
@@ -170,57 +183,76 @@ public class Player{
 		this.status.addStatus(l.getElement());
 	}
 
-	public void putSkillOnTable(Card a, Character c, int x){
+	public boolean putSkillOnTable(Card a, Character c){
 		this.cardOnHand.remove(a);
-		if (a.getType() == CardType.AURA){
-			Aura aura = (Aura) a;
-			if (aura.getElement() == Element.AIR){
-				this.status.useWater(aura.getPower());
-			}
-			else if (aura.getElement() == Element.WATER){
-				this.status.useWater(aura.getPower());
-			}
-			else if (aura.getElement() == Element.EARTH){
-				this.status.useEarth(aura.getPower());
-			}
-			else if (aura.getElement() == Element.FIRE){
-				this.status.useFire(aura.getPower());
-			}
-			aura.summon(x, c);
-		}
-		else if (a.getType() == CardType.POWERUP){
-			PowerUp powerUp = (PowerUp) a;
-			if (powerUp.getElement() == Element.AIR){
-				this.status.useWater(powerUp.getPower());
-			}
-			else if (powerUp.getElement() == Element.WATER){
-				this.status.useWater(powerUp.getPower());
-			}
-			else if (powerUp.getElement() == Element.EARTH){
-				this.status.useEarth(powerUp.getPower());
-			}
-			else if (powerUp.getElement() == Element.FIRE){
-				this.status.useFire(powerUp.getPower());
-			}
-			powerUp.summon(x, c);
-		}
-		else if (a.getType() == CardType.DESTROY){
-			Destroy destroy = (Destroy) a;
-			if (destroy.getElement() == Element.AIR){
-				this.status.useWater(destroy.getPower());
-			}
-			else if (destroy.getElement() == Element.WATER){
-				this.status.useWater(destroy.getPower());
-			}
-			else if (destroy.getElement() == Element.EARTH){
-				this.status.useEarth(destroy.getPower());
-			}
-			else if (destroy.getElement() == Element.FIRE){
-				this.status.useFire(destroy.getPower());
-			}
-			destroy.summon(x, c);
-		}
+                boolean success = false;
+		switch (a.getType()) {
+                case AURA:
+                    Aura aura = (Aura) a;
+                    switch (aura.getElement()) {
+                        case AIR:
+                            success = this.status.useWater(aura.getPower());
+                            break;
+                        case WATER:
+                            success = this.status.useWater(aura.getPower());
+                            break;
+                        case EARTH:
+                            success = this.status.useEarth(aura.getPower());
+                            break;
+                        case FIRE:
+                            success = this.status.useFire(aura.getPower());
+                            break;
+                        case ENERGY:
+                            success = this.status.useFire(aura.getPower());
+                            break;
+                    }
+                    if (success) aura.summon(c);
+                    break;
+                case POWERUP:
+                    PowerUp powerUp = (PowerUp) a;
+                    switch (powerUp.getElement()) {
+                        case AIR:
+                            success = this.status.useWater(powerUp.getPower());
+                            break;
+                        case WATER:
+                            success = this.status.useWater(powerUp.getPower());
+                            break;
+                        case EARTH:
+                            success = this.status.useEarth(powerUp.getPower());
+                            break;
+                        case FIRE:
+                            success = this.status.useFire(powerUp.getPower());
+                            break;
+                        case ENERGY:
+                            success = this.status.useEnergy(powerUp.getPower());
+                            break;
+                    }
+                    if (success) powerUp.summon(c);
+                    break;
+                case DESTROY:
+                    Destroy destroy = (Destroy) a;
+                    switch (destroy.getElement()) {
+                        case AIR:
+                            success = this.status.useWater(destroy.getPower());
+                            break;
+                        case WATER:
+                            success = this.status.useWater(destroy.getPower());
+                            break;
+                        case EARTH:
+                            success = this.status.useEarth(destroy.getPower());
+                            break;
+                        case FIRE:
+                            success = this.status.useFire(destroy.getPower());
+                            break;
+                        case ENERGY:
+                            success = this.status.useEnergy(destroy.getPower());
+                            break;
+                    }
+                    if (success) destroy.summon(c);
+                    break;
+                }
 		this.skillOnTable.add(a);
+                return success;
 	}
 
 	public void useSkill(Card a){
@@ -234,22 +266,14 @@ public class Player{
 		}
 	}
 
-	public void useSkill(Player playerTwo, Card a, Character c){
-		int i = 0;
+	public void useSkill(Player playerTwo, Card a){
 		boolean found = false;
 		List<Character> characterList = playerTwo.getListOfCharacterOnTable();
 		if (a.getType() == CardType.DESTROY){
 			Destroy destroy = (Destroy) a;
-			State summoned = destroy.activate();
-			while (i < characterList.size() && !found){
-				State state = characterList.get(i).getState();
-				if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
-					characterList.remove(i);
-					found = true;
-				}
-			}
-			this.skillOnTable.remove(destroy);
-			playerTwo.setListOfCharacterOnTable(characterList);
+			Character c = destroy.activate();
+			characterList.remove(c);
+                        this.skillOnTable.remove(destroy);
 		}
 	}
 
@@ -258,99 +282,15 @@ public class Player{
 		boolean found = false;
 		if (a.getType() == CardType.POWERUP){
 			PowerUp powerUp = (PowerUp) a;
-			State powerUpState = powerUp.destroy();
-			while (i < this.skillOnTable.size() && !found){
-				State state =this.skillOnTable.get(i).getState();
-				if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
-					this.skillOnTable.remove(i);
-					found = true;
-				}
-			}
+			powerUp.destroy();
+			this.skillOnTable.remove(powerUp);
 		}
 		else if (a.getType() == CardType.AURA){
 			Aura aura = (Aura) a;
-			State auraState = aura.destroy();
-			while (i < this.skillOnTable.size() && !found){
-				State state = this.skillOnTable.get(i).getState();
-				if ((state.getX() == auraState.getX()) && (state.getY() == auraState.getY())){
-					this.skillOnTable.remove(i);
-					found = true;
-				}
-			}
+			aura.destroy();
+			this.skillOnTable.remove(aura);
 		}
-
 	}
-
-//	public void putDestroyOnTable(Destroy d, Character c, int x){
-//		this.cardOnHand.remove(d);
-//		if (d.getElement() == Element.AIR){
-//			this.status.useAir(d.getPower());
-//		}
-//		else if (c.getElement() == Element.WATER){
-//			this.status.useWater(d.getPower());
-//		}
-//		else if (c.getElement() == Element.EARTH){
-//			this.status.useEarth(d.getPower());
-//		}
-//		else if (c.getElement() == Element.FIRE){
-//			this.status.useFire(d.getPower());
-//		}
-//		d.summon(x, c);
-//		this.destroyOnTable.add(d);
-//	}
-
-//	public void useDestroy(Player b, Destroy d, Character c){
-//		int i = 0;
-//		boolean found = false;
-//		this.cardOnHand.remove(d);
-//		List<Character> characterList = b.getListOfCharacterOnTable();
-//		State summoned = d.activate();
-//		while (i < characterList.size() && !found){
-//			State state = characterList.get(i).getState();
-//			if ((state.getX() == summoned.getX()) && (state.getY() == summoned.getY())){
-//				characterList.remove(i);
-//				found = true;
-//			}
-//		}
-//		this.destroyOnTable.remove(d);
-//		b.setListOfCharacterOnTable(characterList);
-//	}
-
-//	public void putPowerUpOnTable(PowerUp p, Character c, int x){
-//		this.cardOnHand.remove(p);
-//		if (p.getElement() == Element.AIR){
-//			this.status.useAir(p.getPower());
-//		}
-//		else if (c.getElement() == Element.WATER){
-//			this.status.useWater(p.getPower());
-//		}
-//		else if (c.getElement() == Element.EARTH){
-//			this.status.useEarth(p.getPower());
-//		}
-//		else if (c.getElement() == Element.FIRE){
-//			this.status.useFire(p.getPower());
-//		}
-//		p.summon(x, c);
-//		this.powerUpOnTable.add(p);
-//	}
-
-//	public void usePowerUp(PowerUp p){
-//		p.activate();
-//	}
-
-//	public void removePowerUpFromTable(PowerUp p){
-//		int i = 0;
-//		boolean found = false;
-//		State powerUpState = p.destroy();
-//		while (i < this.powerUpOnTable.size() && !found){
-//			State state =this.powerUpOnTable.get(i).getState();
-//			if ((state.getX() == powerUpState.getX()) && (state.getY() == powerUpState.getY())){
-//				this.powerUpOnTable.remove(i);
-//				found = true;
-//			}
-//		}
-//	}
-
 
 	public void attack(Player playerTwo, Character characterA, Character characterB){
 		int i = 0;
@@ -358,37 +298,18 @@ public class Player{
 
 		List<Character> playerTwoListOfCardOnTable = playerTwo.getListOfCharacterOnTable();
 
-		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.getAttack() <= characterA.getAttack())){
-			State destroyed = characterB.destroy();
-			while (i < playerTwoListOfCardOnTable.size() && !found){
-				State state = playerTwoListOfCardOnTable.get(i).getState();
-				if ((state.getX() == destroyed.getX()) && (state.getY() == destroyed.getY())){
-					found = true;
-					playerTwoListOfCardOnTable.remove(i);
-					playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
-				}
-			}
+		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.getAttack() < characterA.getAttack())){
+                        playerTwoListOfCardOnTable.remove(characterB);
+			playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
 		}
 
-		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() <= characterA.getDefense())){
-			State destroyed = characterB.destroy();
-			while (i < playerTwoListOfCardOnTable.size() && !found){
-				State state = playerTwoListOfCardOnTable.get(i).getState();
-				if ((state.getX() == destroyed.getX()) && (state.getY() == destroyed.getY())){
-					found = true;
-					playerTwoListOfCardOnTable.remove(i);
-				}
-			}
+		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getDefense())){
+			playerTwoListOfCardOnTable.remove(i);
 		}
-
-		playerTwo.setListOfCharacterOnTable(playerTwoListOfCardOnTable);
 	}
-
 
 	public void attack(Player playerTwo, Character characterA){
 		// dipake apabila playerTwp character nya abis
 		playerTwo.setLifePoint(playerTwo.getLifePoint() - characterA.getAttack());
 	}
-
-
 }
