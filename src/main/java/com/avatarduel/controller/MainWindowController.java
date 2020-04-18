@@ -110,9 +110,9 @@ public class MainWindowController {
             this.p1 = new Player("Qila", this.landList, this.characterList, this.auraList);
             this.p2 = new Player("Hojun", this.landList, this.characterList, this.auraList);
             this.p1.drawCardFromDeck();
-//            player2FieldController.setCardsOnHand("invisible");
-            player1FieldController.init(this, this.p1);
-            player2FieldController.init(this, this.p2);
+            player2FieldController.setCardsOnHand("invisible");
+            player1FieldController.init(this, this.p1, this.p2, 1);
+            player2FieldController.init(this, this.p2, this.p1, 2);
             singleCardController.init(this, this.auraList.get(0));
         }
         catch (IOException | URISyntaxException e) {
@@ -162,9 +162,9 @@ public class MainWindowController {
                 turn = 2;
                 this.p2.drawCardFromDeck();
                 p2.getStatus().reset();
-//                this.player2FieldController.refreshPlayer();
-//                this.player2FieldController.isLandSummoned = false;
-//                player2FieldController.setCardsOnHand("visible");
+                this.player2FieldController.refreshPlayer();
+                this.player2FieldController.isLandSummoned = false;
+                player2FieldController.setCardsOnHand("visible");
                 player1FieldController.setCardsOnHand("invisible");
                 this.nextButton.setLayoutY(125.0);
             }
@@ -175,7 +175,7 @@ public class MainWindowController {
                 this.player1FieldController.refreshPlayer();
                 this.player1FieldController.isLandSummoned = false;
                 player1FieldController.setCardsOnHand("visible");
-//                player2FieldController.setCardsOnHand("invisible");
+                player2FieldController.setCardsOnHand("invisible");
                 this.nextButton.setLayoutY(550.0);
             }
         }

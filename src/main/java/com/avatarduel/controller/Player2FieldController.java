@@ -18,8 +18,8 @@ import com.avatarduel.card.*;
  *
  * @author indraf
  */
-public class Player2FieldController {
-    private MainWindowController mainWindowController;
+public class Player2FieldController extends PlayerFieldController {
+/*    private MainWindowController mainWindowController;
     private Player p;
     
     @FXML private VBox details;
@@ -99,4 +99,5 @@ public class Player2FieldController {
         atk.setText("");
         def.setText("");
     }
+*/
 }
