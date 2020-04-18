@@ -20,6 +20,10 @@ public class PowerUp extends Card {
 		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
+        
+        public Character getLinkedCard() {
+            return linkedCard;
+        }
 
 	public void activate(){
 		this.linkedCard.state.setPowerUp(true);

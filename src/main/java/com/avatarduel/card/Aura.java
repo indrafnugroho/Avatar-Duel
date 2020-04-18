@@ -28,6 +28,10 @@ public class Aura extends Card{
 	}
         
 	public int getPower(){ return this.power;}
+        
+        public Character getLinkedCard() {
+            return linkedCard;
+        }
 
 	public void summon(Character linkedCard){
 		this.isSummoned = true;
