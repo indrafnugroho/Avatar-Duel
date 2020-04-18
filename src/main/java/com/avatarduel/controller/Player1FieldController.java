@@ -93,9 +93,19 @@ public class Player1FieldController {
         this.earth.setText(this.p.getStatus().earthToString());
         this.water.setText(this.p.getStatus().waterToString());
         this.energy.setText(this.p.getStatus().energyToString());
+        for (int i=0; i < 10; i++) {
+            AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
+            resetCard(card);
+        }
         for (int i=0; i < this.p.getListOfCardOnHand().size(); i++) {
             AnchorPane card = (AnchorPane) this.cardsOnHand.getChildren().get(i);
             setCard(card, this.p.getListOfCardOnHand().get(i), "default");
+        }
+        for (int i=0; i < 6; i++) {
+            AnchorPane card1 = (AnchorPane) this.character.getChildren().get(i);
+            AnchorPane card2 = (AnchorPane) this.skill.getChildren().get(i);
+            resetCard(card1);
+            resetCard(card2);
         }
         for (int i=0; i < this.p.getListOfCharacterOnTable().size(); i++) {
             AnchorPane card = (AnchorPane) this.character.getChildren().get(i);
@@ -166,19 +176,17 @@ public class Player1FieldController {
                         Land l = (Land) card;
                         p.useLand(l);
                         isLandSummoned = true;
-                        resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
                         refreshPlayer();
                     }
                 } else if (card.getType() == CardType.CHARACTER) {
                     if (mainWindowController.getCurrPhase().equals("main")) {
                         Character child = (Character) card;
                         if (p.putCharacterOnTable(child, Position.ATTACK)) {
-                            resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
                             refreshPlayer();
                         }
                     }
                 } else {
-                    if (mainWindowController.getCurrPhase().equals("main")) {
+                    if (mainWindowController.getCurrPhase().equals("main") && selectedSkill == null) {
                         setCard(cardGUI, card, "highlight");
                         selectedSkill = card;
                         cardButtons.setVisible(true);
@@ -232,14 +240,17 @@ public class Player1FieldController {
         if (selectedSkill != null && selectedChar != null) {
             Character ch = (Character) selectedChar;
             if (p.putSkillOnTable(selectedSkill, ch)) {
-                if (selectedSkill.getType() == CardType.DESTROY) p.useSkill(p, selectedSkill);
-                else p.useSkill(selectedSkill);
-                
-                AnchorPane card1 = (AnchorPane) character.getChildren().get(p.getListOfCharacterOnTable().indexOf(ch));
-                AnchorPane card2 = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
-                setCard(card1, selectedChar, "default");
-                setCard(card2, selectedSkill, "default");
-                resetCard((AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().size()));
+                if (selectedSkill.getType() == CardType.DESTROY) {
+                    p.useSkill(p, selectedSkill);
+                } else {
+                    p.useSkill(selectedSkill);
+                    AnchorPane card1 = (AnchorPane) character.getChildren().get(p.getListOfCharacterOnTable().indexOf(ch));
+                    AnchorPane card2 = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
+                    setCard(card1, selectedChar, "default");
+                    setCard(card2, selectedSkill, "default");
+                }
+                selectedSkill = null;
+                selectedChar = null;
                 refreshPlayer();
                 skillAttachBtn.setVisible(false);
                 cardButtons.setVisible(false);
@@ -250,30 +261,82 @@ public class Player1FieldController {
     }
 
     @FXML private void throwCardButtonClicked(ActionEvent event) {
+        if (mainWindowController.getCurrPhase().equals("main")) {
+            if (selectedChar != null) {
+                if (p.getListOfCharacterOnTable().contains(selectedChar)) {
+                    p.removeCharacterFromTable(p, (Character) selectedChar);
+                    selectedChar = null;
+                    cardButtons.setVisible(false);
+                    refreshPlayer();
+                }
+            } else if (selectedSkill != null) {
+                if (p.getListOfSkillOnTable().contains(selectedSkill)) {
+                    p.removeSkillFromTable(p, selectedSkill);
+                    selectedSkill = null;
+                    cardButtons.setVisible(false);
+                    refreshPlayer();
+                }
+            }
+        }
     }
 
     @FXML private void cancelCardButtonClicked(ActionEvent event) {
+        if (selectedChar != null) {
+            Character ch = (Character) selectedChar;
+            if (p.getListOfCharacterOnTable().contains(ch)) {
+                AnchorPane card = (AnchorPane) character.getChildren().get(p.getListOfCharacterOnTable().indexOf(ch));
+                setCard(card, selectedChar, "default");
+                selectedChar = null;
+                charAttackBtn.setVisible(false);
+                charRotateBtn.setVisible(false);
+                cardButtons.setVisible(false);
+            }
+        }
+        
+        if (selectedSkill != null) {
+            if (p.getListOfSkillOnTable().contains(selectedSkill)) {
+                AnchorPane card = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
+                setCard(card, selectedSkill, "default");
+                selectedSkill = null;
+                skillAttachBtn.setVisible(false);
+                cardButtons.setVisible(false);
+            } else {
+                AnchorPane card = (AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().indexOf(selectedSkill));
+                setCard(card, selectedSkill, "default");
+                selectedSkill = null;
+                skillAttachBtn.setVisible(false);
+                cardButtons.setVisible(false);
+            }
+        }
     }
 
     @FXML private void charCardClicked(ActionEvent e) {
-        if (mainWindowController.getCurrPhase().equals("main")) {
-            if (selectedSkill != null) {
-                Node button = (Node) e.getSource();
-                AnchorPane cardGUI = (AnchorPane) button.getParent();
-                int idxCard = character.getChildren().indexOf(cardGUI);
-                if (idxCard < p.getListOfCharacterOnTable().size()) {
-                    Card card = p.getListOfCardOnHand().get(idxCard);
-                    selectedChar = card;
-                    setCard(cardGUI, card, "highlight");
-                } else {
-                    
-                }
+        if (mainWindowController.getCurrPhase().equals("main") && selectedChar == null) {
+            Node button = (Node) e.getSource();
+            AnchorPane cardGUI = (AnchorPane) button.getParent();
+            int idxCard = character.getChildren().indexOf(cardGUI);
+            Card card = p.getListOfCharacterOnTable().get(idxCard);
+            selectedChar = card;
+            setCard(cardGUI, card, "highlight");
+            if (selectedSkill == null) {
+                cardButtons.setVisible(true);
+                charAttackBtn.setVisible(true);
+                charRotateBtn.setVisible(true);
             }
-        } else {
+        } else if (mainWindowController.getCurrPhase().equals("battle") && selectedChar == null){
                 
         }
     }
 
-    @FXML private void skillCardClicked(ActionEvent event) {
+    @FXML private void skillCardClicked(ActionEvent e) {
+        if (mainWindowController.getCurrPhase().equals("main") && selectedSkill == null) {
+            Node button = (Node) e.getSource();
+            AnchorPane cardGUI = (AnchorPane) button.getParent();
+            int idxCard = skill.getChildren().indexOf(cardGUI);
+            Card card = p.getListOfSkillOnTable().get(idxCard);
+            selectedSkill = card;
+            setCard(cardGUI, card, "highlight");
+            cardButtons.setVisible(true);
+        }
     }
 }
