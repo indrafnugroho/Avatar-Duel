@@ -252,7 +252,7 @@ public class Player{
                 }
 		if (success) {
                     if (skillOnTable.size() < 6) {
-                        this.skillOnTable.add(a);
+                        if (a.getType() != CardType.DESTROY) this.skillOnTable.add(a);
                         cardOnHand.remove(a);
                     }
                 }
@@ -277,57 +277,47 @@ public class Player{
 			Destroy destroy = (Destroy) a;
 			Character c = destroy.activate();
 			characterList.remove(c);
-                        this.skillOnTable.remove(destroy);
+                        this.cardOnHand.remove(destroy);
 		}
 	}
 
-	public void removeSkillFromTable(Card a){
-		int i = 0;
-		boolean found = false;
+	public void removeSkillFromTable(Player p, Card a){
 		if (a.getType() == CardType.POWERUP){
-			PowerUp powerUp = (PowerUp) a;
-			powerUp.destroy();
-			this.skillOnTable.remove(powerUp);
+                        ((PowerUp) a).destroy();
+			p.getListOfSkillOnTable().remove((PowerUp) a);
 		}
 		else if (a.getType() == CardType.AURA){
-			Aura aura = (Aura) a;
-			aura.destroy();
-			this.skillOnTable.remove(aura);
+			((Aura) a).destroy();
+			p.getListOfSkillOnTable().remove((Aura) a);
 		}
 	}
-
+        
+        public void removeCharacterFromTable(Player p, Character c) {
+            for (int j = 0; j < p.getListOfSkillOnTable().size(); j ++){
+                Card a = p.getListOfSkillOnTable().get(j);
+                if (a.getType() == CardType.AURA) {
+                    Character linkedCharacter = ((Aura) a).getLinkedCard();
+                    if (linkedCharacter == c) removeSkillFromTable(p,a);
+                }
+                else if (a.getType() == CardType.POWERUP) {
+                    Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
+                    if (linkedCharacter2 == c) removeSkillFromTable(p,a);
+                }
+            }
+            p.getListOfCharacterOnTable().remove(c);
+        }
+        
 	public void attack(Player playerTwo, Character characterA, Character characterB){
-
 		List<Character> playerTwoListOfCharacterOnTableOnTable = playerTwo.getListOfCharacterOnTable();
 		List<Card> playerTwoListOfSkillOnTable = playerTwo.getListOfSkillOnTable();
 
-
 		if ((characterB.getState().getPosition() == Position.ATTACK) && (characterB.getAttack() < characterA.getAttack())){
-			playerTwoListOfCharacterOnTableOnTable.remove(characterB);
+			removeCharacterFromTable(playerTwo, characterB);
 			playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
 		}
 		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getDefense())){
-			playerTwoListOfCharacterOnTableOnTable.remove(characterB);
-		}
-
-		for (int j = 0; j < playerTwoListOfSkillOnTable.size(); j ++){
-			Card a = playerTwoListOfSkillOnTable.get(j);
-			Boolean found_linked = false;
-			switch (a.getType()) {
-				case AURA:
-					Aura aura = (Aura) a;
-					Character linkedCharacter = ((Aura) a).getLinkedCard();
-					if (linkedCharacter == characterB) {
-						((Aura) a).destroy();
-					}
-				case POWERUP:
-					PowerUp powerUp = (PowerUp) a;
-					Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
-					if (linkedCharacter2 == characterB) {
-						((PowerUp) a).destroy();
-					}
-			}
-		}
+			removeCharacterFromTable(playerTwo, characterB);
+		}	
 	}
 
 	public void attack(Player playerTwo, Character characterA){
