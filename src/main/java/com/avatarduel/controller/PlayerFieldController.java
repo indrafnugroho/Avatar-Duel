@@ -276,10 +276,17 @@ public class PlayerFieldController {
     }
 
     @FXML protected void charAttackClicked(ActionEvent event) {
+        if (mainWindowController.getCurrPhase().equals("battle") && mainWindowController.getTurn() == this.turn && selectedChar != null) {
+            this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar);
+            mainWindowController.refreshPlayers();
+            selectedChar = null;
+            charAttackBtn.setVisible(false);
+            cardButtons.setVisible(false);
+        } 
     }
 
     @FXML protected void charRotateClicked(ActionEvent event) {
-        if (mainWindowController.getCurrPhase().equals("main") && selectedChar != null) {
+        if (mainWindowController.getCurrPhase().equals("main") && mainWindowController.getTurn() == this.turn && selectedChar != null) {
             selectedChar.getState().rotate();
             selectedChar = null;
             cardButtons.setVisible(false);
@@ -362,26 +369,36 @@ public class PlayerFieldController {
     }
 
 
-
     @FXML protected void charCardClicked(ActionEvent e) {
         if (selectedChar == null && selectedSkill == null) {
             String currPhase = mainWindowController.getCurrPhase();
             Node button = (Node) e.getSource();
             AnchorPane cardGUI = (AnchorPane) button.getParent();
             int idxCard = character.getChildren().indexOf(cardGUI);
-            Card card = p.getListOfCharacterOnTable().get(idxCard);
-            if (currPhase.equals("main")) {
-                setCard(cardGUI, card, "highlight");
-                selectedChar = card;
-                cardButtons.setVisible(true);
-                throwCardButton.setVisible(true);
-                charRotateBtn.setVisible(true);
-            } else if (currPhase.equals("battle")) {
-                setCard(cardGUI, card, "highlight");
-                selectedChar = card;
-                charAttackBtn.setVisible(true);
-                throwCardButton.setVisible(false);
-                cardButtons.setVisible(true);
+            Character card = p.getListOfCharacterOnTable().get(idxCard);
+            if (mainWindowController.getTurn() == this.turn) {
+                // Select main 
+                if (currPhase.equals("main")) {
+                    setCard(cardGUI, card, "highlight");
+                    selectedChar = card;
+                    cardButtons.setVisible(true);
+                    throwCardButton.setVisible(true);
+                    charRotateBtn.setVisible(true);
+                } else if (currPhase.equals("battle") && card.getState().getPosition() == Position.ATTACK && !card.getHasAttacked()) {
+                // Select card used to attack
+                    setCard(cardGUI, card, "highlight");
+                    selectedChar = card;
+                    if (this.enemy.getListOfCharacterOnTable().size() == 0) {
+                        // If enemy do not have any character on field, can attack directly.
+                        charAttackBtn.setVisible(true);
+                    }
+                    throwCardButton.setVisible(false);
+                    cardButtons.setVisible(true);
+                }
+            } else {
+                if (currPhase.equals("battle")) {
+                      
+                }
             }
         }
         /*

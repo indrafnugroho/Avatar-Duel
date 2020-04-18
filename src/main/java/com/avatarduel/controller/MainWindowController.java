@@ -137,6 +137,11 @@ public class MainWindowController {
         this.singleCardController.resetCard();
     }
 
+    public void refreshPlayers() {
+        this.player1FieldController.refreshPlayer();
+        this.player2FieldController.refreshPlayer();
+    }
+
     @FXML private void nextButtonClicked(ActionEvent event) {
         if (this.currPhase.equals("draw")) {
             this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
@@ -160,6 +165,7 @@ public class MainWindowController {
             this.currPhase = "draw";
             if (turn == 1) {
                 turn = 2;
+                this.p2.initializeTurn();
                 this.p2.drawCardFromDeck();
                 p2.getStatus().reset();
                 this.player2FieldController.refreshPlayer();
@@ -170,6 +176,7 @@ public class MainWindowController {
             }
             else {
                 turn = 1;
+                this.p1.initializeTurn();
                 this.p1.drawCardFromDeck();
                 p1.getStatus().reset();
                 this.player1FieldController.refreshPlayer();
