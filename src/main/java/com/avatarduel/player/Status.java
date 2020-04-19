@@ -15,6 +15,7 @@ public class Status{
 	private int maxAir;
         private int maxEnergy;
 
+	// Constructor for Status
 	public Status(){
 		this.earth = 0;
 		this.maxEarth = 0;
@@ -28,6 +29,7 @@ public class Status{
                 this.maxEnergy = 0;
 	}
 
+	// Method to add Status with element as parameter
 	public void addStatus(Element element){
 		if(element == Element.FIRE){
 			this.maxFire++;
@@ -47,6 +49,7 @@ public class Status{
                 }
 	}
 
+	// Method to return use Air status with power as parameter
 	public boolean useAir(int power){
 		if(this.air - power >= 0){
 			this.air -= power;
@@ -54,6 +57,7 @@ public class Status{
 		} else return false;
 	}
 
+	// Method to return use Fire status with power as parameter
 	public boolean useFire(int power){
 		if(this.fire - power >= 0){
 			this.fire -= power;
@@ -61,6 +65,7 @@ public class Status{
 		} else return false;
 	}
 
+	// Method to return use Earth status with power as Parameter
 	public boolean useEarth(int power){
 		if(this.earth - power >= 0){
 			this.earth -= power;
@@ -68,13 +73,15 @@ public class Status{
 		} else return false;
 	}
 
+	// Method to return use Water status with power as parameter
 	public boolean useWater(int power){
             if(this.water - power >= 0){
 		this.water -= power;
                 return true;
             } else return false;
 	}
-        
+    
+	// Method to return use Energy status with power as parameter
         public boolean useEnergy(int power){
             if (this.energy - power >= 0){
 		this.energy -= power;
@@ -82,6 +89,7 @@ public class Status{
             } else return false;
 	}
 
+	// Method to reset status
 	public void reset(){
             this.water = this.maxWater;
             this.fire = this.maxFire;
@@ -90,30 +98,35 @@ public class Status{
             this.energy = this.maxEnergy;
 	}
 
+	// Method to convert water toString
 	public String waterToString(){
             String result = "";
             result += this.water + " / " + this.maxWater;
             return result;
 	}
-        
+	
+	// Method to convert earth toString
         public String earthToString() {
             String result = "";
             result += this.earth + " / " + this.maxEarth;
             return result;
         }
-        
+
+        // Method to convert air toString
         public String airToString() {
             String result = "";
             result += this.air + " / " + this.maxAir;
             return result;
         }
-        
+
+       	// Method to convert fire toString
         public String fireToString() {
             String result = "";
             result += this.fire + " / " + this.maxFire;
             return result;
         }
-        
+
+	  	// Method to convert energy toString
         public String energyToString() {
             String result = "";
             result += this.energy + " / " + this.maxEnergy;

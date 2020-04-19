@@ -29,10 +29,17 @@ public class SingleCardController {
         singleCard.setVisible(false);
     }
     
+    /**
+     * Set card 
+     * @param s, card that want to set
+     */
     public void setCard(Card c) {
         this.card = c;
     }
     
+    /**
+     * Show card details
+     */
     public void showCardDetails() {
         setName();
         setElement();
@@ -45,10 +52,16 @@ public class SingleCardController {
         singleCard.setVisible(true);
     }
     
+    /**
+     * Set name
+     */
     public void setName() {
         this.name.setText(this.card.getName());
     }
     
+    /**
+     * Set element
+     */
     public void setElement() {
         switch(this.card.getElement()) {
             case AIR:
@@ -74,32 +87,50 @@ public class SingleCardController {
         }
     }
     
+    /**
+     * Set card effect
+     */
     public void setEffect() {
         if (card.getType() != CardType.CHARACTER && card.getType() != CardType.LAND) {
             effect.setText(card.getType().name());
         }
     }
     
+    /**
+     * Set card type
+     */
     public void setType() {
         if (card.getType() != CardType.AURA && card.getType() != CardType.POWERUP && card.getType() != CardType.DESTROY) {
             this.type.setText(this.card.getType().name());
         } else this.type.setText("SKILL");
     }
     
+    /**
+     * Set card picture
+     */
     public void setPicture() {
         Image img = new Image(this.card.getPath());
         this.picture.setImage(img);
     }
     
+    /**
+     * Set card description
+     */
     public void setDescription() {
         this.description.setText(this.card.getDescription());
     }
     
+    /**
+     * Set card status
+     */
     public void setStatus() {
         String stat = this.card.getStatsAsString();
         this.status.setText(stat);
     }
     
+    /**
+     * Set card color
+     */
     public void setColor() {
         switch (card.getElement()) {
             case AIR:
@@ -120,6 +151,9 @@ public class SingleCardController {
         }
     }
     
+    /**
+     * Reset all card's attribute
+     */
     public void resetCard() {
         this.name.setText("");
         this.element.setImage(null);
