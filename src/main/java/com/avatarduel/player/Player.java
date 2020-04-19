@@ -171,6 +171,7 @@ public class Player{
 		PowerUp p2 = new CardBuilder(CardType.POWERUP)
 				.setElement(rand_element3)
 				.setPower(rand.nextInt(10))
+				.setDescription("Use this card to weaken the opposite player! Even when the opposite player's character is on defense. ")
 				.buildPowerUp();
 		this.deck.add(d);
 		this.deck.add(p1);
