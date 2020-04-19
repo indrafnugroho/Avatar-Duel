@@ -75,11 +75,15 @@ public class SingleCardController {
     }
     
     public void setEffect() {
-//        TO-DO
+        if (card.getType() != CardType.CHARACTER && card.getType() != CardType.LAND) {
+            effect.setText(card.getType().name());
+        }
     }
     
     public void setType() {
-        this.type.setText(this.card.getType().name());
+        if (card.getType() != CardType.AURA && card.getType() != CardType.POWERUP && card.getType() != CardType.DESTROY) {
+            this.type.setText(this.card.getType().name());
+        } else this.type.setText("SKILL");
     }
     
     public void setPicture() {
