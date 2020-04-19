@@ -83,4 +83,5 @@ public class Character extends Card{
     public String getPowAsString() {
         return "POW " + this.power;
     }
+
 }

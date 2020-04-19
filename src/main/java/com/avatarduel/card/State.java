@@ -1,6 +1,6 @@
 package com.avatarduel.card;
 
-public class State{
+public class State implements Cloneable {
 	private Position pos; //Position
 	private boolean getPowerUp;
 
@@ -34,4 +34,9 @@ public class State{
 		result += "\nPosition : " + (this.pos == Position.ATTACK? "attack" : "defense")  + "\n";
 		return result;
 	}
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

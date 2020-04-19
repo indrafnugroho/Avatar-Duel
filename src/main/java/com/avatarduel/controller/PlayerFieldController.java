@@ -382,6 +382,7 @@ public class PlayerFieldController {
         this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar, card);
         selectedChar = null;
         this.mainWindowController.refreshPlayers();
+        cardButtons.setVisible(false);
     }
     
     public void onDestroyCard(com.avatarduel.card.Character card) {
@@ -392,6 +393,7 @@ public class PlayerFieldController {
         }
         selectedSkill = null;
         this.mainWindowController.refreshPlayers();
+        cardButtons.setVisible(false);
     }
 
 

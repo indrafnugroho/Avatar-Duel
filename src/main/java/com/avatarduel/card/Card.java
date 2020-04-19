@@ -3,7 +3,7 @@ package com.avatarduel.card;
 import com.avatarduel.card.Element;
 import com.avatarduel.card.CardBuilder;
 
-public abstract class Card{
+public abstract class Card implements Cloneable {
 	protected int id;
 	protected CardType type;
 	protected String name;
@@ -90,5 +90,14 @@ public abstract class Card{
     public abstract String getDefAsString();
     
     public abstract String getPowAsString();
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Card c = (Card) super.clone();
+        if (this.state != null) {
+            c.state = (State) this.state.clone();
+        }
+        return c;
+    }
 
 }

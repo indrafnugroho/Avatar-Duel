@@ -77,17 +77,25 @@ public class Player{
 		for (int i = 0; i < 20; i++){
 			int a = rand.nextInt(landList.size());
 			int b = rand.nextInt(characterList.size());
-			Land land_deck = landList.get(a);
-			com.avatarduel.card.Character char_deck = characterList.get(b);
-			this.deck.add(land_deck);
-			this.deck.add(char_deck);
+			Land landDeck = landList.get(a);
+			com.avatarduel.card.Character charDeck = characterList.get(b);
+            try {
+			    this.deck.add((Card) landDeck.clone());
+			    this.deck.add((Card) charDeck.clone());
+            } catch(Exception e) {
+                System.out.println("E"+ e);
+            }
 		}
 
 		for (int i = 0; i < 7; i++){
 			int a = rand.nextInt(4);
 
-			Aura aura_deck = auraList.get(a);
-			this.deck.add(aura_deck);
+			Aura auraDeck = auraList.get(a);
+            try {
+			    this.deck.add((Card) auraDeck.clone());
+            } catch(Exception e) {
+                System.out.println(e);
+            }
 		}
 
 		int rand1 = rand.nextInt(elements.size());
@@ -281,8 +289,9 @@ public class Player{
 		if (a.getType() == CardType.DESTROY){
 			Destroy destroy = (Destroy) a;
 			Character c = destroy.activate();
-			characterList.remove(c);
-                        this.cardOnHand.remove(destroy);
+			//characterList.remove(c);
+            //this.cardOnHand.remove(destroy);
+            this.removeCharacterFromTable(playerTwo, c);
 		}
 	}
 
@@ -298,15 +307,14 @@ public class Player{
 	}
         
         public void removeCharacterFromTable(Player p, Character c) {
-            for (int j = 0; j < p.getListOfSkillOnTable().size(); j ++){
-                Card a = p.getListOfSkillOnTable().get(j);
+            for (Card a: p.getListOfSkillOnTable()){
                 if (a.getType() == CardType.AURA) {
                     Character linkedCharacter = ((Aura) a).getLinkedCard();
-                    if (linkedCharacter.equals(c)) removeSkillFromTable(p,a);
+                    if (linkedCharacter == c) removeSkillFromTable(p,a);
                 }
                 else if (a.getType() == CardType.POWERUP) {
                     Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
-                    if (linkedCharacter2.equals(c)) removeSkillFromTable(p,a);
+                    if (linkedCharacter2 == c) removeSkillFromTable(p,a);
                 }
             }
             p.getListOfCharacterOnTable().remove(c);
