@@ -363,14 +363,14 @@ public class PlayerFieldController {
         }
         
         if (selectedSkill != null) {
-                AnchorPane card = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
+                AnchorPane card = (AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().indexOf(selectedSkill));
                 setCard(card, selectedSkill, "default");
                 selectedSkill = null;
                 skillAttachBtn.setVisible(false);
                 cardButtons.setVisible(false);
         }
         if (selectedSkillOnTable != null) {
-                AnchorPane card = (AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().indexOf(selectedSkillOnTable));
+                AnchorPane card = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkillOnTable));
                 setCard(card, selectedSkillOnTable, "default");
                 selectedSkillOnTable = null;
                 skillAttachBtn.setVisible(false);

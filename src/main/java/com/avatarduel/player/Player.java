@@ -336,6 +336,9 @@ public class Player{
 		}
 		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getAttack())){
 			removeCharacterFromTable(playerTwo, characterB);
+            if (characterA.getState().isPowerUp()) {
+			playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getDefense())); 
+            }
 		}	
 	}
 
