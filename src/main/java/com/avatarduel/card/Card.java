@@ -14,7 +14,10 @@ public abstract class Card implements Cloneable {
 	protected boolean isSummonable;
 	protected State state;
 
-	// Constructor for card with CardBuilder as parameter
+	/**
+     * Constructor for Card
+	 * @param builder, get attribute from builder
+     */
 
 	public Card(CardBuilder builder){
 		this.id = builder.id;
@@ -27,68 +30,98 @@ public abstract class Card implements Cloneable {
 		this.isSummonable = false;
 	}
     
-	// Return ID from card
+	/**
+     * Get Id from card
+     */
 	public int getId(){
 		return this.id;
 	}
 
-	// Return Element from card
+	/**
+     * Get Element from card
+     */
 	public Element getElement(){
 		return this.element;
 	}
 
-	// Return type from card as CardType
+	/**
+     * Get type from card
+     */
     public CardType getType() {
             return this.type;
         }
 
-	// Return card's name
+	/**
+     * Get Name from card
+     */
 	public String getName(){
 		return this.name;
 	}
 
-	// Return card's Description
+	/**
+     * Get Description from card
+     */
 	public String getDescription(){
 		return this.description;
 	}
 
-	// Return path for card
+	/**
+     * Get path from card
+     */
 	public String getPath(){
 		return this.imagepath;
 	}
 
-	// Return card's status (summoned or not summoned)
+	/**
+     * Get status from card
+     */
 	public boolean getStatus(){
 		return this.isSummoned;
 	}
 
-	// Return card's Summonable 
+	/**
+     * Get summonable status from card
+     */
 	public boolean getSummonable(){
 		return this.isSummonable;
 	}
     
-	// Set Summonable status with parameter b
+	/**
+     * Set summonable status for card
+	 * @param b, b as the new isSummonable status
+     */
     public void setIsSummonable(boolean b) {
             isSummonable = b;
         }
     
-	// Return summoned status of card
+	/**
+     * Get is summoned status from card
+     */
     public boolean getIsSummoned() {
             return isSummoned;
         }
 
-	// Set Summoned status with parameter b
+	/**
+     * Set Summoned status for card
+	 * @param b, b as the new is summoned status
+     */
     public void setIsSummoned(boolean b) {
             isSummoned = b;
         }
 
-	// Return state of card	    
+	/**
+     * Get state from card
+     */   
     public State getState() { return state;}
 
-	// Abstract method to getPower of the card   
+	/**
+     * Abstract method to get power from card
+     */
     public abstract int getPower();
 
-	// Method to convert card toString
+	/**
+     * Convert to string
+     */
 	public String toString(){
 		String result = "";
 		result += "Id: " + this.id + 
@@ -99,17 +132,25 @@ public abstract class Card implements Cloneable {
 		return result;
 	}
 
-	// Abstract method to getStatsAsString
+	/**
+     * Abstract method to get status as string
+     */
     public abstract String getStatsAsString(); 
 
 
-    // Abstract method to getAtkAsString
+    /**
+     * Abstract method to get Attack as string
+     */
     public abstract String getAtkAsString();
 
-	// Abstract method to getDefAsString
+	/**
+     * Abstract method to get Defense as string
+     */
     public abstract String getDefAsString();
 
-    // Abstract method to getPowAsString
+    /**
+     * Abstract method to get Power as string
+     */
     public abstract String getPowAsString();
 
     @Override

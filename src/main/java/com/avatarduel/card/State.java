@@ -4,18 +4,25 @@ public class State implements Cloneable {
 	private Position pos; //Position
 	private boolean getPowerUp;
 
-	// Constructor for State with pos(Position) as parameter
+	/**
+     * Constructor for State 
+	 * @param pos, position of state
+     */
 	public State(Position pos){
 		this.pos = pos;
 		this.getPowerUp = false;
 	}
 
-	// Return position
+	/**
+     * Get Position
+     */
 	public Position getPosition(){
 		return this.pos;
 	}
 
-	// Method to Rotate card's position
+	/**
+     * Rotate position
+     */
 	public void rotate(){
 		if(this.pos == Position.ATTACK){
 			this.pos = Position.DEFENSE;
@@ -24,17 +31,24 @@ public class State implements Cloneable {
 		}
 	}
 
-	// Method to SetPowerUp of card
+	/**
+     * Set Power Up
+	 * @param powerUp, set powerUp as the new attribute of state
+     */
 	public void setPowerUp(boolean powerUp){
 		this.getPowerUp = powerUp;
 	}
 
-	// Return card's getPowerUp status
+	/**
+     * Get isPowerUp
+     */
 	public boolean isPowerUp(){
 		return this.getPowerUp;
 	}
 
-	// Convert toString
+	/**
+     * Convert toString
+     */
 	public String toString(){
 		String result = "";
 		result += "\nPosition : " + (this.pos == Position.ATTACK? "attack" : "defense")  + "\n";
