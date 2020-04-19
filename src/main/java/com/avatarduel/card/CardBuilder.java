@@ -34,6 +34,7 @@ public class CardBuilder{
 	/**
      * Set id card
 	 * @param id, id that want to be set
+     * @return 
      */
 	public CardBuilder setId(int id){
 		this.id = id;
@@ -43,6 +44,7 @@ public class CardBuilder{
 	/**
      * Set card name
 	 * @param name, name that want to be set
+     * @return 
      */
 	public CardBuilder setName(String name){
 		this.name = name;
@@ -52,6 +54,7 @@ public class CardBuilder{
 	/**
      * Set card element
 	 * @param element, element that want to be set
+     * @return 
      */
 	public CardBuilder setElement(Element element){
 		this.element = element;
@@ -61,6 +64,7 @@ public class CardBuilder{
 	/**
      * Set card description
 	 * @param description, description that want to be set
+     * @return 
      */
 	public CardBuilder setDescription(String description){
 		this.description = description;
@@ -70,6 +74,7 @@ public class CardBuilder{
 	/**
      * Set card image path
 	 * @param imagepath, imagepath that want to be set
+     * @return 
      */
 	public CardBuilder setImagePath(String imagepath){
 		this.imagepath = imagepath;

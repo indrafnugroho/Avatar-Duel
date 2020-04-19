@@ -25,6 +25,7 @@ public class Aura extends Card{
 
 	/**
      * Get attack value
+     * @return
      */
     public int getAttack(){
 		return this.attack;
@@ -32,6 +33,7 @@ public class Aura extends Card{
 
 	/**
      * Get defense value
+     * @return 
      */
 	public int getDefense(){
 		return this.defense;
@@ -39,11 +41,13 @@ public class Aura extends Card{
     
 	/**
      * Get power value
+     * @return 
      */
 	public int getPower(){ return this.power;}
 
 	/**
      * Get linked card 
+     * @return 
      */
         public Character getLinkedCard() {
             return linkedCard;
@@ -78,6 +82,7 @@ public class Aura extends Card{
 
 	/**
      * Convert aura card to string
+     * @return 
      */
 	public String toString(){
 		String result = super.toString();
@@ -89,6 +94,7 @@ public class Aura extends Card{
     
 	/**
      * Get status as string
+     * @return 
      */
     public String getStatsAsString() {
         String res = "";
@@ -107,6 +113,7 @@ public class Aura extends Card{
     
 	/**
      * Get attack as string
+     * @return 
      */
     public String getAtkAsString() {
         String res = "ATK ";
@@ -119,6 +126,7 @@ public class Aura extends Card{
     
 	/**
      * Get defense as string
+     * @return 
      */
     public String getDefAsString() {
         String res = "DEF ";
@@ -131,6 +139,7 @@ public class Aura extends Card{
     
 	/**
      * Get power as string
+     * @return 
      */
     public String getPowAsString() {
         return "POW " + this.power;

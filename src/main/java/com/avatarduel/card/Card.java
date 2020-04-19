@@ -32,6 +32,7 @@ public abstract class Card implements Cloneable {
     
 	/**
      * Get Id from card
+     * @return 
      */
 	public int getId(){
 		return this.id;
@@ -39,6 +40,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Element from card
+     * @return 
      */
 	public Element getElement(){
 		return this.element;
@@ -46,6 +48,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get type from card
+     * @return 
      */
     public CardType getType() {
             return this.type;
@@ -53,6 +56,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Name from card
+     * @return 
      */
 	public String getName(){
 		return this.name;
@@ -60,6 +64,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Description from card
+     * @return 
      */
 	public String getDescription(){
 		return this.description;
@@ -67,6 +72,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get path from card
+     * @return 
      */
 	public String getPath(){
 		return this.imagepath;
@@ -74,6 +80,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get status from card
+     * @return 
      */
 	public boolean getStatus(){
 		return this.isSummoned;
@@ -81,6 +88,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get summonable status from card
+     * @return 
      */
 	public boolean getSummonable(){
 		return this.isSummonable;
@@ -96,6 +104,7 @@ public abstract class Card implements Cloneable {
     
 	/**
      * Get is summoned status from card
+     * @return 
      */
     public boolean getIsSummoned() {
             return isSummoned;
@@ -111,16 +120,19 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get state from card
+     * @return 
      */   
     public State getState() { return state;}
 
 	/**
      * Abstract method to get power from card
+     * @return 
      */
     public abstract int getPower();
 
 	/**
      * Convert to string
+     * @return
      */
 	public String toString(){
 		String result = "";
@@ -134,22 +146,26 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Abstract method to get status as string
+     * @return 
      */
     public abstract String getStatsAsString(); 
 
 
     /**
      * Abstract method to get Attack as string
+     * @return 
      */
     public abstract String getAtkAsString();
 
 	/**
      * Abstract method to get Defense as string
+     * @return 
      */
     public abstract String getDefAsString();
 
     /**
      * Abstract method to get Power as string
+     * @return 
      */
     public abstract String getPowAsString();
 
