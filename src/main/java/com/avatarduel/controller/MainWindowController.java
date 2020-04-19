@@ -159,6 +159,24 @@ public class MainWindowController {
             player1FieldController.onAttackCard(card);
         } 
     }
+    
+    public void onDestroyTargetSelected(PlayerFieldController pfc, com.avatarduel.card.Character card) {
+        if (pfc == player1FieldController) {
+            player2FieldController.onDestroyCard(card);
+        } else if (pfc == player2FieldController) {
+            player1FieldController.onDestroyCard(card);
+        } 
+    }
+
+    public void checkPlayersHP() {
+        if  (this.p1.getLifePoint() <= 0) {
+            System.out.println(this.p2.getName() + "Wins!");
+            this.currPhase = "win";
+        } else if  (this.p2.getLifePoint() <= 0) {
+            System.out.println(this.p1.getName() + "Wins!");
+            this.currPhase = "win";
+        }
+    }
 
     @FXML private void nextButtonClicked(ActionEvent event) {
         if (this.currPhase.equals("draw")) {

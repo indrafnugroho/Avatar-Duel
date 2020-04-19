@@ -230,12 +230,21 @@ public class PlayerFieldController {
                             refreshPlayer();
                         }
                     }
+                } else if (card.getType() == CardType.DESTROY) {
+                    if (mainWindowController.getCurrPhase().equals("main")) {
+                        setCard(cardGUI, card, "highlight");
+                        selectedSkill = card;
+                        cardButtons.setVisible(true);
+                        throwCardButton.setVisible(false);
+                        mainWindowController.setCurrCardEvent("destroy-card");
+                    }
                 } else {
                     if (mainWindowController.getCurrPhase().equals("main") && selectedSkill == null) {
                         setCard(cardGUI, card, "highlight");
                         selectedSkill = card;
                         cardButtons.setVisible(true);
                         skillAttachBtn.setVisible(true);
+                        throwCardButton.setVisible(false);
                     }
                 }
             }
@@ -349,6 +358,7 @@ public class PlayerFieldController {
                 charRotateBtn.setVisible(false);
                 cardButtons.setVisible(false);
             }
+            mainWindowController.setCurrCardEvent("");
         }
         
         if (selectedSkill != null) {
@@ -373,6 +383,16 @@ public class PlayerFieldController {
         selectedChar = null;
         this.mainWindowController.refreshPlayers();
     }
+    
+    public void onDestroyCard(com.avatarduel.card.Character card) {
+        if (p.putSkillOnTable(selectedSkill, card)) {
+            if (selectedSkill.getType() == CardType.DESTROY) {
+                p.useSkill(this.enemy, selectedSkill);
+            }
+        }
+        selectedSkill = null;
+        this.mainWindowController.refreshPlayers();
+    }
 
 
     @FXML protected void charCardClicked(ActionEvent e) {
@@ -385,15 +405,11 @@ public class PlayerFieldController {
             if (mainWindowController.getTurn() == this.turn) {
                 // Select main 
                 if (currPhase.equals("main")) {
-                    if (this.selectedSkill == null) {
-                        setCard(cardGUI, card, "highlight");
-                        selectedChar = card;
-                        cardButtons.setVisible(true);
-                        throwCardButton.setVisible(true);
-                        charRotateBtn.setVisible(true);
-                    } else {
-                    
-                    }
+                    setCard(cardGUI, card, "highlight");
+                    selectedChar = card;
+                    cardButtons.setVisible(true);
+                    throwCardButton.setVisible(true);
+                    charRotateBtn.setVisible(true);
                 } else if (currPhase.equals("battle") && card.getState().getPosition() == Position.ATTACK && !card.getHasAttacked()) {
                 // Select card used to attack
                     setCard(cardGUI, card, "highlight");
@@ -412,13 +428,19 @@ public class PlayerFieldController {
                     }
                 }
             } else {
-                if (currPhase.equals("battle") && this.mainWindowController.getCurrCardEvent().equals("card-attack")) {
+                if (currPhase.equals("main") && this.mainWindowController.getCurrCardEvent().equals("destroy-card")) {
+                    System.out.println("destroy");
+                    this.mainWindowController.onDestroyTargetSelected(this, card);
+                    this.mainWindowController.setCurrCardEvent("");
+                }
+                else if (currPhase.equals("battle") && this.mainWindowController.getCurrCardEvent().equals("card-attack")) {
                     System.out.println("attack");
                     this.mainWindowController.onAttackTargetSelected(this, card);
                     this.mainWindowController.setCurrCardEvent("");
                 }
             }
         }
+        this.mainWindowController.checkPlayersHP();
         /*
         if (mainWindowController.getCurrPhase().equals("main") && selectedChar == null) {
             Node button = (Node) e.getSource();

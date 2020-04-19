@@ -324,7 +324,7 @@ public class Player{
 			removeCharacterFromTable(playerTwo, characterB);
 			playerTwo.setLifePoint(playerTwo.getLifePoint() - (characterA.getAttack() - characterB.getAttack()));
 		}
-		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getDefense())){
+		else if ((characterB.getState().getPosition() == Position.DEFENSE) && (characterB.getDefense() < characterA.getAttack())){
 			removeCharacterFromTable(playerTwo, characterB);
 		}	
 	}
