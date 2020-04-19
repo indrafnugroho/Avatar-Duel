@@ -90,6 +90,7 @@ public class Player{
 
 	/**
      * Set list of Character on table of player
+     * @param updated updated list of char
      */
 	public void setListOfCharacterOnTable(List<Character> updated){
 		this.characterOnTable = updated;

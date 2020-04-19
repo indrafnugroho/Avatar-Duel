@@ -43,8 +43,8 @@ public class MainWindowController {
 
     /**
      * Load cards
-     * @throws java.io.IOException
-     * @throws java.net.URISyntaxException
+     * @throws java.io.IOException exception on IO
+     * @throws java.net.URISyntaxException exception on URI syntax mistake
      */
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());

@@ -84,6 +84,7 @@ public class CardBuilder{
 	/**
      * Set card power
 	 * @param power, power that want to be set
+     * @return card that's been set
      */
 	public CardBuilder setPower(int power){
 		this.power = power;
@@ -93,6 +94,7 @@ public class CardBuilder{
 	/**
      * Set card attack
 	 * @param attack, attack that want to be set
+     * @return card that's been set
      */
 	public CardBuilder setAttack(int attack){
 		this.attack = attack;
@@ -102,6 +104,7 @@ public class CardBuilder{
 	/**
      * Set card defense
 	 * @param defense, defense that want to be set
+     * @return card that's been set
      */
 	public CardBuilder setDefense(int defense){
 		this.defense = defense;
