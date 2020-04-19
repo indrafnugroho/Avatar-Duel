@@ -9,44 +9,62 @@ public class Destroy extends Card{
 	private Character linkedCard;
 	private int power;
 
-	// Constructor for Destroy with builder(CardBuilder) as parameter
+	/**
+     * Constructor for Destroy card
+	 * @param builder, get card attribute from builder
+     */
 	public Destroy(CardBuilder builder){
 
 		super(builder);
 		this.power = builder.power;
 	}
 
-	// Method to summon card
+	/**
+     * Summon destroy card
+	 * @param linkedCard, link card with linkedCard
+     */
 	public void summon(Character linkedCard){
 		this.isSummoned = true;
 		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
     
-	// Return power of card
+	/**
+     * Get Power from card
+     */
 	public int getPower(){ return this.power;}
 
-	// Return linkedCard
+	/**
+     * Activate card
+     */
 	public Character activate(){
 		return this.linkedCard;
 	}
     
-	// Return Stats as String
+	/**
+     * Get Status as String
+     */
     public String getStatsAsString() {
         return "POW / " + power;
     }
     
-	// Return Attack as String
+	/**
+     * Get Attack as String
+     */
     public String getAtkAsString() {
         return "";
     }
     
-	// Return Defense as String
+	/**
+     * Get Defense as String
+     */
     public String getDefAsString() {
         return "";
     }
     
-	// Return Power as String
+	/**
+     * Get Power as String
+     */
     public String getPowAsString() {
         return "POW " + power;
     }

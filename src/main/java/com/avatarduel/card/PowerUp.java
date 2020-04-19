@@ -9,57 +9,78 @@ public class PowerUp extends Card {
 	private Character linkedCard;
 	private int power;
 
-    // Constructor for PowerUp with builder(CardBuilder) as parameter
+    /**
+     * Constructor for PowerUp card
+	 * @param builder, get card attribute from builder
+     */
 	public PowerUp(CardBuilder builder){
 
 		super(builder);
 		this.power = builder.power;
 	}
 
-    // Summon card with linkedCard as parameter
-
+    /**
+     * Summon destroy card
+	 * @param linkedCard, link card with linkedCard
+     */
 	public void summon(Character linkedCard){
 		this.isSummoned = true;
 		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
     
-	// Return linkedCard of this card
+	/**
+     * Get Linked Card 
+     */
         public Character getLinkedCard() {
             return linkedCard;
         }
 
-	// Method to Activate card
+	/**
+     * Activate powerUp Card
+     */
 	public void activate(){
 		this.linkedCard.state.setPowerUp(true);
 	}
 
-	// Method to Destroy card
+	/**
+     * Destroy card
+     */
 	public void destroy(){
 		this.linkedCard.state.setPowerUp(false);
 	}
 
-	// Return power of card	    
+	/**
+     * Get Power of card
+     */
 	public int getPower() {
 		return power;
 	}
 
-	// Return Stats As String
+	/**
+     * Get Status as String
+     */
 	public String getStatsAsString() {
         return "POW / " + power;
     }
 
-    // Return Attack As String
+    /**
+     * Get Attack as String
+     */
     public String getAtkAsString() {
         return "";
     }
 
-    // Return Defense As String
+    /**
+     * Get Defense as String
+     */
     public String getDefAsString() {
         return "";
     }
 
-    // Return Power As String
+    /**
+     * Get Power as String
+     */
     public String getPowAsString() {
         return "POW " + power;
     }

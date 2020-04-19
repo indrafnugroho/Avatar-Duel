@@ -15,7 +15,9 @@ public class Status{
 	private int maxAir;
         private int maxEnergy;
 
-	// Constructor for Status
+	/**
+     * Constructor for Status
+     */
 	public Status(){
 		this.earth = 0;
 		this.maxEarth = 0;
@@ -29,7 +31,10 @@ public class Status{
                 this.maxEnergy = 0;
 	}
 
-	// Method to add Status with element as parameter
+	/**
+     * Add status
+	 * @param element, add status to element card on the field
+     */
 	public void addStatus(Element element){
 		if(element == Element.FIRE){
 			this.maxFire++;
@@ -49,7 +54,10 @@ public class Status{
                 }
 	}
 
-	// Method to return use Air status with power as parameter
+	/**
+     * Use Air power
+	 * @param power , how many power that need to be used
+     */
 	public boolean useAir(int power){
 		if(this.air - power >= 0){
 			this.air -= power;
@@ -57,7 +65,10 @@ public class Status{
 		} else return false;
 	}
 
-	// Method to return use Fire status with power as parameter
+	/**
+     * Use Fire power
+	 * @param power , how many power that need to be used
+     */
 	public boolean useFire(int power){
 		if(this.fire - power >= 0){
 			this.fire -= power;
@@ -65,7 +76,10 @@ public class Status{
 		} else return false;
 	}
 
-	// Method to return use Earth status with power as Parameter
+	/**
+     * Use Earth power
+	 * @param power , how many power that need to be used
+     */
 	public boolean useEarth(int power){
 		if(this.earth - power >= 0){
 			this.earth -= power;
@@ -73,7 +87,10 @@ public class Status{
 		} else return false;
 	}
 
-	// Method to return use Water status with power as parameter
+	/**
+     * Use Water power
+	 * @param power , how many power that need to be used
+     */
 	public boolean useWater(int power){
             if(this.water - power >= 0){
 		this.water -= power;
@@ -81,7 +98,10 @@ public class Status{
             } else return false;
 	}
     
-	// Method to return use Energy status with power as parameter
+	/**
+     * Use Energy power
+	 * @param power , how many power that need to be used
+     */
         public boolean useEnergy(int power){
             if (this.energy - power >= 0){
 		this.energy -= power;
@@ -89,7 +109,9 @@ public class Status{
             } else return false;
 	}
 
-	// Method to reset status
+	/**
+     * Reset all status
+     */
 	public void reset(){
             this.water = this.maxWater;
             this.fire = this.maxFire;
@@ -98,35 +120,45 @@ public class Status{
             this.energy = this.maxEnergy;
 	}
 
-	// Method to convert water toString
+	/**
+     * Convert water to string
+     */
 	public String waterToString(){
             String result = "";
             result += this.water + " / " + this.maxWater;
             return result;
 	}
 	
-	// Method to convert earth toString
+	/**
+     * Convert earth to string
+     */
         public String earthToString() {
             String result = "";
             result += this.earth + " / " + this.maxEarth;
             return result;
         }
 
-        // Method to convert air toString
+    /**
+     * Convert air to string
+     */
         public String airToString() {
             String result = "";
             result += this.air + " / " + this.maxAir;
             return result;
         }
 
-       	// Method to convert fire toString
+       	/**
+     * Convert fire to string
+     */
         public String fireToString() {
             String result = "";
             result += this.fire + " / " + this.maxFire;
             return result;
         }
 
-	  	// Method to convert energy toString
+	  	/**
+     * Convert energy to string
+     */
         public String energyToString() {
             String result = "";
             result += this.energy + " / " + this.maxEnergy;

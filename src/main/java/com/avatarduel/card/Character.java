@@ -11,7 +11,10 @@ public class Character extends Card{
 	private int power;
     private boolean hasAttackedForThisTurn;
 
-	// Constructor for Character with builder(CardBuilder) as parameter
+	/**
+     * Constructor for character card
+	 * @param builder, get card attribute from builder
+     */
 	public Character(CardBuilder builder){
 		super(builder);
 		this.attack = builder.attack;
@@ -20,61 +23,90 @@ public class Character extends Card{
         this.hasAttackedForThisTurn = false;
 	}
 
-	// Method to summon character with pos(Position) as parameter
+	/**
+     * Summon card 
+	 * @param pos, position of card when summoned either ATTACK or DEFENSE
+     */
 	public void summon(Position pos){
 		this.isSummoned = true;
 		this.state = new State(pos);
         this.hasAttackedForThisTurn = true;
 	}
 
-	// Return attack value from card
+	/**
+     * Get attack value from card
+     */
 	public int getAttack(){
 		return this.attack;
 	}
 
-	// Return defense value from card
+	/**
+     * Get defense value from card
+     */
 	public int getDefense(){
 		return this.defense;
 	}
 
-	// Return power value from card
+	/**
+     * Get power value from card
+     */
 	public int getPower(){
 		return this.power;
 	}
 	
-	// Return hasAttackedForThisTurn from card
+	/**
+     * Get hasAttack value from card
+     */
     public boolean getHasAttacked() {
         return this.hasAttackedForThisTurn;
     }
 
-	// Set card hasAttack status
+	/**
+     * Set hasAttack for card
+	 * @param b, status that want to be set
+     */
     public void setHasAttacked(boolean b) {
         this.hasAttackedForThisTurn = b;
     }
 
-	// Return card's state
+	/**
+     * Get state
+     */
 	public State getState(){
 		return this.state;
 	}
 
-	// Set card's state with current as parameter
+	/**
+     * Set state of card
+	 * @param current, state that want to be set 
+     */
 	public void setState(State current){
 		this.state = current;
 	}
 
-	// Set card's effect with attack and defense as parameter
+	/**
+     * Set effect of card
+	 * @param attack, attack that want to be added
+	 * @param defense, defense that want to be added
+     */
 	public void setEffect(int attack, int defense){
 		this.attack += attack;
 		this.defense += defense;
 	}
 	
-	// Remove card effect with attack and defense as parameter
+	/**
+     * Remove effect of card
+	 * @param attack, attack that want to be reduced
+	 * @param defense, defense that want to be reduced
+     */
     public void removeEffect(int attack, int defense){
 		this.attack -= attack;
 		this.defense -= defense;
 	}
 
-	// Convert character card toString
+	/**
+     * Convert to String
+     */
 	public String toString(){
 		String result = super.toString();
 		result += "\nAttack : " + this.attack +
@@ -83,24 +115,32 @@ public class Character extends Card{
 		return result;
 	}
     
-	// Method to get Stats as String
+	/**
+     * Get status as string
+     */
     public String getStatsAsString() {
         return "ATK / " + this.attack + 
             " | DEF / " + this.defense + 
             " | POW / " + this.power;
     }
     
-	// Method to get Attack as String
+	/**
+     * Get attack as string
+     */
     public String getAtkAsString() {
         return "ATK " + this.attack;
     }
     
-	// Method to get Defense as String
+	/**
+     * Get defense as string
+     */
     public String getDefAsString() {
         return "DEF " + this.defense;
     }
     
-	// Method to get Power as String
+	/**
+     * Get power as string
+     */
     public String getPowAsString() {
         return "POW " + this.power;
     }

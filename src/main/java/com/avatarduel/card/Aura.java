@@ -12,7 +12,10 @@ public class Aura extends Card{
 	private int defense;
 	private boolean isActive;
 	
-	// Constructor for Aura card with builder(CardBuilder) as parameter
+	/**
+     * Construtor for Aura
+	 * @param builder, get card attribute from builder
+     */
 	public Aura(CardBuilder builder){
 		super(builder);
 		this.power = builder.power;
@@ -20,45 +23,62 @@ public class Aura extends Card{
 		this.defense = builder.defense;
 	}
 
-	// Return card's attack value
+	/**
+     * Get attack value
+     */
     public int getAttack(){
 		return this.attack;
 	}
 
-	// Return card's defense value
+	/**
+     * Get defense value
+     */
 	public int getDefense(){
 		return this.defense;
 	}
     
-	// Return card's power value
+	/**
+     * Get power value
+     */
 	public int getPower(){ return this.power;}
 
-	// Return linkedCard from card (as Character)    
+	/**
+     * Get linked card 
+     */
         public Character getLinkedCard() {
             return linkedCard;
         }
 	
-	// Method to summon Character card
+	/**
+     * Summon aura card
+	 * @param linkedCard , card that linked to aura card
+     */
 	public void summon(Character linkedCard){
 		this.isSummoned = true;
 		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
 
-	// Method to activate card
+	/**
+     * Activate card
+     */
 	public void activate(){
 		this.linkedCard.setEffect(this.attack, this.defense);
 		this.isActive = true;
 	}
 
-	// Method to destroy card
+	/**
+     * Destroy card
+     */
 	public void destroy(){
 		if(this.isActive == true){
 			this.linkedCard.setEffect(-1 * this.attack, -1 * this.defense);
 		} 
 	}
 
-	// Method to convert card toString
+	/**
+     * Convert aura card to string
+     */
 	public String toString(){
 		String result = super.toString();
 		result += "\nAttack : " + this.attack +
@@ -67,7 +87,9 @@ public class Aura extends Card{
 		return result;
 	}
     
-	// Return Stats as String
+	/**
+     * Get status as string
+     */
     public String getStatsAsString() {
         String res = "";
         if (this.attack > 0) {
@@ -83,7 +105,9 @@ public class Aura extends Card{
         return res;
     }
     
-	// Return Attack as String
+	/**
+     * Get attack as string
+     */
     public String getAtkAsString() {
         String res = "ATK ";
         if (this.attack > 0) {
@@ -93,7 +117,9 @@ public class Aura extends Card{
         return res;
     }
     
-	// Return Defense as String
+	/**
+     * Get defense as string
+     */
     public String getDefAsString() {
         String res = "DEF ";
         if (this.defense > 0) {
@@ -103,7 +129,9 @@ public class Aura extends Card{
         return res;
     }
     
-	// Return Power as String
+	/**
+     * Get power as string
+     */
     public String getPowAsString() {
         return "POW " + this.power;
     }
