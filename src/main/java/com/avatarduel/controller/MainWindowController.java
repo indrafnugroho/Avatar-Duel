@@ -41,6 +41,9 @@ public class MainWindowController {
     private int turn;
     private String currCardEvent;
 
+    /**
+     * Load cards
+     */
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
         File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
@@ -102,6 +105,9 @@ public class MainWindowController {
         }
     }
     
+    /**
+     * Initialize Main Window Controller
+     */
     @FXML private void initialize() throws IOException, URISyntaxException {
         try {
             System.out.println("Game has started");
@@ -125,36 +131,64 @@ public class MainWindowController {
         }
     }
     
+    /**
+     * Get current phase
+     */
     public String getCurrPhase() {
         return currPhase;
     }
 
+    /**
+     * Get current card event
+     */
     public String getCurrCardEvent() {
         return this.currCardEvent;
     }
-
+    
+    /**
+     * Set current card event
+     * @param event, user-defined event
+     */
     public void setCurrCardEvent(String event) {
         this.currCardEvent = event;
     } 
     
+    /**
+     * Get turn
+     */
     public int getTurn() {
         return turn;
     }
     
+    /**
+     * Show card details
+     * @param c, card that want the details to be shown
+     */
     public void showCardDetails(Card c) {
         this.singleCardController.setCard(c);
         this.singleCardController.showCardDetails();
     }
     
+    /**
+     * Reset card details
+     */
     public void resetCardDetails() {
         this.singleCardController.resetCard();
     }
 
+    /**
+     * Refresh players
+     */
     public void refreshPlayers() {
         this.player1FieldController.refreshPlayer();
         this.player2FieldController.refreshPlayer();
     }
 
+    /**
+     * Select attack target
+     * @param pfc, the Player Field Controller
+     * @param card, target card
+     */
     public void onAttackTargetSelected(PlayerFieldController pfc, com.avatarduel.card.Character card) {
         if (pfc == player1FieldController) {
             player2FieldController.onAttackCard(card);
@@ -162,6 +196,11 @@ public class MainWindowController {
             player1FieldController.onAttackCard(card);
         } 
     }
+    /**
+     * Select destroy target
+     * @param pfc, the Player Field Controller
+     * @param card, target card
+     */
     
     public void onDestroyTargetSelected(PlayerFieldController pfc, com.avatarduel.card.Character card) {
         if (pfc == player1FieldController) {
@@ -171,6 +210,9 @@ public class MainWindowController {
         } 
     }
 
+    /**
+     * Check player's HP
+     */
     public void checkPlayersHP() {
         if  (this.p1.getLifePoint() <= 0) {
             System.out.println(this.p2.getName() + "Wins!");
@@ -181,6 +223,10 @@ public class MainWindowController {
         }
     }
 
+    /**
+     * Next Button Clicked
+     * @param event, what ActionEvent that set
+     */
     @FXML private void nextButtonClicked(ActionEvent event) {
         if (this.currPhase.equals("draw")) {
             this.draw.setStyle("-fx-border-color: black; -fx-border-width: 1; -fx-border-style: solid;");
