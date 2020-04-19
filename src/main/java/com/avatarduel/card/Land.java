@@ -18,6 +18,7 @@ public class Land extends Card{
     
     /**
      * Get Power of land card
+     * @return power value 
      */
         public int getPower() {
             return 0;
@@ -41,6 +42,7 @@ public class Land extends Card{
     
     /**
      * Get Status as String
+     * @return empty string
      */
     public String getStatsAsString() {
         return "";
@@ -48,6 +50,7 @@ public class Land extends Card{
     
     /**
      * Get Attack as String
+     * @return empty string 
      */
     public String getAtkAsString() {
         return "";
@@ -55,6 +58,7 @@ public class Land extends Card{
     
     /**
      * Get Defense as String
+     * @return empty string
      */
     public String getDefAsString() {
         return "";
@@ -62,6 +66,7 @@ public class Land extends Card{
     
     /**
      * Get Power as String
+     * @return empty string
      */
     public String getPowAsString() {
         return "";

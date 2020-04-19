@@ -34,7 +34,7 @@ public class CardBuilder{
 	/**
      * Set id card
 	 * @param id, id that want to be set
-     * @return 
+     * @return this builder 
      */
 	public CardBuilder setId(int id){
 		this.id = id;
@@ -44,7 +44,7 @@ public class CardBuilder{
 	/**
      * Set card name
 	 * @param name, name that want to be set
-     * @return 
+     * @return this builder
      */
 	public CardBuilder setName(String name){
 		this.name = name;
@@ -54,7 +54,7 @@ public class CardBuilder{
 	/**
      * Set card element
 	 * @param element, element that want to be set
-     * @return 
+     * @return this builder
      */
 	public CardBuilder setElement(Element element){
 		this.element = element;
@@ -64,7 +64,7 @@ public class CardBuilder{
 	/**
      * Set card description
 	 * @param description, description that want to be set
-     * @return 
+     * @return this builder
      */
 	public CardBuilder setDescription(String description){
 		this.description = description;
@@ -74,7 +74,7 @@ public class CardBuilder{
 	/**
      * Set card image path
 	 * @param imagepath, imagepath that want to be set
-     * @return 
+     * @return this builder
      */
 	public CardBuilder setImagePath(String imagepath){
 		this.imagepath = imagepath;
@@ -110,6 +110,7 @@ public class CardBuilder{
 
 	/**
      * Build aura card
+     * @return built card
      */
 	public Aura buildAura(){
 		return new Aura(this);
@@ -117,6 +118,7 @@ public class CardBuilder{
 
 	/**
      * Build character card
+     * @return built card
      */
 	public Character buildCharacter(){
 		return new Character(this);
@@ -124,6 +126,7 @@ public class CardBuilder{
 
 	/**
      * Build land card
+     * @return built card
      */
 	public Land buildLand(){
 		return new Land(this);
@@ -131,6 +134,7 @@ public class CardBuilder{
 
 	/**
      * Build destroy card
+     * @return built card
      */
 	public Destroy buildDestroy(){
 		return new Destroy(this);
@@ -138,11 +142,13 @@ public class CardBuilder{
 
 	/**
      * Build power up card
+     * @return built card
      */
 	public PowerUp buildPowerUp() {return new PowerUp(this); }
 
 	/**
      * Build card
+     * @return built card
      */
 	public Card build(){
 		if(this.type == CardType.AURA){
