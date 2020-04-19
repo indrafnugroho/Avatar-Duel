@@ -8,44 +8,61 @@ import com.avatarduel.player.Status;
 public class Land extends Card{
 	private Status linkedStatus;
 
-    // Constructor for Land with builder(CardBuilder) as parameter
-
+    /**
+     * Constructor for Land card
+	 * @param builder, get card attribute from builder
+     */
 	public Land(CardBuilder builder){
 		super(builder);
 	}
     
-    // Return Power of card (0)
+    /**
+     * Get Power of land card
+     */
         public int getPower() {
             return 0;
         }
 
-    // Summon card with linkedStatus as parameter
+    /**
+     * Summon land card
+	 * @param linkedStatus, link card status with linkedStatus
+     */
 	public void summon(Status linkedStatus){
 		this.isSummoned = true;
 		this.linkedStatus = linkedStatus;
 	}
 
-    // Method to activate card
+    /**
+     * Activate land card
+     */
 	public void activate(){
 		this.linkedStatus.addStatus(super.getElement());
 	}    
     
-    // Return Stats As String
+    /**
+     * Get Status as String
+     */
     public String getStatsAsString() {
         return "";
     }
     
-    // Return Attack As String
+    /**
+     * Get Attack as String
+     */
     public String getAtkAsString() {
         return "";
     }
     
-    // Return Defense As String
+    /**
+     * Get Defense as String
+     */
     public String getDefAsString() {
         return "";
     }
     
-    // Return Power As String
+    /**
+     * Get Power as String
+     */
     public String getPowAsString() {
         return "";
     }
