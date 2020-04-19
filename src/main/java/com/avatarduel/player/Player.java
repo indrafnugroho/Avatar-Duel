@@ -152,8 +152,9 @@ public class Player{
     }
 
 	public boolean putCharacterOnTable(Character c, Position pos){
-                boolean success = false;
-		switch (c.getElement()) {
+            boolean success = false;
+            if (characterOnTable.size() < 6) {
+                switch (c.getElement()) {
                 case AIR:
                     success = this.status.useAir(c.getPower());
                     break;
@@ -171,13 +172,11 @@ public class Player{
                     break;
                 }
 		if (success) {
-                    if (characterOnTable.size() < 6) {
-                        this.characterOnTable.add(c);
-                        this.cardOnHand.remove(c);
-                        c.summon(pos);
-                    }
+                    this.characterOnTable.add(c);
+                    this.cardOnHand.remove(c);
+                    c.summon(pos);
                 }
-                return success;
+            } return success;
 	}
 
 	public void changeCharacterPosition(Character c){
@@ -192,8 +191,8 @@ public class Player{
 	}
 
 	public boolean putSkillOnTable(Card a, Character c){
-		this.cardOnHand.remove(a);
-                boolean success = false;
+            boolean success = false;
+            if (skillOnTable.size() < 6) {
 		switch (a.getType()) {
                 case AURA:
                     Aura aura = (Aura) a;
@@ -259,12 +258,10 @@ public class Player{
                     break;
                 }
 		if (success) {
-                    if (skillOnTable.size() < 6) {
-                        if (a.getType() != CardType.DESTROY) this.skillOnTable.add(a);
-                        cardOnHand.remove(a);
-                    }
+                    if (a.getType() != CardType.DESTROY) this.skillOnTable.add(a);
+                    cardOnHand.remove(a);
                 }
-                return success;
+            } return success;
 	}
 
 	public void useSkill(Card a){
@@ -305,11 +302,11 @@ public class Player{
                 Card a = p.getListOfSkillOnTable().get(j);
                 if (a.getType() == CardType.AURA) {
                     Character linkedCharacter = ((Aura) a).getLinkedCard();
-                    if (linkedCharacter == c) removeSkillFromTable(p,a);
+                    if (linkedCharacter.equals(c)) removeSkillFromTable(p,a);
                 }
                 else if (a.getType() == CardType.POWERUP) {
                     Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
-                    if (linkedCharacter2 == c) removeSkillFromTable(p,a);
+                    if (linkedCharacter2.equals(c)) removeSkillFromTable(p,a);
                 }
             }
             p.getListOfCharacterOnTable().remove(c);

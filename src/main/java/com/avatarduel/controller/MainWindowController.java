@@ -104,6 +104,9 @@ public class MainWindowController {
     @FXML private void initialize() throws IOException, URISyntaxException {
         try {
             System.out.println("Game has started");
+            String background = MainWindowController.class.getResource("../background/background.jpg").toExternalForm();
+            mainWindow.setStyle("-fx-background-image: url('" + background + "'); " +
+                          "-fx-background-position: center center; ");
             currPhase = "draw";
             turn = 1;
             loadCards();
