@@ -67,11 +67,12 @@ public class Player{
 	public void initializeDeck(List<Land> landList, List<Character> characterList, List<Aura> auraList){
 		// INISIALISASI KARTU UNTUK DECK
 		// KOMPOSISI KARTU 2 : 2 : 1 = LAND : CHARACTER : SKILL
-		List<Element> elements = new ArrayList<Element>(4);
+		List<Element> elements = new ArrayList<Element>(5);
 		elements.add(Element.FIRE);
 		elements.add(Element.WATER);
 		elements.add(Element.AIR);
 		elements.add(Element.EARTH);
+                elements.add(Element.ENERGY);
 
 		Random rand = new Random();
 		for (int i = 0; i < 20; i++){
