@@ -16,6 +16,7 @@ public class Player{
 	private Status status;
 	private int lifePoint;
 
+	// Constructor for Player 	
 	public Player(String name, List<Land> landList, List<Character> characterList, List<Aura> auraList){
 		this.name = name;
 		this.deck = new ArrayList<Card>(50);
@@ -29,41 +30,53 @@ public class Player{
 		initializeCardOnHand();
 	}
 
+	// Return status of player
 	public Status getStatus() {
 		return this.status;
 	}
 
+	// Return name of player
 	public String getName() {
 		return this.name;
 	}
 
+	// Return player's deck
 	public List<Card> getDeck() {
 		return this.deck;
 	}
 
+	// Return player's LifePoint
 	public int getLifePoint() {
 		return lifePoint;
 	}
+
+	// Set Player's HP
 	public void setLifePoint(int hp){ this.lifePoint = hp; }
 
+	// Return Player's character on table
 	public List<Character> getListOfCharacterOnTable(){
 		return this.characterOnTable;
 	}
 
+	// Return Player's skill on Table
 	public List<Card> getListOfSkillOnTable() { return this.skillOnTable;}
 
+	// Set List of Character On Table with updated as parameter
 	public void setListOfCharacterOnTable(List<Character> updated){
 		this.characterOnTable = updated;
 	}
 
+	// Return cardOnHand of player
 	public List<Card> getListOfCardOnHand() {
 		return this.cardOnHand;
 	}
 
+	// Set List of Card on Hand with updated as parameter
 	public void setListOfCardOnHand(List<Card> updated){
 		this.cardOnHand = updated;
 	}
 
+	// Initialize Player's deck
 	public void initializeDeck(List<Land> landList, List<Character> characterList, List<Aura> auraList){
 		// INISIALISASI KARTU UNTUK DECK
 		// KOMPOSISI KARTU 2 : 2 : 1 = LAND : CHARACTER : SKILL
@@ -123,6 +136,7 @@ public class Player{
 		this.deck.add(p2);
 	}
 
+	// Initialize Player's Card On Hand
 	public void initializeCardOnHand(){
 		// INSIALISASI KARTU DI TANGAN, AMBIL 7 DARI DECK
 		Random rand = new Random();
@@ -133,6 +147,7 @@ public class Player{
 		}
 	}
 
+	// Method to Draw Card fron Deck
 	public void drawCardFromDeck(){
             Random rand = new Random();
             if (cardOnHand.size() < 10) {
@@ -148,10 +163,12 @@ public class Player{
             }
 	}
 
+	// Method to initialize Status
 	public void initializeStatus(){
 		status.reset();
 	}
 
+	// Method to initialize Turn
     public void initializeTurn() {
         for (Character c: this.characterOnTable) {
             if (c != null) {
@@ -160,6 +177,7 @@ public class Player{
         }
     }
 
+	// Method to Put Character on Table with character c and position pos as parameter
 	public boolean putCharacterOnTable(Character c, Position pos){
             boolean success = false;
             if (characterOnTable.size() < 6) {
@@ -188,17 +206,20 @@ public class Player{
             } return success;
 	}
 
+	// Method to Change character position with character c as parameter
 	public void changeCharacterPosition(Character c){
 		State updated = c.getState();
 		updated.rotate();
 		c.setState(updated);
 	}
 
+	// Method to use Land with land l as parameter
 	public void useLand(Land l){
 		this.cardOnHand.remove(l);
 		this.status.addStatus(l.getElement());
 	}
 
+	// Method to putSkillOnTable
 	public boolean putSkillOnTable(Card a, Character c){
             boolean success = false;
             if (skillOnTable.size() < 6) {
@@ -273,6 +294,7 @@ public class Player{
             } return success;
 	}
 
+	// Method to useSkill with one parameter
 	public void useSkill(Card a){
 		if (a.getType() == CardType.POWERUP){
 			PowerUp powerUp = (PowerUp) a;
@@ -284,6 +306,7 @@ public class Player{
 		}
 	}
 
+	// Method to UseSkill with two parameter
 	public void useSkill(Player playerTwo, Card a){
 		boolean found = false;
 		List<Character> characterList = playerTwo.getListOfCharacterOnTable();
@@ -296,6 +319,7 @@ public class Player{
 		}
 	}
 
+	// Method to remove skill from table
 	public void removeSkillFromTable(Player p, Card a){
 		if (a.getType() == CardType.POWERUP){
             ((PowerUp) a).destroy();
@@ -306,7 +330,8 @@ public class Player{
 			p.getListOfSkillOnTable().remove((Aura) a);
 		}
 	}
-        
+    
+	// Method to remove character from table
     public void removeCharacterFromTable(Player p, Character c) {
         List<Card> skillToRemove = new ArrayList<>();
         for (Card a: p.getListOfSkillOnTable()){
@@ -324,7 +349,8 @@ public class Player{
         }
         p.getListOfCharacterOnTable().remove(c);
     }
-        
+    
+	// Method to attack enemy with playertwo as target,characterA as player character and characterB as enemy's character
 	public void attack(Player playerTwo, Character characterA, Character characterB){
         characterA.setHasAttacked(true);
 		List<Character> playerTwoListOfCharacterOnTableOnTable = playerTwo.getListOfCharacterOnTable();
@@ -342,6 +368,7 @@ public class Player{
 		}	
 	}
 
+	// Method to attack playerTwo as enemy when enemy doesn't have any card left on the field
 	public void attack(Player playerTwo, Character characterA){
 		// dipake apabila playerTwp character nya abis
         characterA.setHasAttacked(true);
