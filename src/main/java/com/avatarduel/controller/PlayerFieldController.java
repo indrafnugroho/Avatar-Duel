@@ -21,12 +21,9 @@ public class PlayerFieldController {
     protected Player enemy;
     protected int turn;
     public boolean isLandSummoned;
-    public boolean isCharSelected;
-    public boolean isSkillSelected;
     public Card selectedChar;
     public Card selectedSkill;
     public Card selectedSkillOnTable;
-    public Card enemyCard;
     
     @FXML protected VBox details;
     @FXML protected Label hp;
@@ -44,11 +41,9 @@ public class PlayerFieldController {
     @FXML protected Label name;
     @FXML protected AnchorPane character;
     @FXML protected AnchorPane skill;
-    @FXML protected Button attackPlayer;
     @FXML protected AnchorPane cardButtons;
     @FXML protected Button throwCardButton;
     @FXML protected Button cancelCardButton;
-    @FXML protected Button charAttackBtn;
     @FXML protected Button charRotateBtn;
     @FXML protected Button skillAttachBtn;
     
@@ -65,29 +60,9 @@ public class PlayerFieldController {
         this.enemy = enemy;
         this.turn = turn;
         isLandSummoned = false;
-        isCharSelected = false;
-        isSkillSelected = false;
         refreshPlayer();
         this.name.setText(this.p.getName());
         System.out.println("Player " + this.p.getName() + " has been initialized");
-    }
-    
-    /**
-     * Set attack button visibility.
-     * @param s, either "visible" or "invisible"
-     */
-    public void setAttackPlayerButton(String s) {
-        if (s.equals("visible")) attackPlayer.setVisible(true);
-        else attackPlayer.setVisible(false);
-    }
-    
-    /**
-     * Set hand card visibility.
-     * @param s, either "visible" or "invisible"
-     */
-    public void setCharATKBtn(String s) {
-        if (s.equals("visible")) charAttackBtn.setVisible(true);
-        else charAttackBtn.setVisible(false);
     }
     
     /**
@@ -282,24 +257,6 @@ public class PlayerFieldController {
         this.mainWindowController.resetCardDetails();
     }
 
-    @FXML protected void attackPlayerButtonClicked(ActionEvent event) {
-        if (mainWindowController.getTurn() == this.turn) {
-            if (p.getListOfCharacterOnTable().isEmpty()) {
-                //ATTACK
-            }
-        }
-    }
-
-    @FXML protected void charAttackClicked(ActionEvent event) {
-        if (mainWindowController.getCurrPhase().equals("battle") && mainWindowController.getTurn() == this.turn && selectedChar != null) {
-            this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar);
-            mainWindowController.refreshPlayers();
-            selectedChar = null;
-            charAttackBtn.setVisible(false);
-            cardButtons.setVisible(false);
-        } 
-    }
-
     @FXML protected void charRotateClicked(ActionEvent event) {
         if (mainWindowController.getCurrPhase().equals("main") && mainWindowController.getTurn() == this.turn && selectedChar != null) {
             selectedChar.getState().rotate();
@@ -328,8 +285,6 @@ public class PlayerFieldController {
                 skillAttachBtn.setVisible(false);
                 cardButtons.setVisible(false);
             }
-        } else if (enemyCard != null && enemyCard.getType() != CardType.CHARACTER && selectedSkill != null) {
-            
         }
     }
 
@@ -360,7 +315,6 @@ public class PlayerFieldController {
                 AnchorPane card = (AnchorPane) character.getChildren().get(p.getListOfCharacterOnTable().indexOf(ch));
                 setCard(card, selectedChar, "default");
                 selectedChar = null;
-                charAttackBtn.setVisible(false);
                 charRotateBtn.setVisible(false);
                 cardButtons.setVisible(false);
             }

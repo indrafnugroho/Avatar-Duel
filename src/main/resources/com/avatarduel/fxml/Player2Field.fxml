@@ -18,8 +18,8 @@
       </AnchorPane>
       <VBox fx:id="details" layoutX="100.0" layoutY="10.0" prefHeight="100.0" prefWidth="120.0">
          <children>
+            <Label prefHeight="25.0" prefWidth="120.0" text="Player 2" />
             <Label fx:id="name" prefHeight="25.0" prefWidth="120.0" text="" />
-            <Label prefHeight="25.0" prefWidth="120.0" text="Player 1" />
             <Label fx:id="hp" prefHeight="50.0" prefWidth="120.0" text="">
                <font>
                   <Font size="30.0" />
@@ -303,13 +303,11 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="attackPlayer" layoutX="175.0" layoutY="296.0" mnemonicParsing="false" onAction="#attackPlayerButtonClicked" prefHeight="50.0" prefWidth="100.0" text="Attack" visible="false" />
       <AnchorPane fx:id="cardButtons" layoutX="1135.0" layoutY="10.0" prefHeight="100.0" prefWidth="135.0" visible="false">
          <children>
             <AnchorPane prefHeight="75.0" prefWidth="67.5">
                <children>
-                  <Button fx:id="charAttackBtn" layoutX="3.25" mnemonicParsing="false" onAction="#charAttackClicked" prefHeight="25.0" prefWidth="60.0" text="Attack" visible="false" />
-                  <Button fx:id="charRotateBtn" layoutX="3.25" layoutY="37.5" mnemonicParsing="false" onAction="#charRotateClicked" prefHeight="25.0" prefWidth="60.0" text="Rotate" visible="false" />
+                  <Button fx:id="charRotateBtn" layoutX="3.25" layoutY="25.0" mnemonicParsing="false" onAction="#charRotateClicked" prefHeight="25.0" prefWidth="60.0" text="Rotate" visible="false" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="67.5" prefHeight="75.0" prefWidth="67.5">
