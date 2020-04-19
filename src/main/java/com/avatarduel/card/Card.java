@@ -14,6 +14,8 @@ public abstract class Card implements Cloneable {
 	protected boolean isSummonable;
 	protected State state;
 
+	// Constructor for card with CardBuilder as parameter
+
 	public Card(CardBuilder builder){
 		this.id = builder.id;
 		this.type = builder.type;
@@ -24,55 +26,69 @@ public abstract class Card implements Cloneable {
 		this.isSummoned = false;
 		this.isSummonable = false;
 	}
-        
+    
+	// Return ID from card
 	public int getId(){
 		return this.id;
 	}
 
+	// Return Element from card
 	public Element getElement(){
 		return this.element;
 	}
 
-        public CardType getType() {
+	// Return type from card as CardType
+    public CardType getType() {
             return this.type;
         }
 
+	// Return card's name
 	public String getName(){
 		return this.name;
 	}
 
+	// Return card's Description
 	public String getDescription(){
 		return this.description;
 	}
 
+	// Return path for card
 	public String getPath(){
 		return this.imagepath;
 	}
 
+	// Return card's status (summoned or not summoned)
 	public boolean getStatus(){
 		return this.isSummoned;
 	}
 
+	// Return card's Summonable 
 	public boolean getSummonable(){
 		return this.isSummonable;
 	}
-        
-        public void setIsSummonable(boolean b) {
+    
+	// Set Summonable status with parameter b
+    public void setIsSummonable(boolean b) {
             isSummonable = b;
         }
-        
-        public boolean getIsSummoned() {
+    
+	// Return summoned status of card
+    public boolean getIsSummoned() {
             return isSummoned;
         }
-        
-        public void setIsSummoned(boolean b) {
+
+	// Set Summoned status with parameter b
+    public void setIsSummoned(boolean b) {
             isSummoned = b;
         }
-        
-        public State getState() { return state;}
-        
-        public abstract int getPower();
 
+	// Return state of card	    
+    public State getState() { return state;}
+
+	// Abstract method to getPower of the card   
+    public abstract int getPower();
+
+	// Method to convert card toString
 	public String toString(){
 		String result = "";
 		result += "Id: " + this.id + 
@@ -83,12 +99,17 @@ public abstract class Card implements Cloneable {
 		return result;
 	}
 
+	// Abstract method to getStatsAsString
     public abstract String getStatsAsString(); 
-    
+
+
+    // Abstract method to getAtkAsString
     public abstract String getAtkAsString();
-    
+
+	// Abstract method to getDefAsString
     public abstract String getDefAsString();
-    
+
+    // Abstract method to getPowAsString
     public abstract String getPowAsString();
 
     @Override
