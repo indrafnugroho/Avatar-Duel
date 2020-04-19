@@ -19,24 +19,28 @@ run these commands in your terminal:
 `./gradlew run`
 
 It will open a game main window that displays 'Avatar Duel'.
+
 It will start the main function in this app which is `AvatarDuel.java`.
-Anyway, enjoy our game!
 
 ## Code Structure
 Our program consists of 5 source packages. They are card, controller, player, util, and the main program itself. Below are the definition of each package.
 
 ### Card
 Card package consists of 11 different classes. They are Aura, Card, CardBuilder, CardType, Character, Destroy, Element, Land, Position, PowerUp, and State.
+
 * Aura, Character, Destroy, Land, and PowerUp are one of CardType.
 * CardBuilder is used to create Card.
 * Element is used to define card's element which is Air, Fire, Water, Earth, or Energy.
 * Position is used to define card's position, which is attack or defense.
 * State is used to define card's condition, whether it has an effect from attached skill or not.
+
 Card plays a necessary role in this program, as the program itself is a card-based playing game.
+
 Card package mainly have interaction with Player and Controller, as Card is one of Player's attribute and is needed to be displayed in the GUI.
 
 ### Controller
 Controller package consists of 5 different classes. They are MainWindowController, Player1FieldController, Player2FieldController, PlayerFieldController, and SingleCardController.
+
 * MainWindowController is used to control all 4 other controllers. It acts like an "adapter" that connects each others.
 * PlayerFieldController is used to control player's behavior displayed in game. Draw card from deck, put card from hand, attack enemy, etc are parts of its job.
 * Player1FieldController and Player2FieldController are the extensions of PlayerFieldController.
@@ -45,6 +49,7 @@ Controller mainly have interaction with Player, Card, and Util (CSVReader).
 
 ### Player
 Player package consists of 2 different classes. They are Player and Status.
+
 * Player is used to control player's behavior 'behind' the program. It controlls card movement, player's health point, and player's power status.
 * Status is used to control player's power to summon a card from hand
 
