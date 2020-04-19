@@ -173,12 +173,13 @@ public class MainWindowController {
 
     public void checkPlayersHP() {
         if  (this.p1.getLifePoint() <= 0) {
-            System.out.println(this.p2.getName() + "Wins!");
+            System.out.println(this.p2.getName() + " Wins!");
             this.currPhase = "win";
         } else if  (this.p2.getLifePoint() <= 0) {
-            System.out.println(this.p1.getName() + "Wins!");
+            System.out.println(this.p1.getName() + " Wins!");
             this.currPhase = "win";
         }
+        this.refreshPlayers();
     }
 
     @FXML private void nextButtonClicked(ActionEvent event) {

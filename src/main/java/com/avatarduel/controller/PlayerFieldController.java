@@ -119,7 +119,12 @@ public class PlayerFieldController {
     }
     
     public void refreshPlayer() {
-        this.hp.setText(this.p.getLifePoint() + " HP");
+        if (this.mainWindowController.getCurrPhase().equals("win") && this.p.getLifePoint() > 0) {
+            this.hp.setText("WIN");
+        
+        } else {
+            this.hp.setText(this.p.getLifePoint() + " HP");
+        }
         this.deckCapacity.setText(this.p.getDeck().size() + " / 50");
         this.air.setText(this.p.getStatus().airToString());
         this.fire.setText(this.p.getStatus().fireToString());
