@@ -11,45 +11,54 @@ public class Aura extends Card{
 	private int attack;
 	private int defense;
 	private boolean isActive;
-
+	
+	// Constructor for Aura card with builder(CardBuilder) as parameter
 	public Aura(CardBuilder builder){
 		super(builder);
 		this.power = builder.power;
 		this.attack = builder.attack;
 		this.defense = builder.defense;
 	}
-        
-        public int getAttack(){
+
+	// Return card's attack value
+    public int getAttack(){
 		return this.attack;
 	}
 
+	// Return card's defense value
 	public int getDefense(){
 		return this.defense;
 	}
-        
+    
+	// Return card's power value
 	public int getPower(){ return this.power;}
-        
+
+	// Return linkedCard from card (as Character)    
         public Character getLinkedCard() {
             return linkedCard;
         }
-
+	
+	// Method to summon Character card
 	public void summon(Character linkedCard){
 		this.isSummoned = true;
 		this.state = new State(Position.ATTACK);
 		this.linkedCard = linkedCard;
 	}
 
+	// Method to activate card
 	public void activate(){
 		this.linkedCard.setEffect(this.attack, this.defense);
 		this.isActive = true;
 	}
 
+	// Method to destroy card
 	public void destroy(){
 		if(this.isActive == true){
 			this.linkedCard.setEffect(-1 * this.attack, -1 * this.defense);
 		} 
 	}
 
+	// Method to convert card toString
 	public String toString(){
 		String result = super.toString();
 		result += "\nAttack : " + this.attack +
@@ -58,6 +67,7 @@ public class Aura extends Card{
 		return result;
 	}
     
+	// Return Stats as String
     public String getStatsAsString() {
         String res = "";
         if (this.attack > 0) {
@@ -73,6 +83,7 @@ public class Aura extends Card{
         return res;
     }
     
+	// Return Attack as String
     public String getAtkAsString() {
         String res = "ATK ";
         if (this.attack > 0) {
@@ -82,6 +93,7 @@ public class Aura extends Card{
         return res;
     }
     
+	// Return Defense as String
     public String getDefAsString() {
         String res = "DEF ";
         if (this.defense > 0) {
@@ -91,6 +103,7 @@ public class Aura extends Card{
         return res;
     }
     
+	// Return Power as String
     public String getPowAsString() {
         return "POW " + this.power;
     }
