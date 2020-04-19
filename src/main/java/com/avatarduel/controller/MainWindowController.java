@@ -106,9 +106,11 @@ public class MainWindowController {
             this.auraList.add(a);
         }
     }
-    
+
     /**
      * Initialize Main Window Controller
+     * @throws IOException
+     * @throws URISyntaxException
      */
     @FXML private void initialize() throws IOException, URISyntaxException {
         try {
@@ -135,7 +137,7 @@ public class MainWindowController {
     
     /**
      * Get current phase
-     * @return 
+     * @return String of the current phase of the game
      */
     public String getCurrPhase() {
         return currPhase;
@@ -143,7 +145,7 @@ public class MainWindowController {
 
     /**
      * Get current card event
-     * @return 
+     * @return String of the current card event
      */
     public String getCurrCardEvent() {
         return this.currCardEvent;
@@ -159,7 +161,7 @@ public class MainWindowController {
     
     /**
      * Get turn
-     * @return 
+     * @return the value of turn
      */
     public int getTurn() {
         return turn;

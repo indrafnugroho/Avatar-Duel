@@ -94,7 +94,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * refresh player to get updated look on GUI
+     * Refresh player to get updated look on GUI
      */
     public void refreshPlayer() {
         if (this.mainWindowController.getCurrPhase().equals("win") && this.p.getLifePoint() > 0) {
@@ -134,7 +134,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * set the look of card
+     * Set the look of card
      * @param a, container card in GUI
      * @param c, card to be set
      * @param s, border of the card, either "highlight" or "default"
@@ -181,7 +181,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * reset the look of card
+     * Reset the look of card
      * @param a, card container in the GUI
      */
     public void resetCard(AnchorPane a) {
@@ -245,7 +245,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * handler for hovered card
+     * Handler for hovered card
      * @param e, event source
      */
     @FXML protected void hoverToCard(Event e) {
@@ -270,7 +270,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * handler for hovered-from-card
+     * Handler for hovered-from-card
      * @param e, event source
      */
     @FXML protected void hoverFromCard(Event e) {
@@ -278,7 +278,7 @@ public class PlayerFieldController {
     }
 
     /**
-     * handler for clicked rotate card button
+     * Handler for clicked rotate card button
      * @param event, event source
      */
     @FXML protected void charRotateClicked(ActionEvent event) {
@@ -291,7 +291,7 @@ public class PlayerFieldController {
     }
     
     /**
-    * handler for clicked attach skill button
+    * Handler for clicked attach skill button
     * @param e, event source
     */
     @FXML protected void skillAttachClicked(ActionEvent e) {
@@ -317,7 +317,7 @@ public class PlayerFieldController {
     }
     
     /**
-     * handler for clicked throw card button
+     * Handler for clicked throw card button
      * @param event, event source
      */
     @FXML protected void throwCardButtonClicked(ActionEvent event) {

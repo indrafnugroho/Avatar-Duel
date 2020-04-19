@@ -55,9 +55,10 @@ public class Status{
 	}
 
 	/**
-     * Use Air power
-	 * @param power , how many power that need to be used
-     */
+	 * Use Air power
+	 * @param power, how many power that need to be used
+	 * @return boolean, to tell if the power is successfully used
+	 */
 	public boolean useAir(int power){
 		if(this.air - power >= 0){
 			this.air -= power;
@@ -68,6 +69,7 @@ public class Status{
 	/**
      * Use Fire power
 	 * @param power , how many power that need to be used
+	 * @return boolean, to tell if the power is successfully used
      */
 	public boolean useFire(int power){
 		if(this.fire - power >= 0){
@@ -79,6 +81,7 @@ public class Status{
 	/**
      * Use Earth power
 	 * @param power , how many power that need to be used
+	 * @return boolean, to tell if the power is successfully used
      */
 	public boolean useEarth(int power){
 		if(this.earth - power >= 0){
@@ -90,6 +93,7 @@ public class Status{
 	/**
      * Use Water power
 	 * @param power , how many power that need to be used
+	 * @return boolean, to tell if the power is successfully used
      */
 	public boolean useWater(int power){
             if(this.water - power >= 0){
@@ -101,6 +105,7 @@ public class Status{
 	/**
      * Use Energy power
 	 * @param power , how many power that need to be used
+	 * @return boolean, to tell if the power is successfully used
      */
         public boolean useEnergy(int power){
             if (this.energy - power >= 0){
@@ -121,8 +126,9 @@ public class Status{
 	}
 
 	/**
-     * Convert water to string
-     */
+	 * Convert water to string
+	 * @return a string of description how much the water is now and maximum amount of water
+	 */
 	public String waterToString(){
             String result = "";
             result += this.water + " / " + this.maxWater;
@@ -131,6 +137,7 @@ public class Status{
 	
 	/**
      * Convert earth to string
+	 * @return a string of description how much the earth is now and maximum amount of earth
      */
         public String earthToString() {
             String result = "";
@@ -140,6 +147,7 @@ public class Status{
 
     /**
      * Convert air to string
+	 * @return a string of description how much the air is now and maximum amount of air
      */
         public String airToString() {
             String result = "";
@@ -147,19 +155,21 @@ public class Status{
             return result;
         }
 
-       	/**
-     * Convert fire to string
-     */
-        public String fireToString() {
+	/**
+	 * Convert fire to string
+	 * @return a string of description how much the water is now and maximum amount of water
+	 */
+		public String fireToString() {
             String result = "";
             result += this.fire + " / " + this.maxFire;
             return result;
         }
 
-	  	/**
-     * Convert energy to string
-     */
-        public String energyToString() {
+	/**
+	 * Convert energy to string
+	 * @return a string of description how much the water is now and maximum amount of water
+	 */
+	public String energyToString() {
             String result = "";
             result += this.energy + " / " + this.maxEnergy;
             return result;

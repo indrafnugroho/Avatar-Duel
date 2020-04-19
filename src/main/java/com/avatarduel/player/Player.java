@@ -19,8 +19,8 @@ public class Player{
 	/**
      * Constructor for Player
      * @param name, user defined player name
-     * @param landlist, user defined land list of player
-	 * @param characterlist, user defined character list of player
+     * @param landList, user defined land list of player
+	 * @param characterList, user defined character list of player
 	 * @param auraList, user defined aura list of player
      */
 	public Player(String name, List<Land> landList, List<Character> characterList, List<Aura> auraList){
@@ -37,29 +37,33 @@ public class Player{
 	}
 
 	/**
-     * Get Status of player
-     */
+	 * Get status of player
+	 * @return Status of player
+	 */
 	public Status getStatus() {
 		return this.status;
 	}
 
 	/**
-     * Get name of player
-     */
+	 * Get name of player
+	 * @return String of the player's name
+	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-     * Get Deck of player
-     */
+	 * Get deck of player
+	 * @return a List of Card inside player's deck
+	 */
 	public List<Card> getDeck() {
 		return this.deck;
 	}
 
 	/**
-     * Get Life Point of player
-     */
+	 * Get life point of player
+	 * @return value of player's life point
+	 */
 	public int getLifePoint() {
 		return lifePoint;
 	}
@@ -71,15 +75,17 @@ public class Player{
 	public void setLifePoint(int hp){ this.lifePoint = hp; }
 
 	/**
-     * Get list of Character on Table of player
-     */
+	 * Get list of character on table of player
+	 * @return a List of Character that Player has put on table
+	 */
 	public List<Character> getListOfCharacterOnTable(){
 		return this.characterOnTable;
 	}
 
 	/**
-     * Get list of Skill on table of player
-     */
+	 * Get list of skill on table of player
+	 * @return a List of Card consists of Skill Cards that player has put on table
+	 */
 	public List<Card> getListOfSkillOnTable() { return this.skillOnTable;}
 
 	/**
@@ -90,8 +96,9 @@ public class Player{
 	}
 
 	/**
-     * Get list of card on hand of player
-     */
+	 * Get list of card on hand
+	 * @return a List of Card that player has on hand
+	 */
 	public List<Card> getListOfCardOnHand() {
 		return this.cardOnHand;
 	}
@@ -159,6 +166,7 @@ public class Player{
 		PowerUp p1 = new CardBuilder(CardType.POWERUP)
 				.setElement(rand_element2)
 				.setPower(rand.nextInt(10))
+				.setDescription("Use this card to weaken the opposite player! Even when the opposite player's character is on defense. ")
 				.buildPowerUp();
 		PowerUp p2 = new CardBuilder(CardType.POWERUP)
 				.setElement(rand_element3)
@@ -219,10 +227,11 @@ public class Player{
     }
 
 	/**
-     * Put character on table
+	 * Put character on table
 	 * @param c, card that want to put
 	 * @param pos, position of card c when it is summoned
-     */
+	 * @return boolean, will be true if character is successfully put on table
+	 */
 	public boolean putCharacterOnTable(Character c, Position pos){
             boolean success = false;
             if (characterOnTable.size() < 6) {
@@ -274,6 +283,7 @@ public class Player{
      * Put skill on table
 	 * @param a, skill card that want to be used
 	 * @param c, character card that want skill to be added
+	 * @return success, to tell that skill is successfully put on table
      */
 	public boolean putSkillOnTable(Card a, Character c){
             boolean success = false;
