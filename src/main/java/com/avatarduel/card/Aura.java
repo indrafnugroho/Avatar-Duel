@@ -33,7 +33,7 @@ public class Aura extends Card{
 
 	/**
      * Get defense value
-     * @return 
+     * @return  
      */
 	public int getDefense(){
 		return this.defense;
@@ -41,7 +41,7 @@ public class Aura extends Card{
     
 	/**
      * Get power value
-     * @return 
+     * @return
      */
 	public int getPower(){ return this.power;}
 
