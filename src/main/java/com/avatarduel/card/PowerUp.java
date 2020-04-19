@@ -31,6 +31,7 @@ public class PowerUp extends Card {
     
 	/**
      * Get Linked Card 
+     * @return linked character card 
      */
         public Character getLinkedCard() {
             return linkedCard;
@@ -52,6 +53,7 @@ public class PowerUp extends Card {
 
 	/**
      * Get Power of card
+     * @return Power value 
      */
 	public int getPower() {
 		return power;
@@ -59,6 +61,7 @@ public class PowerUp extends Card {
 
 	/**
      * Get Status as String
+     * @return String representation of this card's stats 
      */
 	public String getStatsAsString() {
         return "POW / " + power;
@@ -66,6 +69,7 @@ public class PowerUp extends Card {
 
     /**
      * Get Attack as String
+     * @return empty string 
      */
     public String getAtkAsString() {
         return "";
@@ -73,6 +77,7 @@ public class PowerUp extends Card {
 
     /**
      * Get Defense as String
+     * @return empty string 
      */
     public String getDefAsString() {
         return "";
@@ -80,6 +85,7 @@ public class PowerUp extends Card {
 
     /**
      * Get Power as String
+     * @return Power value as string 
      */
     public String getPowAsString() {
         return "POW " + power;

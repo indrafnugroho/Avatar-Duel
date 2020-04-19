@@ -31,11 +31,13 @@ public class Destroy extends Card{
     
 	/**
      * Get Power from card
+     * @return Power value 
      */
 	public int getPower(){ return this.power;}
 
 	/**
      * Activate card
+     * @return linked character card 
      */
 	public Character activate(){
 		return this.linkedCard;
@@ -43,6 +45,7 @@ public class Destroy extends Card{
     
 	/**
      * Get Status as String
+     * @return String representation of this card's state 
      */
     public String getStatsAsString() {
         return "POW / " + power;
@@ -50,6 +53,7 @@ public class Destroy extends Card{
     
 	/**
      * Get Attack as String
+     * @return empty string 
      */
     public String getAtkAsString() {
         return "";
@@ -57,6 +61,7 @@ public class Destroy extends Card{
     
 	/**
      * Get Defense as String
+     * @return empty string
      */
     public String getDefAsString() {
         return "";
@@ -64,6 +69,7 @@ public class Destroy extends Card{
     
 	/**
      * Get Power as String
+     * @return Power value as string 
      */
     public String getPowAsString() {
         return "POW " + power;

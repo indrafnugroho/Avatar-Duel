@@ -35,6 +35,7 @@ public class Character extends Card{
 
 	/**
      * Get attack value from card
+     * @return Attack value 
      */
 	public int getAttack(){
 		return this.attack;
@@ -42,6 +43,7 @@ public class Character extends Card{
 
 	/**
      * Get defense value from card
+     * @return Defense value 
      */
 	public int getDefense(){
 		return this.defense;
@@ -49,6 +51,7 @@ public class Character extends Card{
 
 	/**
      * Get power value from card
+     * @return Power required to summon this card 
      */
 	public int getPower(){
 		return this.power;
@@ -56,6 +59,7 @@ public class Character extends Card{
 	
 	/**
      * Get hasAttack value from card
+     * @return true if this card has used to attack in this turn. 
      */
     public boolean getHasAttacked() {
         return this.hasAttackedForThisTurn;
@@ -71,6 +75,7 @@ public class Character extends Card{
 
 	/**
      * Get state
+     * @return this card's state 
      */
 	public State getState(){
 		return this.state;
@@ -106,6 +111,7 @@ public class Character extends Card{
 
 	/**
      * Convert to String
+     * @return Strin representation of this card. 
      */
 	public String toString(){
 		String result = super.toString();
@@ -117,6 +123,7 @@ public class Character extends Card{
     
 	/**
      * Get status as string
+     * @return String representation of this card's state 
      */
     public String getStatsAsString() {
         return "ATK / " + this.attack + 
@@ -126,6 +133,7 @@ public class Character extends Card{
     
 	/**
      * Get attack as string
+     * @return Attack value as string 
      */
     public String getAtkAsString() {
         return "ATK " + this.attack;
@@ -133,6 +141,7 @@ public class Character extends Card{
     
 	/**
      * Get defense as string
+     * @return Defense value as string
      */
     public String getDefAsString() {
         return "DEF " + this.defense;
@@ -140,6 +149,7 @@ public class Character extends Card{
     
 	/**
      * Get power as string
+     * @return Power value  as string 
      */
     public String getPowAsString() {
         return "POW " + this.power;

@@ -15,6 +15,7 @@ public class State implements Cloneable {
 
 	/**
      * Get Position
+     * @return position of the card in this state, either Position.ATTACK or Position.DEFENSE
      */
 	public Position getPosition(){
 		return this.pos;
@@ -41,6 +42,7 @@ public class State implements Cloneable {
 
 	/**
      * Get isPowerUp
+     * @return true if the card in this state is powered up 
      */
 	public boolean isPowerUp(){
 		return this.getPowerUp;
@@ -48,6 +50,7 @@ public class State implements Cloneable {
 
 	/**
      * Convert toString
+     * @return String representation of this card's state.
      */
 	public String toString(){
 		String result = "";
@@ -55,6 +58,10 @@ public class State implements Cloneable {
 		return result;
 	}
 
+    /**
+     * Clone this object
+     * @return the clone of this object
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();

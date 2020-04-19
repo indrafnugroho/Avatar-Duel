@@ -32,7 +32,7 @@ public abstract class Card implements Cloneable {
     
 	/**
      * Get Id from card
-     * @return 
+     * @return This card's ID 
      */
 	public int getId(){
 		return this.id;
@@ -40,7 +40,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Element from card
-     * @return 
+     * @return This card's elemtnr
      */
 	public Element getElement(){
 		return this.element;
@@ -48,7 +48,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get type from card
-     * @return 
+     * @return This card's type
      */
     public CardType getType() {
             return this.type;
@@ -56,7 +56,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Name from card
-     * @return 
+     * @return This card's name
      */
 	public String getName(){
 		return this.name;
@@ -64,15 +64,15 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get Description from card
-     * @return 
+     * @return This card's description
      */
 	public String getDescription(){
 		return this.description;
 	}
 
 	/**
-     * Get path from card
-     * @return 
+     * Get image path from card
+     * @return Path to image file of this card. 
      */
 	public String getPath(){
 		return this.imagepath;
@@ -80,7 +80,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get status from card
-     * @return 
+     * @return True if this card is summoned.
      */
 	public boolean getStatus(){
 		return this.isSummoned;
@@ -88,7 +88,7 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get summonable status from card
-     * @return 
+     * @return True if this card is summonable
      */
 	public boolean getSummonable(){
 		return this.isSummonable;
@@ -104,7 +104,7 @@ public abstract class Card implements Cloneable {
     
 	/**
      * Get is summoned status from card
-     * @return 
+     * @return True if this card is summoned.
      */
     public boolean getIsSummoned() {
             return isSummoned;
@@ -120,19 +120,19 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Get state from card
-     * @return 
+     * @return This card's state.
      */   
     public State getState() { return state;}
 
 	/**
      * Abstract method to get power from card
-     * @return 
+     * @return Power required to use this card.
      */
     public abstract int getPower();
 
 	/**
      * Convert to string
-     * @return
+     * @return String representation of this card.
      */
 	public String toString(){
 		String result = "";
@@ -146,29 +146,33 @@ public abstract class Card implements Cloneable {
 
 	/**
      * Abstract method to get status as string
-     * @return 
+     * @return String representation of this card's stats
      */
     public abstract String getStatsAsString(); 
 
 
     /**
      * Abstract method to get Attack as string
-     * @return 
+     * @return Attack value as string
      */
     public abstract String getAtkAsString();
 
 	/**
      * Abstract method to get Defense as string
-     * @return 
+     * @return Defense value as String
      */
     public abstract String getDefAsString();
 
     /**
      * Abstract method to get Power as string
-     * @return 
+     * @return Power value as string
      */
     public abstract String getPowAsString();
 
+    /**
+     * Clone this object
+     * @return the clone of this object
+     */
     @Override
     public Object clone() throws CloneNotSupportedException {
         Card c = (Card) super.clone();
