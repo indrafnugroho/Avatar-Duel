@@ -56,21 +56,23 @@ The main itself is used to load the Main Window fxml file which is connected to 
 
 ## Application Screenshot
 1. Player 1 draws 7 cards from deck and draws another one from deck.
-![alt text](src\main\resources\com\avatarduel\gamescenario\1.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/1.png)
 2. Player 1 draws a fire land card in the main phase.  Player's fire power status is now increased by one point.
-![alt text](src\main\resources\com\avatarduel\gamescenario\2.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/2.png)
 3. Player 2 draws an earth land card and summons an earth character card. These are done in the main phase.
-![alt text](src\main\resources\com\avatarduel\gamescenario\3.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/3.png)
 4. Player 2 attacks player 1 using shown card. Player 1's HP is now substracted by the attacking card's attack point as there is no card on the player 1's field.
-![alt text](src\main\resources\com\avatarduel\gamescenario\4.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/4.png)
 5. Player 1 is gonna attack player 2 using Hahn with 8 attack points.
-![alt text](src\main\resources\com\avatarduel\gamescenario\5-1.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/5-1.png)
 The target is player 2's cabbage merchant with 2 attack points.
-![alt text](src\main\resources\com\avatarduel\gamescenario\5-2.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/5-2.png)
 The recent target is now removed from the field, and player 2's HP is substracted by (8-2) = 6 points.
-![alt text](src\main\resources\com\avatarduel\gamescenario\5-3.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/5-3.png)
 
-** Curious to know more? Let's try it yourself and join the fun! **
+
+**Curious to know more? Let's try it yourself and join the fun!**
+
 
 ## Credits
 
