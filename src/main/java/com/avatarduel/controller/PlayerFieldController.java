@@ -25,6 +25,7 @@ public class PlayerFieldController {
     public boolean isSkillSelected;
     public Card selectedChar;
     public Card selectedSkill;
+    public Card selectedSkillOnTable;
     public Card enemyCard;
     
     @FXML protected VBox details;
@@ -336,10 +337,10 @@ public class PlayerFieldController {
                     cardButtons.setVisible(false);
                     refreshPlayer();
                 }
-            } else if (selectedSkill != null) {
-                if (p.getListOfSkillOnTable().contains(selectedSkill)) {
-                    p.removeSkillFromTable(p, selectedSkill);
-                    selectedSkill = null;
+            } else if (selectedSkillOnTable != null) {
+                if (p.getListOfSkillOnTable().contains(selectedSkillOnTable)) {
+                    p.removeSkillFromTable(p, selectedSkillOnTable);
+                    selectedSkillOnTable = null;
                     cardButtons.setVisible(false);
                     refreshPlayer();
                 }
@@ -362,19 +363,18 @@ public class PlayerFieldController {
         }
         
         if (selectedSkill != null) {
-            if (p.getListOfSkillOnTable().contains(selectedSkill)) {
                 AnchorPane card = (AnchorPane) skill.getChildren().get(p.getListOfSkillOnTable().indexOf(selectedSkill));
                 setCard(card, selectedSkill, "default");
                 selectedSkill = null;
                 skillAttachBtn.setVisible(false);
                 cardButtons.setVisible(false);
-            } else {
-                AnchorPane card = (AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().indexOf(selectedSkill));
-                setCard(card, selectedSkill, "default");
-                selectedSkill = null;
+        }
+        if (selectedSkillOnTable != null) {
+                AnchorPane card = (AnchorPane) cardsOnHand.getChildren().get(p.getListOfCardOnHand().indexOf(selectedSkillOnTable));
+                setCard(card, selectedSkillOnTable, "default");
+                selectedSkillOnTable = null;
                 skillAttachBtn.setVisible(false);
                 cardButtons.setVisible(false);
-            }
         }
     }
 
@@ -463,16 +463,14 @@ public class PlayerFieldController {
     }
 
     @FXML protected void skillCardClicked(ActionEvent e) {
-        /*
-        if (mainWindowController.getCurrPhase().equals("main") && selectedSkill == null) {
+        if (mainWindowController.getCurrPhase().equals("main") && selectedSkillOnTable == null) {
             Node button = (Node) e.getSource();
             AnchorPane cardGUI = (AnchorPane) button.getParent();
             int idxCard = skill.getChildren().indexOf(cardGUI);
             Card card = p.getListOfSkillOnTable().get(idxCard);
-            selectedSkill = card;
+            selectedSkillOnTable = card;
             setCard(cardGUI, card, "highlight");
             cardButtons.setVisible(true);
         }
-        */
     }
 }

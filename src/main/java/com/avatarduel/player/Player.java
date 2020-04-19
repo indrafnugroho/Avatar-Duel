@@ -297,7 +297,7 @@ public class Player{
 
 	public void removeSkillFromTable(Player p, Card a){
 		if (a.getType() == CardType.POWERUP){
-                        ((PowerUp) a).destroy();
+            ((PowerUp) a).destroy();
 			p.getListOfSkillOnTable().remove((PowerUp) a);
 		}
 		else if (a.getType() == CardType.AURA){
@@ -306,19 +306,23 @@ public class Player{
 		}
 	}
         
-        public void removeCharacterFromTable(Player p, Character c) {
-            for (Card a: p.getListOfSkillOnTable()){
-                if (a.getType() == CardType.AURA) {
-                    Character linkedCharacter = ((Aura) a).getLinkedCard();
-                    if (linkedCharacter == c) removeSkillFromTable(p,a);
-                }
-                else if (a.getType() == CardType.POWERUP) {
-                    Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
-                    if (linkedCharacter2 == c) removeSkillFromTable(p,a);
-                }
+    public void removeCharacterFromTable(Player p, Character c) {
+        List<Card> skillToRemove = new ArrayList<>();
+        for (Card a: p.getListOfSkillOnTable()){
+            if (a.getType() == CardType.AURA) {
+                Character linkedCharacter = ((Aura) a).getLinkedCard();
+                if (linkedCharacter == c) skillToRemove.add(a);
             }
-            p.getListOfCharacterOnTable().remove(c);
+            else if (a.getType() == CardType.POWERUP) {
+                Character linkedCharacter2 = ((PowerUp) a).getLinkedCard();
+                if (linkedCharacter2 == c) skillToRemove.add(a);
+            }
         }
+        for (Card a: skillToRemove) {
+            removeSkillFromTable(p, a);
+        }
+        p.getListOfCharacterOnTable().remove(c);
+    }
         
 	public void attack(Player playerTwo, Character characterA, Character characterB){
         characterA.setHasAttacked(true);

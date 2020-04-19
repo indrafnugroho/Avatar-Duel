@@ -57,6 +57,11 @@ public class Character extends Card{
 		this.attack += attack;
 		this.defense += defense;
 	}
+	
+    public void removeEffect(int attack, int defense){
+		this.attack -= attack;
+		this.defense -= defense;
+	}
 
 	public String toString(){
 		String result = super.toString();
