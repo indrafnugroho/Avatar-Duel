@@ -25,7 +25,7 @@ Anyway, enjoy our game!
 ## Code Structure
 Our program consists of 5 source packages. They are card, controller, player, util, and the main program itself. Below are the definition of each package.
 
-1. Card
+### Card
 Card package consists of 11 different classes. They are Aura, Card, CardBuilder, CardType, Character, Destroy, Element, Land, Position, PowerUp, and State.
 * Aura, Character, Destroy, Land, and PowerUp are one of CardType.
 * CardBuilder is used to create Card.
@@ -35,7 +35,7 @@ Card package consists of 11 different classes. They are Aura, Card, CardBuilder,
 Card plays a necessary role in this program, as the program itself is a card-based playing game.
 Card package mainly have interaction with Player and Controller, as Card is one of Player's attribute and is needed to be displayed in the GUI.
 
-2. Controller
+### Controller
 Controller package consists of 5 different classes. They are MainWindowController, Player1FieldController, Player2FieldController, PlayerFieldController, and SingleCardController.
 * MainWindowController is used to control all 4 other controllers. It acts like an "adapter" that connects each others.
 * PlayerFieldController is used to control player's behavior displayed in game. Draw card from deck, put card from hand, attack enemy, etc are parts of its job.
@@ -43,15 +43,15 @@ Controller package consists of 5 different classes. They are MainWindowControlle
 * SingleCardController is used to control big card details displayed in left side of the game
 Controller mainly have interaction with Player, Card, and Util (CSVReader).
 
-3. Player
+### Player
 Player package consists of 2 different classes. They are Player and Status.
 * Player is used to control player's behavior 'behind' the program. It controlls card movement, player's health point, and player's power status.
 * Status is used to control player's power to summon a card from hand
 
-4. Util
+### Util
 Util consists of CSVReader class. It is used to read CSV, files where all cards description are stored, to be used in the game.
 
-5. Main
+### Main
 The main itself is used to load the Main Window fxml file which is connected to the Main Window Controller to run the program.
 
 ## Application Screenshot
@@ -63,12 +63,10 @@ The main itself is used to load the Main Window fxml file which is connected to 
 ![alt text](src/main/resources/com/avatarduel/gamescenario/3.png)
 4. Player 2 attacks player 1 using shown card. Player 1's HP is now substracted by the attacking card's attack point as there is no card on the player 1's field.
 ![alt text](src/main/resources/com/avatarduel/gamescenario/4.png)
-5. Player 1 is gonna attack player 2 using Hahn with 8 attack points.
+5. Player 1 is gonna attack player 2 using Hahn (the highlighted blue card) with 8 attack points. The target is player 2's cabbage merchant with 2 attack points.
 ![alt text](src/main/resources/com/avatarduel/gamescenario/5-1.png)
-The target is player 2's cabbage merchant with 2 attack points.
-![alt text](src/main/resources/com/avatarduel/gamescenario/5-2.png)
 The recent target is now removed from the field, and player 2's HP is substracted by (8-2) = 6 points.
-![alt text](src/main/resources/com/avatarduel/gamescenario/5-3.png)
+![alt text](src/main/resources/com/avatarduel/gamescenario/5-2.png)
 
 
 **Curious to know more? Let's try it yourself and join the fun!**
