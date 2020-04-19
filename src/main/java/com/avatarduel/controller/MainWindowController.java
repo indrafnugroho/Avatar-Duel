@@ -43,6 +43,8 @@ public class MainWindowController {
 
     /**
      * Load cards
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
      */
     public void loadCards() throws IOException, URISyntaxException {
         File landCSVFile = new File(getClass().getResource(LAND_CSV_FILE_PATH).toURI());
@@ -133,6 +135,7 @@ public class MainWindowController {
     
     /**
      * Get current phase
+     * @return 
      */
     public String getCurrPhase() {
         return currPhase;
@@ -140,6 +143,7 @@ public class MainWindowController {
 
     /**
      * Get current card event
+     * @return 
      */
     public String getCurrCardEvent() {
         return this.currCardEvent;
@@ -155,6 +159,7 @@ public class MainWindowController {
     
     /**
      * Get turn
+     * @return 
      */
     public int getTurn() {
         return turn;

@@ -10,6 +10,7 @@ import com.avatarduel.card.*;
 
 public class SingleCardController {
     private MainWindowController mainWindowController;
+    private Card card;
     
     @FXML private Label name;
     @FXML private ImageView element;
@@ -19,9 +20,12 @@ public class SingleCardController {
     @FXML private Label description;
     @FXML private Label status;
     @FXML private AnchorPane singleCard;
-     
-    private Card card;
     
+    /**
+     * init
+     * @param mwc, main window controller
+     * @param card, displayed card
+     */
     public void init(MainWindowController mwc, Card card) {
         System.out.println("Single Card has been initialized");
         mainWindowController = mwc;
@@ -31,7 +35,7 @@ public class SingleCardController {
     
     /**
      * Set card 
-     * @param s, card that want to set
+     * @param c, set card
      */
     public void setCard(Card c) {
         this.card = c;

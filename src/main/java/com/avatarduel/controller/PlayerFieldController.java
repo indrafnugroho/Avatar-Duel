@@ -52,7 +52,7 @@ public class PlayerFieldController {
      * @param mwc the parent of this controller
      * @param p the player to be controlled.
      * @param enemy the enemy player.
-     * @param turnNumber turn number. value 1 or 2.
+     * @param turn, turn player to be controlled
      */
     public void init(MainWindowController mwc, Player p, Player enemy, int turn) {
         mainWindowController = mwc;
@@ -93,6 +93,9 @@ public class PlayerFieldController {
         } else cardsOnHand.setVisible(false);
     }
     
+    /**
+     * refresh player to get updated look on GUI
+     */
     public void refreshPlayer() {
         if (this.mainWindowController.getCurrPhase().equals("win") && this.p.getLifePoint() > 0) {
             this.hp.setText("WIN");
@@ -130,6 +133,12 @@ public class PlayerFieldController {
         }
     }
     
+    /**
+     * set the look of card
+     * @param a, container card in GUI
+     * @param c, card to be set
+     * @param s, border of the card, either "highlight" or "default"
+     */
     public void setCard(AnchorPane a, Card c, String s) {
         Label type = (Label) a.getChildren().get(0);
         Label pow = (Label) a.getChildren().get(1);
@@ -169,9 +178,12 @@ public class PlayerFieldController {
                 a.setRotate(90);
             }
         }
-
     }
     
+    /**
+     * reset the look of card
+     * @param a, card container in the GUI
+     */
     public void resetCard(AnchorPane a) {
         Label type = (Label) a.getChildren().get(0);
         Label pow = (Label) a.getChildren().get(1);
@@ -232,6 +244,10 @@ public class PlayerFieldController {
         }
     }
     
+    /**
+     * handler for hovered card
+     * @param e, event source
+     */
     @FXML protected void hoverToCard(Event e) {
         Node button = (Node) e.getSource();
         AnchorPane cardGUI = (AnchorPane) button.getParent();
@@ -253,10 +269,18 @@ public class PlayerFieldController {
         }
     }
     
+    /**
+     * handler for hovered-from-card
+     * @param e, event source
+     */
     @FXML protected void hoverFromCard(Event e) {
         this.mainWindowController.resetCardDetails();
     }
 
+    /**
+     * handler for clicked rotate card button
+     * @param event, event source
+     */
     @FXML protected void charRotateClicked(ActionEvent event) {
         if (mainWindowController.getCurrPhase().equals("main") && mainWindowController.getTurn() == this.turn && selectedChar != null) {
             selectedChar.getState().rotate();
@@ -265,7 +289,11 @@ public class PlayerFieldController {
             refreshPlayer();
         } 
     }
-
+    
+    /**
+    * handler for clicked attach skill button
+    * @param e, event source
+    */
     @FXML protected void skillAttachClicked(ActionEvent e) {
         if (selectedSkill != null && selectedChar != null) {
             Character ch = (Character) selectedChar;
@@ -287,11 +315,15 @@ public class PlayerFieldController {
             }
         }
     }
-
+    
+    /**
+     * handler for clicked throw card button
+     * @param event, event source
+     */
     @FXML protected void throwCardButtonClicked(ActionEvent event) {
         if (mainWindowController.getCurrPhase().equals("main")) {
             if (selectedChar != null) {
-                if (p.getListOfCharacterOnTable().contains(selectedChar)) {
+                if (p.getListOfCharacterOnTable().contains((Character)selectedChar)) {
                     p.removeCharacterFromTable(p, (Character) selectedChar);
                     selectedChar = null;
                     cardButtons.setVisible(false);
@@ -307,7 +339,11 @@ public class PlayerFieldController {
             }
         }
     }
-
+    
+    /**
+     * Handler for clicked cancel card button
+     * @param event, event source
+     */
     @FXML protected void cancelCardButtonClicked(ActionEvent event) {
         if (selectedChar != null) {
             Character ch = (Character) selectedChar;
@@ -336,7 +372,11 @@ public class PlayerFieldController {
                 cardButtons.setVisible(false);
         }
     }
-
+    
+    /**
+     * Select card to be attacked
+     * @param card, attacked card
+     */
     public void onAttackCard(com.avatarduel.card.Character card) {
         this.p.attack(this.enemy, (com.avatarduel.card.Character) selectedChar, card);
         selectedChar = null;
@@ -344,6 +384,10 @@ public class PlayerFieldController {
         cardButtons.setVisible(false);
     }
     
+    /**
+     * Select card to be destroyed
+     * @param card, destroyed card
+     */
     public void onDestroyCard(com.avatarduel.card.Character card) {
         if (p.putSkillOnTable(selectedSkill, card)) {
             if (selectedSkill.getType() == CardType.DESTROY) {
@@ -355,7 +399,10 @@ public class PlayerFieldController {
         cardButtons.setVisible(false);
     }
 
-
+    /**
+     * Handler for clicked character card on field
+     * @param e, event source
+     */
     @FXML protected void charCardClicked(ActionEvent e) {
         if (selectedChar == null) {
             String currPhase = mainWindowController.getCurrPhase();
@@ -402,25 +449,12 @@ public class PlayerFieldController {
             }
         }
         this.mainWindowController.checkPlayersHP();
-        /*
-        if (mainWindowController.getCurrPhase().equals("main") && selectedChar == null) {
-            Node button = (Node) e.getSource();
-            AnchorPane cardGUI = (AnchorPane) button.getParent();
-            int idxCard = character.getChildren().indexOf(cardGUI);
-            Card card = p.getListOfCharacterOnTable().get(idxCard);
-            selectedChar = card;
-            setCard(cardGUI, card, "highlight");
-            if (selectedSkill == null) {
-                cardButtons.setVisible(true);
-                charRotateBtn.setVisible(true);
-            }
-        } else if (mainWindowController.getCurrPhase().equals("battle") && selectedChar == null){
-                
-                charAttackBtn.setVisible(true);
-        }
-        */
     }
-
+    
+    /**
+     * Handler for clicked skill card on field
+     * @param e, event source
+     */
     @FXML protected void skillCardClicked(ActionEvent e) {
         if (mainWindowController.getCurrPhase().equals("main") && selectedSkillOnTable == null) {
             Node button = (Node) e.getSource();
